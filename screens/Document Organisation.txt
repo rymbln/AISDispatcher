@@ -1,0 +1,126 @@
+Document Organisation
+{
+	ID:
+	Name:
+	Email:
+	PassMDA:
+	_DateCreate:
+	_DateUpdate:
+	_UserType:
+	_UserID:
+}
+
+Document Dispetcher
+{
+	ID:
+	Name:
+	Email:
+	OrganisationID:
+	PassMDA:
+	_DateCreate:
+	_DateUpdate:
+	_UserType:
+	_UserID:
+}
+
+Document Company
+{ 	
+	ID: 
+	Name: 	
+	OrganisationID	:
+	Address:
+	Comment:
+	Contacts:
+		[
+			{
+				ID:
+				Name:
+				Rank:
+				Comment:
+				Phones: [123456789, 12345679]
+			},
+			{
+				ID:
+				Name:
+				Rank:
+				Comment:
+				Phones: [123456789, 12345679]
+			}
+		]
+	_DateCreate:
+	_DateUpdate:
+	_UserType:
+	_UserID:
+}
+
+Document Driver
+{
+	ID:
+	AdministratorID:
+	OrganisationID:
+	Name:
+	Bidthdate:
+	Email:
+	PassMDA:
+	Car:
+	Phones: [123456, 123454678]
+	_DateCreate:
+	_DateUpdate:
+	_UserType:
+	_UserID:
+}
+
+Document Task
+{
+	ID:
+	AdministratorID:
+	OrganisationID:
+	CompanyID:
+	Name:
+	DeliveryTime: 
+	DriverName:
+	Address:
+	Comment:
+	DriverID:
+	LastStatus:
+	LastStatusDate:
+	LastUser:
+	Chat:
+		[
+			{
+				ID:
+				Message:
+				Datetime:
+				User:
+			},
+			{
+				ID:
+				Message:
+				Datetime:
+				User:
+			}
+		]
+	_DateCreate:
+	_DateUpdate:
+	_UserType:
+	_UserID:
+}
+
+Document EventsTask
+{
+	ID:
+	OrganisationID:
+	AdministratorID:
+	TaskName:
+	TaskDatetime:
+	DriverName:
+	ActionMessage:
+	ActionUser:
+	ActionDatetime:
+	_DateCreate:
+	_DateUpdate:
+	_UserType:
+	_UserID:
+
+}
+
