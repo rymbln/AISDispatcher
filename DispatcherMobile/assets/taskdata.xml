@@ -1,0 +1,59 @@
+﻿<channel>
+<title>DispacherMobile</title>
+<description>Тестовая выдача списка задач</description>
+<lastBuildDate>Sun, 15 Sep 2013 12:03:38 +0000</lastBuildDate>
+<language>ru</language>
+<sy:updatePeriod>hourly</sy:updatePeriod>
+<sy:updateFrequency>1</sy:updateFrequency>
+<item>
+<TaskID>1231313123</TaskID>
+<CompanyID>12313123</CompanyID>
+<DriverID>123213213213</DriverID>
+<CompanyName>АЛЬФАТранс</CompanyName>
+<DeliveryTime>16:00</DeliveryTime>
+<DriverName>Василий</DriverName>
+<Address>ул.Петра Алексеева д.19 оф.78</Address>
+<Comment>обычный комментарий</Comment>
+<LastStatus>Создано диспетчером</LastStatus>
+<LastStatusDate>12:00</LastStatusDate>
+<Contact>
+<Name>Аня</Name>
+<Rank>Бухгалтер</Rank>
+<Phone>89517112527</phone>
+</Contact>
+</item>
+<item>
+<TaskID>1231313123</TaskID>
+<CompanyID>12313123</CompanyID>
+<DriverID>123213213213</DriverID>
+<CompanyName>ВТБ24</CompanyName>
+<DeliveryTime>14:00</DeliveryTime>
+<DriverName>Василий</DriverName>
+<Address>пр.Строителей д.19 оф.78</Address>
+<Comment>обычный комментарий</Comment>
+<LastStatus>Принято оператором</LastStatus>
+<LastStatusDate>12:00</LastStatusDate>
+<Contact>
+<Name>Вера</Name>
+<Rank>Секретарь</Rank>
+<Phone>89517112527</phone>
+</Contact>
+</item>
+<item>
+<TaskID>1231313123</TaskID>
+<CompanyID>12313123</CompanyID>
+<DriverID>123213213213</DriverID>
+<CompanyName>Смоленский Банк</CompanyName>
+<DeliveryTime>17:00</DeliveryTime>
+<DriverName>Василий</DriverName>
+<Address>ул.Кирова д.19 оф.78</Address>
+<Comment>обычный комментарий</Comment>
+<LastStatus>Выполнено</LastStatus>
+<LastStatusDate>15:00</LastStatusDate>
+<Contact>
+<Name>Света</Name>
+<Rank>Менеджер</Rank>
+<Phone>89517112527</phone>
+</Contact>
+</item>
+</channel>
