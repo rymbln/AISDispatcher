@@ -48,7 +48,7 @@ public class TaskReader extends Activity {
 			@Override
 			public void onClick(View _v)
 			{
-				_sourceUrl = "https://dl.dropboxusercontent.com/s/6mgmhcb1apy9k1q/taskdata.xml?token_hash=AAFppBjIxdA-orLYHfpMF14voA8_JvZYZAQHw54YFmOY4w&dl=1";
+				_sourceUrl = "http://dispatcher-app.appspot.com/app/";
 				refreshTaskList();
 			}
 		});

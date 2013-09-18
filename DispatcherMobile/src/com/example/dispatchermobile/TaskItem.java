@@ -5,6 +5,7 @@ import java.io.FileWriter;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLConnection;
 //import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 //import java.util.Date;
@@ -89,23 +90,32 @@ public class TaskItem
 			   			
 			// opening connection for downloading list of tasks by xml data
 			URL _url = new URL(_sourceUrl);
-			HttpURLConnection _conn = (HttpURLConnection)_url.openConnection();
-			
-			if (_conn.getResponseCode() == HttpURLConnection.HTTP_OK)
-			{
-				InputStream _is = _conn.getInputStream();
-				
-				// Create DocumentBuilder for parsing xml data
-				DocumentBuilderFactory _dbf = DocumentBuilderFactory.newInstance();
-				DocumentBuilder _db = _dbf.newDocumentBuilder();
-				
-				// Parsing
-				Document _doc = _db.parse(_is);
-				Element _el = _doc.getDocumentElement(); 
+//			HttpURLConnection _conn = (HttpURLConnection)_url.openConnection();
+//			
+//			if (_conn.getResponseCode() == HttpURLConnection.HTTP_OK)
+//			{
+//				InputStream _is = _conn.getInputStream();
+//				
+//				// Create DocumentBuilder for parsing xml data
+//				DocumentBuilderFactory _dbf = DocumentBuilderFactory.newInstance();
+//				DocumentBuilder _db = _dbf.newDocumentBuilder();
+//				
+//				// Parsing
+//				Document _doc = _db.parse(_is);
+//				*/
+				//Element _el = _doc.getDocumentElement(); 
 				
 				// take nodes to nodeList
-				NodeList _nl = _el.getElementsByTagName("item");
+				//NodeList _nl = _el.getElementsByTagName("item");
 				
+			URLConnection _conn = _url.openConnection();
+
+            DocumentBuilderFactory _factory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder _builder = _factory.newDocumentBuilder();
+            Document _doc = _builder.parse(_conn.getInputStream());
+			
+            NodeList _nl = _doc.getElementsByTagName("item");
+			
 				if (_nl.getLength() > 0)
 				{
 					for (int i = 0; i < _nl.getLength(); i++)
@@ -137,7 +147,7 @@ public class TaskItem
 					}
 				}
 				
-			}
+			//}
 			
 		}
 		catch (Exception e)
