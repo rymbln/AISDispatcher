@@ -2,12 +2,12 @@
 	android:layout_width="fill_parent" android:layout_height="fill_parent"
 	android:orientation="vertical">
 
-   <Button android:id="@+id/refreshTask" 
-	    android:layout_width="wrap_content"
-		android:layout_height="wrap_content" 
-		android:layout_marginRight="10dip"
-	 />
-
+   <Button
+       android:id="@+id/refreshTask"
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginRight="10dip"
+       android:text="@string/btn_refresh_tasks" />
 
 	<ListView 
 	    android:id="@+id/taskListView" 
