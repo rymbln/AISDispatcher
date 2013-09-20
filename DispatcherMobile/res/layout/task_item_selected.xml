@@ -1,4 +1,4 @@
-<LinearLayout 
+<RelativeLayout 
     xmlns:android="http://schemas.android.com/apk/res/android"
 	android:orientation="vertical" 
 	android:layout_width="fill_parent"
@@ -6,11 +6,33 @@
 	android:padding="10dp">
 	
 	<TextView 
-	    android:id="@+id/companyNameTextView"
-		android:layout_width="fill_parent" 
+	    android:id="@+id/toggleButtonText"
+		android:layout_width="0dp" 
 		android:layout_height="wrap_content"
 		android:textSize="16sp" 
 		android:autoLink="all"
+		android:textColor="#DF3600"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/togglebutton"
+		android:text="Выполнить задачу"/>
+	
+	<ToggleButton 
+	    android:id="@+id/togglebutton"
+	    android:layout_width="96dp"
+	    android:layout_height="wrap_content"
+	    android:textOn="Completed"
+	    android:layout_alignParentRight="true"
+	    android:textOff="Active"
+	    android:onClick="onToggleClicked"/>
+	
+	<TextView 
+	    android:id="@+id/companyNameTextView"
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content"
+		android:textSize="24sp" 
+		android:autoLink="all"
+			    android:layout_alignParentRight="true"
+		android:layout_below="@id/togglebutton"
 		android:textColor="#DF3600"/>
 	
 	<TextView 
@@ -18,35 +40,53 @@
 		android:layout_width="fill_parent" 
 		android:layout_height="wrap_content"
 		android:textSize="15sp" 
+			    android:layout_alignParentRight="true"
+				android:layout_below="@id/companyNameTextView"
 		android:autoLink="all"/>
+	
 	<TextView 
 	    android:id="@+id/addressTextView"
 		android:layout_width="fill_parent" 
 		android:layout_height="wrap_content"
 		android:textSize="15sp" 
+			    android:layout_alignParentRight="true"
+				android:layout_below="@id/deliveryTimeTextView"
 		android:autoLink="all"/>
+	
 	<TextView 
 	    android:id="@+id/commentTextView"
 		android:layout_width="fill_parent" 
 		android:layout_height="wrap_content"
 		android:textSize="15sp" 
+			    android:layout_alignParentRight="true"
+				android:layout_below="@id/addressTextView"
 		android:autoLink="all"/>
+	
 	<TextView 
 	    android:id="@+id/lastStatusTextView"
 		android:layout_width="fill_parent" 
 		android:layout_height="wrap_content"
 		android:textSize="15sp" 
+			    android:layout_alignParentRight="true"
+				android:layout_below="@id/commentTextView"
 		android:autoLink="all"/>
+
 	<TextView 
 	    android:id="@+id/lastStatusDateTextView"
 		android:layout_width="fill_parent" 
 		android:layout_height="wrap_content"
 		android:textSize="15sp" 
+					    android:layout_alignParentRight="true"
+		android:layout_below="@id/lastStatusTextView"
 		android:autoLink="all"/>
+	
 	<TextView 
 	    android:id="@+id/driverNameTextView"
 		android:layout_width="fill_parent" 
 		android:layout_height="wrap_content"
 		android:textSize="15sp" 
+			    android:layout_alignParentRight="true"
+				android:layout_below="@id/lastStatusDateTextView"
 		android:autoLink="all"/>
-</LinearLayout>
+	
+</RelativeLayout>

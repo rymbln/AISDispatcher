@@ -1,7 +1,9 @@
 package com.example.dispatchermobile;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 public class TaskItemSelected extends Activity
@@ -29,6 +31,16 @@ public class TaskItemSelected extends Activity
 		_lastStatusDateTV.setText(_selectedTaskItem.getLastStatusDate());
 		_driverNameTV.setText(_selectedTaskItem.getDriverName());
 		
+	}
+	public void onToggleClicked(View view) {
+	    // Is the toggle on?
+	    //boolean on = ((ToggleButton) view).isChecked();
+	    boolean on = true; 
+	    if (on) {
+
+	    } else {
+
+	    }
 	}
 	
 }
