@@ -1,40 +1,35 @@
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:padding="10dp"
-    android:textSize="15sp"
-    android:autoLink="all" >
-</TextView>
-<!-- <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" -->
-<!--     android:layout_width="fill_parent" -->
-<!--     android:layout_height="fill_parent" -->
-<!--     android:paddingLeft="16dp" -->
-<!--     android:paddingRight="16dp" -->
-<!--     android:orientation="vertical" > -->
-<!-- <TextView  -->
-<!--     xmlns:android="http://schemas.android.com/apk/res/android" -->
-<!--     android:id="@+id/title" --> 
-<!--     android:layout_width="fill_parent" -->
-<!--     android:layout_height="fill_parent" -->
-<!--     android:padding="10dp" -->
-<!--     android:textSize="15sp" -->
-<!--     android:autoLink="all" > -->
-<!-- </TextView> -->
-<!-- <TextView -->
-<!--     android:id="@+id/link"  -->
-<!--     android:layout_width="fill_parent" -->
-<!--     android:layout_height="fill_parent" -->
-<!--     android:padding="10dp" -->
-<!--     android:textSize="15sp" -->
-<!--     android:autoLink="all" > -->
-<!-- </TextView> -->
-<!-- <TextView  -->
-<!--     android:id="@+id/pubDate" -->
-<!--     android:layout_width="fill_parent" -->
-<!--     android:layout_height="fill_parent" -->
-<!--     android:padding="10dp" -->
-<!--     android:textSize="15sp" -->
-<!--     android:autoLink="all" > -->
-<!-- </TextView> -->
+<?xml version="1.0" encoding="utf-8"?>
+
+ <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+     android:layout_width="fill_parent" 
+     android:layout_height="fill_parent" 
+     android:paddingLeft="16dp" 
+     android:paddingRight="16dp" 
+     android:orientation="vertical" > 
+ <TextView  
+     xmlns:android="http://schemas.android.com/apk/res/android" 
+     android:id="@+id/company"  
+     android:layout_width="fill_parent" 
+     android:layout_height="fill_parent" 
+     android:padding="10dp" 
+     android:textSize="15sp" 
+     android:autoLink="all" > 
+ </TextView> 
+ <TextView 
+     android:id="@+id/deliveryTime"  
+     android:layout_width="fill_parent" 
+     android:layout_height="fill_parent" 
+     android:padding="10dp" 
+     android:textSize="15sp" 
+     android:autoLink="all" > 
+ </TextView> 
+ <TextView  
+     android:id="@+id/address" 
+     android:layout_width="fill_parent" 
+     android:layout_height="fill_parent" 
+     android:padding="10dp" 
+     android:textSize="15sp" 
+     android:autoLink="all" > 
+ </TextView> 
 
 
