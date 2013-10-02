@@ -1,15 +1,5 @@
 package com.example.dispatchermobile;
 
-import java.net.URL;
-import java.net.URLConnection;
-import java.util.ArrayList;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
-
 public class TaskItem 
 {
 	
