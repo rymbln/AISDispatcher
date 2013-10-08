@@ -10,7 +10,18 @@ public class TaskItem
 	private String lastStatus;
 	private String lastStatusDate;
 	private String driverName;
-	
+
+    public TaskItem()
+    {
+        this.companyName = "";
+        this.deliveryTime = "";
+        this.address = "";
+        this.comment = "";
+        this.lastStatus = "";
+        this.lastStatusDate = "";
+        this.driverName = "";
+    }
+
 	public TaskItem(String companyName, String deliveryTime, String address, String comment, String lastStatus, String lastStatusDate, String driverName)
 	{
 		this.companyName = companyName;

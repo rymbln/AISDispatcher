@@ -35,9 +35,9 @@ public class HttpHelpers {
         return false;
     }
 
-    public static ArrayList<TaskItem> getTasksFromNet(String _url) {
-        ArrayList<TaskItem> _output = null;
+    public static Document downloadTasksFromNet(String _url) {
 
+        Document _doc = null;
         try {
             // DefaultHttpClient _cli = new DefaultHttpClient();
             // HttpResponse _res = _cli.execute(new HttpGet(_url));
@@ -49,7 +49,7 @@ public class HttpHelpers {
             _conn.setRequestProperty("Accept", "application/xml");
             DocumentBuilderFactory _factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder _builder = null;
-            Document _doc = null;
+
             try {
                 _builder = _factory.newDocumentBuilder();
                 try {
@@ -63,32 +63,13 @@ public class HttpHelpers {
             }
 
 
-            NodeList _nl = _doc.getElementsByTagName("item");
 
-            if (_nl.getLength() > 0) {
-                for (int i = 0; i < _nl.getLength(); i++) {
-                    //reading tags for each task item between tags <item></item>
-                    Element _item = (Element) _nl.item(i);
-
-                    String _cn = ((Element) _item.getElementsByTagName("CompanyName").item(0)).getFirstChild().getNodeValue();
-                    String _dt = ((Element) _item.getElementsByTagName("DeliveryTime").item(0)).getFirstChild().getNodeValue();
-                    String _ad = ((Element) _item.getElementsByTagName("Address").item(0)).getFirstChild().getNodeValue();
-                    String _cm = ((Element) _item.getElementsByTagName("Comment").item(0)).getFirstChild().getNodeValue();
-                    String _ls = ((Element) _item.getElementsByTagName("LastStatus").item(0)).getFirstChild().getNodeValue();
-                    String _ld = ((Element) _item.getElementsByTagName("LastStatusDate").item(0)).getFirstChild().getNodeValue();
-                    String _dn = ((Element) _item.getElementsByTagName("DriverName").item(0)).getFirstChild().getNodeValue();
-
-                    // Create TaskItem object and add to ArrayList
-                    TaskItem _taskItem = new TaskItem(_cn, _dt, _ad, _cm, _ls, _ld, _dn);
-                    _output.add(_taskItem);
-                }
-            }
 
 
         } catch (IOException _ex) {
 
         }
 
-        return _output;
+        return _doc;
     }
 }

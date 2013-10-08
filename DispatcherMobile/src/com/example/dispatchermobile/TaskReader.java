@@ -1,8 +1,6 @@
 package com.example.dispatchermobile;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +9,8 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.*;
 import android.widget.AdapterView.OnItemClickListener;
+import java.util.Calendar;
+
 
 
 
@@ -55,8 +55,8 @@ public class TaskReader extends ListActivity {
         // what to execute, when task is clicked
         taskListView.setOnItemClickListener(new OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> _av, View _view, int _index, long _arg3) {
-                SelectedTaskItem = taskItems.get(_index);
+            public void onItemClick(AdapterView<?> av, View view, int index, long arg3) {
+                SelectedTaskItem = taskItems.get((Integer) av.getTag(index));
                 // Call activity shows selected task
                 Intent _intent = new Intent("com.example.DispatcherMobile.SelectedTaskItem");
 
@@ -120,6 +120,14 @@ public class TaskReader extends ListActivity {
 
     }
 
+    private String getCurrentTime() {
+        Calendar calendar = Calendar.getInstance();
+        int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        int minute = calendar.get(Calendar.MINUTE);
+        int second = calendar.get(Calendar.SECOND);
+        return String.format("%02d:%02d:%02d", hour, minute, second); // ЧЧ:ММ:СС - формат времени
+    }
+
     @Override
     public void onSaveInstanceState(Bundle outState) {
         outState.putInt("requireUpdate", 1);
@@ -130,7 +138,7 @@ public class TaskReader extends ListActivity {
 
         _footerText = (TextView) findViewById(R.id.footerText);
         //Получаем и записываем в футер текущую дату
-        _footerText.setText(Calendar.getInstance().toString());
+        _footerText.setText(getCurrentTime());
     }
 
     ListView taskListView = null;
@@ -182,15 +190,13 @@ public class TaskReader extends ListActivity {
 
     private void refreshTaskList() {
 
-        // ArrayList<TaskItem> newItems = TaskItem.getTaskItems(_sourceUrl);
+        //ITaskProvider provider = new TaskProvider();
+       // ArrayList<TaskItem> tasks = provider.getTasks();
+       // Bind(tasks);
 
-        // taskItems.clear();
-        // taskItems.addAll(newItems);
+        NetTaskOperations _op = new NetTaskOperations(this);
+        _op.execute("");
 
-        // _aa.notifyDataSetChanged();
-        ITaskProvider provider = new FakeTasksProvider();
-        ArrayList<TaskItem> tasks = provider.getTasks();
-        Bind(tasks);
     }
 
     private void Bind(ArrayList<TaskItem> _tasks) {

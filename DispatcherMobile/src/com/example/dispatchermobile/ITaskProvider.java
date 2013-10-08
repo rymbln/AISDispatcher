@@ -4,5 +4,5 @@ import java.util.ArrayList;
 
 public  interface ITaskProvider
 {
-	ArrayList<TaskItem> getTasks();
+	 ArrayList<TaskItem> getTasks();
 }
