@@ -27,8 +27,7 @@ public class TaskItemSelected extends Activity {
 
         Bundle extras = currentIntent.getExtras();
         if (extras != null) {
-            TaskItem _item = com.example.dispatchermobile.TaskReader.SelectedTaskItem;
-            //  TaskItem _item = extras.getSMTH("taskItem");
+            TaskItem _item = new TaskItem(extras.getString("taskItem"));
             initializeView();
             updateView(_item);
         }
@@ -68,7 +67,8 @@ public class TaskItemSelected extends Activity {
             currentIntent.putExtra("Res", "UnChecked");
         }
         setResult(Activity.RESULT_OK, currentIntent);
-
+        Intent _intent = new Intent("android.intent.action.MAIN");
+        startActivity(_intent);
     }
 
 }

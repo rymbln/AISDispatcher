@@ -14,6 +14,11 @@ public class NetTaskOperations extends AsyncTask<String, Void , String>
     private ArrayList<TaskItem> tasks;
    // private Intent currentIntent;
 
+    public ArrayList<TaskItem> getTaskItems()
+    {
+        return tasks;
+    }
+
     public NetTaskOperations(ListActivity _act)
     {
         parent = _act;

@@ -1,6 +1,9 @@
 package com.example.dispatchermobile;
 
-public class TaskItem 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class TaskItem
 {
 	
 	private String companyName;
@@ -20,6 +23,23 @@ public class TaskItem
         this.lastStatus = "";
         this.lastStatusDate = "";
         this.driverName = "";
+    }
+
+    public TaskItem(String _str)
+    {
+        try {
+            JSONObject _jo = new JSONObject(_str);
+            this.companyName = _jo.optString("companyName");
+            this.deliveryTime = _jo.optString("deliveryTime");;
+            this.address = _jo.optString("address");;
+            this.comment = _jo.optString("comment");;
+            this.lastStatus = _jo.optString("lastStatus");
+            this.lastStatusDate = _jo.optString("lastStatusDate");;
+            this.driverName = _jo.optString("driverName");;
+        } catch (JSONException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+
     }
 
 	public TaskItem(String companyName, String deliveryTime, String address, String comment, String lastStatus, String lastStatusDate, String driverName)
@@ -66,12 +86,33 @@ public class TaskItem
 		
 	@Override
 	public String toString()
-	{		
-		String result = getCompanyName() 
+	{
+
+        String result = getCompanyName()
 				+ "\n" + getDeliveryTime()
 				+ "\n" + getAddress()
 				+ "\n" + getComment();
 		return result;
 	}
+
+    public JSONObject toJSON()
+    {
+        JSONObject _jo = new JSONObject();
+
+        try {
+            _jo.put("companyName",companyName);
+            _jo.put("deliveryTime",deliveryTime);
+            _jo.put("address",address);
+            _jo.put("comment",comment);
+            _jo.put("lastStatus",lastStatus);
+            _jo.put("lastStatusDate",lastStatusDate);
+            _jo.put("driverName",driverName);
+        } catch (JSONException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+
+
+        return _jo;
+    }
 	
 }
