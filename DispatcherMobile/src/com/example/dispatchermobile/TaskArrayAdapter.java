@@ -55,21 +55,27 @@ public class TaskArrayAdapter extends ArrayAdapter<TaskItem> {
                 public void onClick(View v) {
                     TaskItem _task = tasks.get((Integer) _holder.CheckLastStatus.getTag());
                     if (_task.getLastStatus().startsWith("Создано")) {
-                        _task.setLastStatus("Принято курьером");
-                        _task.setLastStatusDate(Common.getCurrentTime());
+                        ITaskProvider _pr = new TaskProvider();
+                        _pr.setTaskTaked(_task.getTaskID());
+                        // TODO Здесь надо реализовать вызов какого-нибудь события для обновления ListActivity
                         _holder.CheckLastStatus.setChecked(true);
                     }
                     else
 
                     if (_task.getLastStatus().startsWith("Принято")) {
-                        _task.lastStatus = "Создано диспетчером";
-                        _task.lastStatusDate = Common.getCurrentTime();
+                        ITaskProvider _pr = new TaskProvider();
+                        _pr.setTaskCreated(_task.getTaskID());
+                        // TODO Здесь надо реализовать вызов какого-нибудь события для обновления ListActivity
                         _holder.CheckLastStatus.setChecked(false);
                     }
                     else
 
                     if (_task.getLastStatus().startsWith("Выполнено")) {
                         _holder.CheckLastStatus.setChecked(true);
+                        Toast.makeText(context, "Sorry, but you can't do this because task is completed. " +
+                                _task.getCompanyName() + " - " +
+                                _task.getLastStatus() + " - " +
+                                _task.getLastStatusDate(), Toast.LENGTH_SHORT).show();
                         return;
                     }
 

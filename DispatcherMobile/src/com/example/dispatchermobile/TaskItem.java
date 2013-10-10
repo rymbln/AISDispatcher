@@ -5,7 +5,7 @@ import org.json.JSONObject;
 
 public class TaskItem
 {
-	
+    private String taskID;
 	private String companyName;
 	private String deliveryTime;
 	private String address;
@@ -16,6 +16,7 @@ public class TaskItem
 
     public TaskItem()
     {
+        this.taskID = "";
         this.companyName = "";
         this.deliveryTime = "";
         this.address = "";
@@ -29,6 +30,7 @@ public class TaskItem
     {
         try {
             JSONObject _jo = new JSONObject(_str);
+            this.taskID = _jo.optString("taskID");
             this.companyName = _jo.optString("companyName");
             this.deliveryTime = _jo.optString("deliveryTime");;
             this.address = _jo.optString("address");;
@@ -42,8 +44,9 @@ public class TaskItem
 
     }
 
-	public TaskItem(String companyName, String deliveryTime, String address, String comment, String lastStatus, String lastStatusDate, String driverName)
+	public TaskItem(String taskID, String companyName, String deliveryTime, String address, String comment, String lastStatus, String lastStatusDate, String driverName)
 	{
+        this.taskID = taskID;
 		this.companyName = companyName;
 		this.deliveryTime = deliveryTime;
 		this.address = address;
@@ -52,7 +55,13 @@ public class TaskItem
 		this.lastStatusDate = lastStatusDate;
 		this.driverName = driverName;
 	}
-	
+
+    public String getTaskID()
+    {
+        return taskID;
+    }
+
+
 	public String getCompanyName()
 	{	
 		return companyName;	
@@ -96,7 +105,8 @@ public class TaskItem
 	public String toString()
 	{
 
-        String result = getCompanyName()
+        String result = getTaskID()
+                + "\n" + getCompanyName()
 				+ "\n" + getDeliveryTime()
 				+ "\n" + getAddress()
 				+ "\n" + getComment();
@@ -108,6 +118,7 @@ public class TaskItem
         JSONObject _jo = new JSONObject();
 
         try {
+            _jo.put("taskID", taskID);
             _jo.put("companyName",companyName);
             _jo.put("deliveryTime",deliveryTime);
             _jo.put("address",address);

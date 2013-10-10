@@ -1,11 +1,14 @@
 package com.example.dispatchermobile;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.ToggleButton;
 
 public class TaskItemSelected extends Activity {
     private Intent currentIntent;
@@ -16,6 +19,11 @@ public class TaskItemSelected extends Activity {
     private TextView lastStatusTV;
     private TextView lastStatusDateTV;
     private TextView driverNameTV;
+    private ToggleButton toggleComplete;
+
+    private TaskItem task;
+
+    private Context context;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -24,12 +32,14 @@ public class TaskItemSelected extends Activity {
         setContentView(R.layout.task_item_selected);
 
         currentIntent = getIntent();
+        context = this;
+
 
         Bundle extras = currentIntent.getExtras();
         if (extras != null) {
-            TaskItem _item = new TaskItem(extras.getString("taskItem"));
+            task = new TaskItem(extras.getString("taskItem"));
             initializeView();
-            updateView(_item);
+            updateView(task);
         }
 
 
@@ -43,32 +53,55 @@ public class TaskItemSelected extends Activity {
         lastStatusTV = (TextView) findViewById(R.id.lastStatusTextView);
         lastStatusDateTV = (TextView) findViewById(R.id.lastStatusDateTextView);
         driverNameTV = (TextView) findViewById(R.id.driverNameTextView);
+        toggleComplete = (ToggleButton) findViewById(R.id.toggleCompleteTask);
+        toggleComplete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ITaskProvider _pr = new TaskProvider();
+                boolean on = toggleComplete.isChecked();
+                if (on) {
+
+                    _pr.setTaskCompleted(task.getTaskID());
+                    //currentIntent.putExtra("Res", "Checked");
+
+                    Toast.makeText(context, "This function is not correct worked yet. " +
+                            task.getCompanyName() + " - " +
+                            task.getLastStatus() + " - " +
+                            task.getLastStatusDate(), Toast.LENGTH_SHORT).show();
+                } else {
+
+                    _pr.setTaskTaked(task.getTaskID());
+                    //currentIntent.putExtra("Res", "UnChecked");
+                    Toast.makeText(context, "This function is not correct worked yet. " +
+                            task.getCompanyName() + " - " +
+                            task.getLastStatus() + " - " +
+                            task.getLastStatusDate(), Toast.LENGTH_SHORT).show();
+
+                }
+            }
+        });
     }
 
-    public void updateView(TaskItem _it) {
-        TaskItem _item = _it;
+    public void updateView(TaskItem task) {
 
-        companyNameTV.setText(_item.getCompanyName());
-        deliveryTimeTV.setText(_item.getDeliveryTime());
-        addressTV.setText(_item.getAddress());
-        commentTV.setText(_item.getComment());
-        lastStatusTV.setText(_item.getLastStatus());
-        lastStatusDateTV.setText(_item.getLastStatusDate());
-        driverNameTV.setText(_item.getDriverName());
-    }
 
-    public void onToggleClicked(View view) {
-        // Is the toggle on?
-        //boolean on = ((ToggleButton) view).isChecked();
-        boolean on = true;
-        if (on) {
-            currentIntent.putExtra("Res", "Checked");
-        } else {
-            currentIntent.putExtra("Res", "UnChecked");
+        companyNameTV.setText(task.getCompanyName());
+        deliveryTimeTV.setText(task.getDeliveryTime());
+        addressTV.setText(task.getAddress());
+        commentTV.setText(task.getComment());
+        lastStatusTV.setText(task.getLastStatus());
+        lastStatusDateTV.setText(task.getLastStatusDate());
+        driverNameTV.setText(task.getDriverName());
+
+        if (task.getLastStatus().startsWith("Выполнено"))
+        {
+            toggleComplete.setChecked(true);
         }
-        setResult(Activity.RESULT_OK, currentIntent);
-        Intent _intent = new Intent("android.intent.action.MAIN");
-        startActivity(_intent);
+        else
+        {
+            toggleComplete.setChecked(false);
+        }
     }
+
 
 }

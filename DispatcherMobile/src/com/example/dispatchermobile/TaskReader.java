@@ -50,6 +50,10 @@ public class TaskReader extends ListActivity {
         refreshButton = (Button) findViewById(R.id.refreshTask);
         taskListView = getListView();
 
+        HttpHelpers.initialize(this);
+        // TODO - Для загрузки локальных Tasks - потом удалить или переработать
+        TaskProvider.initializeTasks();
+
         loadTasksListener = new OnClickListener() {
             public void onClick(View v) {
                 updateView();
@@ -68,7 +72,7 @@ public class TaskReader extends ListActivity {
 
         refreshButton.setOnClickListener(loadTasksListener);
 
-        HttpHelpers.initialize(this);
+
     }
 
     @Override
@@ -82,19 +86,15 @@ public class TaskReader extends ListActivity {
         }
     }
 
-    @Override
-    protected void onListItemClick(ListView l, View v, int position, long id) {
-        TaskItem _ti = (TaskItem) getListAdapter().getItem(position);
-        String _str = _ti.toJSON().toString();
-
-        Intent _intent = new Intent("com.example.DispatcherMobile.selectedTaskItem");
-        _intent.putExtra("taskItem", _str);
-        startActivity(_intent);
-    }
-
-
-
-
+//    @Override
+//    protected void onListItemClick(ListView l, View v, int position, long id) {
+//        TaskItem _ti = (TaskItem) getListAdapter().getItem(position);
+//        String _str = _ti.toJSON().toString();
+//
+//        Intent _intent = new Intent("com.example.DispatcherMobile.selectedTaskItem");
+//        _intent.putExtra("taskItem", _str);
+//        startActivity(_intent);
+//    }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {

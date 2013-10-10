@@ -50,7 +50,12 @@ public class NetTaskOperations extends AsyncTask<String, Void , String>
     private ArrayList<TaskItem> loadTasks()
     {
         ITaskProvider _pr = new TaskProvider();
-        return _pr.getTasks();
+
+        // TODO - Для загрузки локальных Tasks - потом удалить или переработать
+        return _pr.getTasksLocal();
+
+        // Получение данных из интернета
+        //return _pr.getTasks();
 
     }
 

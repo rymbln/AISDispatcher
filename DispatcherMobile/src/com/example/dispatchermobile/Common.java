@@ -36,4 +36,5 @@ public class Common {
         int second = calendar.get(Calendar.SECOND);
         return String.format("%02d:%02d:%02d", hour, minute, second); // ЧЧ:ММ:СС - формат времени
     }
+
 }
