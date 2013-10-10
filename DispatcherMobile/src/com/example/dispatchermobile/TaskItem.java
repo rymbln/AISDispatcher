@@ -10,8 +10,8 @@ public class TaskItem
 	private String deliveryTime;
 	private String address;
 	private String comment;
-	private String lastStatus;
-	private String lastStatusDate;
+	public String lastStatus;
+	public String lastStatusDate;
 	private String driverName;
 
     public TaskItem()
@@ -73,6 +73,14 @@ public class TaskItem
 	{	
 		return lastStatus;	
 	}
+    public void setLastStatus(String _str)
+    {
+        lastStatus = _str;
+    }
+    public void setLastStatusDate(String _str)
+    {
+        lastStatusDate = _str;
+    }
 	public String getLastStatusDate()
 	{	
 		return lastStatusDate;	

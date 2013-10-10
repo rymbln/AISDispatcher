@@ -1,92 +1,154 @@
-<RelativeLayout 
-    xmlns:android="http://schemas.android.com/apk/res/android"
-	android:orientation="vertical" 
-	android:layout_width="fill_parent"
-	android:layout_height="fill_parent" 
-	android:padding="10dp">
-	
-	<TextView 
-	    android:id="@+id/toggleButtonText"
-		android:layout_width="0dp" 
-		android:layout_height="wrap_content"
-		android:textSize="16sp" 
-		android:autoLink="all"
-		android:textColor="#DF3600"
-        android:layout_alignParentLeft="true"
-        android:layout_toLeftOf="@+id/togglebutton"
-		android:text="Выполнить задачу"/>
-	
-	<ToggleButton 
-	    android:id="@+id/togglebutton"
-	    android:layout_width="96dp"
-	    android:layout_height="wrap_content"
-	    android:textOn="Completed"
-	    android:layout_alignParentRight="true"
-	    android:textOff="Active"
-	    android:onClick="onToggleClicked"/>
-	
-	<TextView 
-	    android:id="@+id/companyNameTextView"
-		android:layout_width="fill_parent" 
-		android:layout_height="wrap_content"
-		android:textSize="24sp" 
-		android:autoLink="all"
-			    android:layout_alignParentRight="true"
-		android:layout_below="@id/togglebutton"
-		android:textColor="#DF3600"/>
-	
-	<TextView 
-	    android:id="@+id/deliveryTimeTextView"
-		android:layout_width="fill_parent" 
-		android:layout_height="wrap_content"
-		android:textSize="15sp" 
-			    android:layout_alignParentRight="true"
-				android:layout_below="@id/companyNameTextView"
-		android:autoLink="all"/>
-	
-	<TextView 
-	    android:id="@+id/addressTextView"
-		android:layout_width="fill_parent" 
-		android:layout_height="wrap_content"
-		android:textSize="15sp" 
-			    android:layout_alignParentRight="true"
-				android:layout_below="@id/deliveryTimeTextView"
-		android:autoLink="all"/>
-	
-	<TextView 
-	    android:id="@+id/commentTextView"
-		android:layout_width="fill_parent" 
-		android:layout_height="wrap_content"
-		android:textSize="15sp" 
-			    android:layout_alignParentRight="true"
-				android:layout_below="@id/addressTextView"
-		android:autoLink="all"/>
-	
-	<TextView 
-	    android:id="@+id/lastStatusTextView"
-		android:layout_width="fill_parent" 
-		android:layout_height="wrap_content"
-		android:textSize="15sp" 
-			    android:layout_alignParentRight="true"
-				android:layout_below="@id/commentTextView"
-		android:autoLink="all"/>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:padding="10dp">
+    <TextView
+            android:id="@+id/companyNameTextView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
 
-	<TextView 
-	    android:id="@+id/lastStatusDateTextView"
-		android:layout_width="fill_parent" 
-		android:layout_height="wrap_content"
-		android:textSize="15sp" 
-					    android:layout_alignParentRight="true"
-		android:layout_below="@id/lastStatusTextView"
-		android:autoLink="all"/>
-	
-	<TextView 
-	    android:id="@+id/driverNameTextView"
-		android:layout_width="fill_parent" 
-		android:layout_height="wrap_content"
-		android:textSize="15sp" 
-			    android:layout_alignParentRight="true"
-				android:layout_below="@id/lastStatusDateTextView"
-		android:autoLink="all"/>
-	
-</RelativeLayout>
+            android:textSize="24sp"
+            android:autoLink="all"
+            android:textColor="#DF3600"/>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content"
+                    android:layout_width="fill_parent"
+                    android:background="#D0D0FF"
+           
+            >
+        <TextView
+                android:id="@+id/toggleButtonText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+
+                android:textSize="16sp"
+                android:autoLink="all"
+                android:textColor="#DF3600"
+                android:text="@string/labelCompleteTask"/>
+
+        <ToggleButton
+                android:id="@+id/toggleCompleteTask"
+                android:layout_width="96dp"
+                android:layout_height="wrap_content"
+                android:textOn="Completed"
+                android:textOff="Active"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+
+                android:onClick="onToggleClicked"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content"
+                    android:layout_width="fill_parent"
+                    android:background="#D0D0FF"
+           
+            >
+        <ImageView
+                android:id="@+id/iconCompanyName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="4dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="4dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:src="@drawable/time"
+                android:contentDescription="@string/desc"
+                />
+        <TextView
+                android:id="@+id/deliveryTimeTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/iconCompanyName"
+
+                android:autoLink="all"/>
+    </RelativeLayout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content"
+                    android:layout_width="fill_parent"
+                    android:background="#D0D0FF"
+           
+            >
+    <ImageView
+            android:id="@+id/iconAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/place"
+            android:contentDescription="@string/desc"
+            />
+    <TextView
+            android:id="@+id/addressTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/iconAddress"
+
+            android:autoLink="all"/>
+                                  </RelativeLayout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content"
+                    android:layout_width="fill_parent"
+                    android:background="#D0D0FF"
+           
+            >
+    <ImageView
+            android:id="@+id/iconComment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/comment"
+            android:contentDescription="@string/desc"
+            />
+    <TextView
+            android:id="@+id/commentTextView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_toRightOf="@+id/iconComment"
+            android:autoLink="all"/>
+              </RelativeLayout>
+    <TextView
+            android:id="@+id/lastStatusTextView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:autoLink="all"/>
+
+    <TextView
+            android:id="@+id/lastStatusDateTextView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:autoLink="all"/>
+
+    <TextView
+            android:id="@+id/driverNameTextView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:autoLink="all"/>
+
+</LinearLayout>

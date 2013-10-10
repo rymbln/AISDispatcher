@@ -3,6 +3,8 @@ package com.example.dispatchermobile;
 import android.app.Activity;
 import android.app.ProgressDialog;
 
+import java.util.Calendar;
+
 /**
  * Created with IntelliJ IDEA.
  * User: rymbln
@@ -25,5 +27,13 @@ public class Common {
     public static void closeProgressBar()
     {
         ProgressBar.hide();
+    }
+
+    public static String getCurrentTime() {
+        Calendar calendar = Calendar.getInstance();
+        int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        int minute = calendar.get(Calendar.MINUTE);
+        int second = calendar.get(Calendar.SECOND);
+        return String.format("%02d:%02d:%02d", hour, minute, second); // ЧЧ:ММ:СС - формат времени
     }
 }

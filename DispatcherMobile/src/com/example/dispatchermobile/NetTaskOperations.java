@@ -56,7 +56,7 @@ public class NetTaskOperations extends AsyncTask<String, Void , String>
 
     private void Bind(ArrayList<TaskItem> tasks)
     {
-        ArrayAdapter<TaskItem> _adp = new TaskAdapter(parent, tasks);
+        TaskArrayAdapter _adp = new TaskArrayAdapter(parent, tasks);
         parent.setListAdapter(_adp);
     }
 }

@@ -8,23 +8,25 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.*;
-import java.util.Calendar;
 import android.widget.Toast;
 import android.widget.ListView;
+
 
 
 
 public class TaskReader extends ListActivity {
 
     private OnClickListener loadTasksListener;
-    private Button _refreshButton;
-    private TextView _footerText;
+    private AdapterView.OnItemLongClickListener taskListLongClickListner;
+
+    private Button refreshButton;
+    private TextView footerText;
+    private ListView taskListView;
 
     private int requireUpdate = 0;
 
-    private ListView taskListView = null;
     public static ArrayList<TaskItem> taskItems = new ArrayList<TaskItem>();
-    private ArrayAdapter<TaskItem> _aa = null;
+    private TaskArrayAdapter adapter = null;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -39,25 +41,32 @@ public class TaskReader extends ListActivity {
             if (requireUpdate > 0) {
                 updateView();
             }
-
         }
         updateView();
     }
 
 
     private void initializeApp() {
-        _refreshButton = (Button) findViewById(R.id.refreshTask);
-        taskListView = (ListView) findViewById(android.R.id.list);
+        refreshButton = (Button) findViewById(R.id.refreshTask);
+        taskListView = getListView();
+
         loadTasksListener = new OnClickListener() {
             public void onClick(View v) {
                 updateView();
             }
         };
-        _refreshButton.setOnClickListener(loadTasksListener);
 
-        _aa = new ArrayAdapter<TaskItem>(this, R.layout.list_item, taskItems);
-        setListAdapter(_aa);
+        taskListLongClickListner = new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(TaskReader.this, "Long tap is not working yet", Toast.LENGTH_LONG).show();
+                return true;  //To change body of implemented methods use File | Settings | File Templates.
+            }
+        };
 
+        taskListView.setOnItemLongClickListener(taskListLongClickListner);
+
+        refreshButton.setOnClickListener(loadTasksListener);
 
         HttpHelpers.initialize(this);
     }
@@ -81,18 +90,11 @@ public class TaskReader extends ListActivity {
         Intent _intent = new Intent("com.example.DispatcherMobile.selectedTaskItem");
         _intent.putExtra("taskItem", _str);
         startActivity(_intent);
-       // Toast.makeText(this, "not working yet", Toast.LENGTH_LONG).show();
     }
 
 
 
-    private String getCurrentTime() {
-        Calendar calendar = Calendar.getInstance();
-        int hour = calendar.get(Calendar.HOUR_OF_DAY);
-        int minute = calendar.get(Calendar.MINUTE);
-        int second = calendar.get(Calendar.SECOND);
-        return String.format("%02d:%02d:%02d", hour, minute, second); // ЧЧ:ММ:СС - формат времени
-    }
+
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
@@ -100,17 +102,14 @@ public class TaskReader extends ListActivity {
     }
 
     private void updateView() {
-        refreshTaskList();
-
-        _footerText = (TextView) findViewById(R.id.footerText);
-        //Получаем и записываем в футер текущую дату
-        _footerText.setText(getCurrentTime());
+         refreshTaskList();
+        footerText = (TextView) findViewById(R.id.footerText);
+        footerText.setText(Common.getCurrentTime());
     }
 
 
 
     private void refreshTaskList() {
-
         NetTaskOperations _op = new NetTaskOperations(this);
         _op.execute("");
         taskItems = _op.getTaskItems();

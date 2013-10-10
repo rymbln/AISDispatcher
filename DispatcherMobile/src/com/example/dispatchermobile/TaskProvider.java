@@ -13,6 +13,10 @@ import java.util.ArrayList;
  * Time: 22:48
  * To change this template use File | Settings | File Templates.
  */
+
+
+//TODO предусмотреть загрузку стоковых данных при отсутствии интернета для теста
+
 public class TaskProvider implements ITaskProvider{
 
     public ArrayList<TaskItem> getTasks()
