@@ -36,6 +36,7 @@ public class TaskReader extends ListActivity {
 
     private void initializeApp() {
         Button refreshButton = (Button) findViewById(R.id.refreshTask);
+        Button exitAppButton = (Button) findViewById(R.id.closeApp);
         ListView taskListView = getListView();
 
         HttpHelpers.initialize(this);
@@ -48,6 +49,14 @@ public class TaskReader extends ListActivity {
             }
         };
 
+        OnClickListener exitAppListner = new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                System.exit(0);
+            }
+        }        ;
+
         AdapterView.OnItemLongClickListener taskListLongClickListner = new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
@@ -59,7 +68,7 @@ public class TaskReader extends ListActivity {
         taskListView.setOnItemLongClickListener(taskListLongClickListner);
 
         refreshButton.setOnClickListener(loadTasksListener);
-
+        exitAppButton.setOnClickListener(exitAppListner);
 
     }
 

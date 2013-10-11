@@ -6,7 +6,11 @@
     <string name="sourceURL">http://dispatcher-app.appspot.com/app/</string>
 	<string name="sourceURL2">http://vk.com/doc5781880_220324975</string>
 	<string name="action_refresh">Refresh</string>
-	<string name="btn_refresh_tasks">Refresh Tasks</string>
+
+    <!--BUTTONS-->
+    <string name="btnRefreshTasks">Refresh Tasks</string>
+    <string name="btnCloseApp">Exit</string>
+
 	<string name="chk_TaskComplete">Check Task as Completed</string>
 	<string name="desc">Description</string>
     <string name="labelLoading">Downloading tasks from net</string>
