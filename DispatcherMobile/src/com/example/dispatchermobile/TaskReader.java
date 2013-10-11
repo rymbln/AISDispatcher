@@ -16,18 +16,6 @@ import android.widget.ListView;
 
 public class TaskReader extends ListActivity {
 
-    private OnClickListener loadTasksListener;
-    private AdapterView.OnItemLongClickListener taskListLongClickListner;
-
-    private Button refreshButton;
-    private TextView footerText;
-    private ListView taskListView;
-
-    private int requireUpdate = 0;
-
-    public static ArrayList<TaskItem> taskItems = new ArrayList<TaskItem>();
-    private TaskArrayAdapter adapter = null;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +25,7 @@ public class TaskReader extends ListActivity {
         initializeApp();
 
         if (savedInstanceState != null) {
-            requireUpdate = savedInstanceState.getInt("requireUpdate");
+            int requireUpdate = savedInstanceState.getInt("requireUpdate");
             if (requireUpdate > 0) {
                 updateView();
             }
@@ -47,20 +35,20 @@ public class TaskReader extends ListActivity {
 
 
     private void initializeApp() {
-        refreshButton = (Button) findViewById(R.id.refreshTask);
-        taskListView = getListView();
+        Button refreshButton = (Button) findViewById(R.id.refreshTask);
+        ListView taskListView = getListView();
 
         HttpHelpers.initialize(this);
         // TODO - Для загрузки локальных Tasks - потом удалить или переработать
         TaskProvider.initializeTasks();
 
-        loadTasksListener = new OnClickListener() {
+        OnClickListener loadTasksListener = new OnClickListener() {
             public void onClick(View v) {
                 updateView();
             }
         };
 
-        taskListLongClickListner = new AdapterView.OnItemLongClickListener() {
+        AdapterView.OnItemLongClickListener taskListLongClickListner = new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(TaskReader.this, "Long tap is not working yet", Toast.LENGTH_LONG).show();
@@ -75,35 +63,9 @@ public class TaskReader extends ListActivity {
 
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        if (requestCode != 10)
-            return;
-        else {
-            Bundle extras = intent.getExtras();
-            int returned = extras.getInt("Res");
-            Toast.makeText(this, "smth: " + returned, Toast.LENGTH_LONG).show();
-        }
-    }
-
-//    @Override
-//    protected void onListItemClick(ListView l, View v, int position, long id) {
-//        TaskItem _ti = (TaskItem) getListAdapter().getItem(position);
-//        String _str = _ti.toJSON().toString();
-//
-//        Intent _intent = new Intent("com.example.DispatcherMobile.selectedTaskItem");
-//        _intent.putExtra("taskItem", _str);
-//        startActivity(_intent);
-//    }
-
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        outState.putInt("requireUpdate", 1);
-    }
-
-    private void updateView() {
-         refreshTaskList();
-        footerText = (TextView) findViewById(R.id.footerText);
+    public void updateView() {
+        refreshTaskList();
+        TextView footerText = (TextView) findViewById(R.id.footerText);
         footerText.setText(Common.getCurrentTime());
     }
 
@@ -112,9 +74,18 @@ public class TaskReader extends ListActivity {
     private void refreshTaskList() {
         NetTaskOperations _op = new NetTaskOperations(this);
         _op.execute("");
-        taskItems = _op.getTaskItems();
-
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == RESULT_OK) {
+            if (data.hasExtra("update")) {
+                Boolean result = data.getExtras().getBoolean("update");
+                if (result != null && result) {
+                    this.updateView();
+                }
+            }
+        }
+    }
 
 }

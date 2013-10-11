@@ -63,7 +63,14 @@ public class TaskProvider implements ITaskProvider {
 
     }
 
+    private ArrayList<TaskItem> sortTasks(ArrayList<TaskItem> _tasks){
+        // TODO Реализовать сортировку задач
+        return _tasks;
+    }
+
+
     public ArrayList<TaskItem> getTasksLocal() {
+        tasks = sortTasks(tasks);
         return tasks;
     }
 

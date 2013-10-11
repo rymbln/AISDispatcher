@@ -1,7 +1,10 @@
 package com.example.dispatchermobile;
 
 import android.app.Activity;
+import android.app.ListActivity;
 import android.content.Intent;
+import android.text.Html;
+import android.text.Spanned;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,10 +14,10 @@ import android.os.Bundle;
 import java.util.ArrayList;
 
 public class TaskArrayAdapter extends ArrayAdapter<TaskItem> {
-    private final Activity context;
+    private final ListActivity context;
     private final ArrayList<TaskItem> tasks;
 
-    public TaskArrayAdapter(Activity _context, ArrayList<TaskItem> _tasks) {
+    public TaskArrayAdapter(ListActivity _context, ArrayList<TaskItem> _tasks) {
         super(_context, R.layout.list_item, _tasks);
         this.context = _context;
         this.tasks = _tasks;
@@ -33,6 +36,7 @@ public class TaskArrayAdapter extends ArrayAdapter<TaskItem> {
             _holder.DeliveryTime = (TextView) _itemTemplate.findViewById(R.id.deliveryTime);
             _holder.Address = (TextView) _itemTemplate.findViewById(R.id.address);
             _holder.LastStatus = (TextView) _itemTemplate.findViewById(R.id.lastStatus);
+            _holder.Layout = (RelativeLayout) _itemTemplate.findViewById(R.id.layoutListItem);
 
             _holder.IconShowTask = (ImageView) _itemTemplate.findViewById(R.id.iconShowTask);
             _holder.IconShowTask.setImageResource(R.drawable.navigation_next_item);
@@ -45,7 +49,7 @@ public class TaskArrayAdapter extends ArrayAdapter<TaskItem> {
 
                     Intent _intent = new Intent("com.example.DispatcherMobile.selectedTaskItem");
                     _intent.putExtra("taskItem", _str);
-                     context.startActivity(_intent);
+                    context.startActivityForResult(_intent, 10);
                 }
             });
 
@@ -59,18 +63,20 @@ public class TaskArrayAdapter extends ArrayAdapter<TaskItem> {
                         _pr.setTaskTaked(_task.getTaskID());
                         // TODO Здесь надо реализовать вызов какого-нибудь события для обновления ListActivity
                         _holder.CheckLastStatus.setChecked(true);
-                    }
-                    else
+                        // обновление списка задач
+                        NetTaskOperations _op = new NetTaskOperations(context);
+                        _op.execute("");
 
-                    if (_task.getLastStatus().startsWith("Принято")) {
+                    } else if (_task.getLastStatus().startsWith("Принято")) {
                         ITaskProvider _pr = new TaskProvider();
                         _pr.setTaskCreated(_task.getTaskID());
                         // TODO Здесь надо реализовать вызов какого-нибудь события для обновления ListActivity
                         _holder.CheckLastStatus.setChecked(false);
-                    }
-                    else
+                        // Обновление списка задач
+                        NetTaskOperations _op = new NetTaskOperations(context);
+                        _op.execute("");
 
-                    if (_task.getLastStatus().startsWith("Выполнено")) {
+                    } else if (_task.getLastStatus().startsWith("Выполнено")) {
                         _holder.CheckLastStatus.setChecked(true);
                         Toast.makeText(context, "Sorry, but you can't do this because task is completed. " +
                                 _task.getCompanyName() + " - " +
@@ -84,26 +90,7 @@ public class TaskArrayAdapter extends ArrayAdapter<TaskItem> {
                             _task.getLastStatus() + " - " +
                             _task.getLastStatusDate(), Toast.LENGTH_SHORT).show();
                 }
-              });
-//            _holder.CheckLastStatus.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//                @Override
-//                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//
-//                    TaskItem _task = tasks.get((Integer) _holder.CheckLastStatus.getTag());
-//                    if (isChecked) {
-//                        _task.lastStatus = "Принято курьером";
-//                        _task.lastStatusDate = Common.getCurrentTime();
-//                    } else {
-//                        _task.lastStatus = "Создано диспетчером";
-//                        _task.lastStatusDate = Common.getCurrentTime();
-//                    }
-//                    Toast.makeText(context, "This function is not correct worked yet. " +
-//                            _task.getCompanyName() + " - " +
-//                            _task.getLastStatus() + " - " +
-//                            _task.getLastStatusDate(), Toast.LENGTH_LONG).show();
-//                }
-//            });
-
+            });
 
             _itemTemplate.setTag(_holder);
             _holder.CheckLastStatus.setTag(_pos);
@@ -121,14 +108,21 @@ public class TaskArrayAdapter extends ArrayAdapter<TaskItem> {
         _holder.IconShowTask = (ImageView) _itemTemplate.findViewById(R.id.iconShowTask);
         _holder.IconShowTask.setImageResource(R.drawable.navigation_next_item);
 
-
-
         _holder.CheckLastStatus = (CheckBox) _itemTemplate.findViewById(R.id.checkLastStatus);
 
-        if (_task.getLastStatus().startsWith("Создано")) {
+        if (_task.getLastStatus().equals("Создано")) {
             _holder.CheckLastStatus.setChecked(false);
-        } else {
+
+        }
+
+        if (_task.getLastStatus().equals("Принято")) {
             _holder.CheckLastStatus.setChecked(true);
+            _holder.Layout.setBackgroundColor(0xFFB1FF90);
+        }
+
+        if (_task.getLastStatus().equals("Выполнено")) {
+            _holder.CheckLastStatus.setChecked(true);
+            _holder.Layout.setBackgroundColor(0xFFff957a);
         }
 
         return _itemTemplate;
@@ -142,6 +136,7 @@ public class TaskArrayAdapter extends ArrayAdapter<TaskItem> {
         public TextView LastStatus;
         public ImageView IconShowTask;
         public CheckBox CheckLastStatus;
+        public RelativeLayout Layout;
     }
 
 

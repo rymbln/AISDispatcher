@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -54,32 +55,6 @@ public class TaskItemSelected extends Activity {
         lastStatusDateTV = (TextView) findViewById(R.id.lastStatusDateTextView);
         driverNameTV = (TextView) findViewById(R.id.driverNameTextView);
         toggleComplete = (ToggleButton) findViewById(R.id.toggleCompleteTask);
-        toggleComplete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ITaskProvider _pr = new TaskProvider();
-                boolean on = toggleComplete.isChecked();
-                if (on) {
-
-                    _pr.setTaskCompleted(task.getTaskID());
-                    //currentIntent.putExtra("Res", "Checked");
-
-                    Toast.makeText(context, "This function is not correct worked yet. " +
-                            task.getCompanyName() + " - " +
-                            task.getLastStatus() + " - " +
-                            task.getLastStatusDate(), Toast.LENGTH_SHORT).show();
-                } else {
-
-                    _pr.setTaskTaked(task.getTaskID());
-                    //currentIntent.putExtra("Res", "UnChecked");
-                    Toast.makeText(context, "This function is not correct worked yet. " +
-                            task.getCompanyName() + " - " +
-                            task.getLastStatus() + " - " +
-                            task.getLastStatusDate(), Toast.LENGTH_SHORT).show();
-
-                }
-            }
-        });
     }
 
     public void updateView(TaskItem task) {
@@ -93,14 +68,40 @@ public class TaskItemSelected extends Activity {
         lastStatusDateTV.setText(task.getLastStatusDate());
         driverNameTV.setText(task.getDriverName());
 
-        if (task.getLastStatus().startsWith("Выполнено"))
-        {
+
+        if (task.getLastStatus().startsWith("Выполнено")) {
             toggleComplete.setChecked(true);
-        }
-        else
-        {
+        } else {
             toggleComplete.setChecked(false);
         }
+    }
+
+    public void onToggleClicked(View view) {
+        ITaskProvider _pr = new TaskProvider();
+        boolean on = toggleComplete.isChecked();
+        if (on) {
+
+            _pr.setTaskCompleted(task.getTaskID());
+            //currentIntent.putExtra("Res", "Checked");
+
+            Toast.makeText(context, "This function is not correct worked yet. " +
+                    task.getCompanyName() + " - " +
+                    task.getLastStatus() + " - " +
+                    task.getLastStatusDate(), Toast.LENGTH_SHORT).show();
+        } else {
+
+            _pr.setTaskTaked(task.getTaskID());
+            //currentIntent.putExtra("Res", "UnChecked");
+            Toast.makeText(context, "This function is not correct worked yet. " +
+                    task.getCompanyName() + " - " +
+                    task.getLastStatus() + " - " +
+                    task.getLastStatusDate(), Toast.LENGTH_SHORT).show();
+
+        }
+        currentIntent.putExtra("update", true);
+        setResult(RESULT_OK, currentIntent);
+        super.finish();
+
     }
 
 

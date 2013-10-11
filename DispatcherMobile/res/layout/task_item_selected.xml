@@ -9,7 +9,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
 
-            android:textSize="24sp"
+            android:textSize="24dp"
             android:autoLink="all"
             android:textColor="#DF3600"/>
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -26,21 +26,21 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
 
-                android:textSize="16sp"
+                android:textSize="16dp"
                 android:autoLink="all"
                 android:textColor="#DF3600"
                 android:text="@string/labelCompleteTask"/>
 
         <ToggleButton
-                android:id="@+id/toggleCompleteTask"
-                android:layout_width="96dp"
-                android:layout_height="wrap_content"
-                android:textOn="Completed"
-                android:textOff="Active"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true"
-
+            android:id="@+id/toggleCompleteTask"
+            android:layout_width="96dp"
+            android:layout_height="wrap_content"
+            android:textOn="Completed"
+            android:textOff="Active"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
                 android:onClick="onToggleClicked"/>
+
 
     </RelativeLayout>
 
@@ -134,21 +134,21 @@
             android:id="@+id/lastStatusTextView"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textSize="15sp"
+            android:textSize="15dp"
             android:autoLink="all"/>
 
     <TextView
             android:id="@+id/lastStatusDateTextView"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textSize="15sp"
+            android:textSize="15dp"
             android:autoLink="all"/>
 
     <TextView
             android:id="@+id/driverNameTextView"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textSize="15sp"
+            android:textSize="15dp"
             android:autoLink="all"/>
 
 </LinearLayout>
