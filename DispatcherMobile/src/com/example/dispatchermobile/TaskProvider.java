@@ -5,6 +5,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created with IntelliJ IDEA.
@@ -24,11 +25,11 @@ public class TaskProvider implements ITaskProvider {
     private static ArrayList<TaskItem> tasks;
 
     public static void initializeTasks() {
-        tasks = new ArrayList<TaskItem>()    ;
+        tasks = new ArrayList<TaskItem>();
         TaskItem taskItem = null;
         String _id, _cn, _dt, _ad, _cm, _ls, _ld, _dn = "";
 
-        _id = "99999999";
+        _id = "1";
         _cn = "АЛЬФАТранс";
         _dt = "16:00";
         _ad = "ул.Петра Алексеева д.19 оф.78";
@@ -39,7 +40,7 @@ public class TaskProvider implements ITaskProvider {
         taskItem = new TaskItem(_id, _cn, _dt, _ad, _cm, _ls, _ld, _dn);
         tasks.add(taskItem);
 
-        _id = "1231313123";
+        _id = "2";
         _cn = "ВТБ24";
         _dt = "14:00";
         _ad = "пр.Строителей д.19 оф.78";
@@ -50,7 +51,7 @@ public class TaskProvider implements ITaskProvider {
         taskItem = new TaskItem(_id, _cn, _dt, _ad, _cm, _ls, _ld, _dn);
         tasks.add(taskItem);
 
-        _id = "989898746";
+        _id = "3";
         _cn = "Смоленский Банк";
         _dt = "17:00";
         _ad = "ул.Кирова д.19 оф.7";
@@ -61,10 +62,71 @@ public class TaskProvider implements ITaskProvider {
         taskItem = new TaskItem(_id, _cn, _dt, _ad, _cm, _ls, _ld, _dn);
         tasks.add(taskItem);
 
+        _id = "4";
+        _cn = "АЛЬФАТранс111";
+        _dt = "16:35";
+        _ad = "ул.Петра Алексеева д.19 оф.78";
+        _cm = "обычный комментарий";
+        _ls = "Создано";
+        _ld = "12:00";
+        _dn = "Василий";
+        taskItem = new TaskItem(_id, _cn, _dt, _ad, _cm, _ls, _ld, _dn);
+        tasks.add(taskItem);
+
+        _id = "5";
+        _cn = "ВТБ24222";
+        _dt = "14:35";
+        _ad = "пр.Строителей д.19 оф.78";
+        _cm = "обычный комментарий";
+        _ls = "Принято";
+        _ld = "12:00";
+        _dn = "Василий";
+        taskItem = new TaskItem(_id, _cn, _dt, _ad, _cm, _ls, _ld, _dn);
+        tasks.add(taskItem);
+
+        _id = "6";
+        _cn = "Смоленский Банк333";
+        _dt = "17:35";
+        _ad = "ул.Кирова д.19 оф.7";
+        _cm = "обычный комментарий";
+        _ls = "Выполнено";
+        _ld = "15:00";
+        _dn = "Василий";
+        taskItem = new TaskItem(_id, _cn, _dt, _ad, _cm, _ls, _ld, _dn);
+        tasks.add(taskItem);
+
     }
 
-    private ArrayList<TaskItem> sortTasks(ArrayList<TaskItem> _tasks){
-        // TODO Реализовать сортировку задач
+    private ArrayList<TaskItem> sortTasks(ArrayList<TaskItem> _tasks) {
+        for (int i = 1; i < _tasks.size(); i++) {
+            int j = i;
+            boolean _ready = false;
+            while (j > 0 && !_ready) {
+                if (_tasks.get(j).getLastStatusToInt() > _tasks.get(j - 1).getLastStatusToInt()) {
+                    _ready = true;
+                } else {
+                    if (_tasks.get(j).getLastStatusToInt() == _tasks.get(j - 1).getLastStatusToInt()) {
+                        if (_tasks.get(j).getDeliveryTimeToInt() <= _tasks.get(j - 1).getDeliveryTimeToInt()) {
+                            _ready = true;
+                        } else {
+                            TaskItem dummy = _tasks.get(j);
+                            _tasks.set(j, _tasks.get(j - 1));
+                            _tasks.set(j - 1, dummy);
+                            _ready = false;
+                            j = j - 1;
+                        }
+                    } else {
+                        if (_tasks.get(j).getLastStatusToInt() < _tasks.get(j - 1).getLastStatusToInt()) {
+                            TaskItem dummy = _tasks.get(j);
+                            _tasks.set(j, _tasks.get(j - 1));
+                            _tasks.set(j - 1, dummy);
+                            _ready = false;
+                            j = j - 1;
+                        }
+                    }
+                }
+            }
+        }
         return _tasks;
     }
 
@@ -75,10 +137,8 @@ public class TaskProvider implements ITaskProvider {
     }
 
     public void setTaskCreated(String _taskID) {
-        for (int i = 0; i < tasks.size(); i++)
-        {
-            if (tasks.get(i).getTaskID().equals(_taskID))
-            {
+        for (int i = 0; i < tasks.size(); i++) {
+            if (tasks.get(i).getTaskID().equals(_taskID)) {
                 tasks.get(i).setLastStatus("Создано");
                 tasks.get(i).setLastStatusDate(Common.getCurrentTime());
             }
@@ -86,10 +146,8 @@ public class TaskProvider implements ITaskProvider {
     }
 
     public void setTaskTaked(String _taskID) {
-        for (int i = 0; i < tasks.size(); i++)
-        {
-            if (tasks.get(i).getTaskID().equals(_taskID))
-            {
+        for (int i = 0; i < tasks.size(); i++) {
+            if (tasks.get(i).getTaskID().equals(_taskID)) {
                 tasks.get(i).setLastStatus("Принято");
                 tasks.get(i).setLastStatusDate(Common.getCurrentTime());
             }
@@ -97,10 +155,8 @@ public class TaskProvider implements ITaskProvider {
     }
 
     public void setTaskCompleted(String _taskID) {
-        for (int i = 0; i < tasks.size(); i++)
-        {
-            if (tasks.get(i).getTaskID().equals(_taskID))
-            {
+        for (int i = 0; i < tasks.size(); i++) {
+            if (tasks.get(i).getTaskID().equals(_taskID)) {
                 tasks.get(i).setLastStatus("Выполнено");
                 tasks.get(i).setLastStatusDate(Common.getCurrentTime());
             }

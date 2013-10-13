@@ -98,7 +98,45 @@ public class TaskItem
 	{
 		return driverName;
 	}
-	
+
+    public int getLastStatusToInt()
+    {
+        if (lastStatus.equals("Создано"))
+        {
+            return  1;
+        }
+        else
+        {
+            if (lastStatus.equals("Принято") )
+            {
+                return 2;
+            }
+            else
+            {
+                return 3;
+            }
+        }
+
+    }
+
+    public int getDeliveryTimeToInt()
+    {
+        int _res;
+        int _part1;
+        int _part2;
+        if (deliveryTime.length() == 5)
+        {
+            _part1 = Integer.parseInt(deliveryTime.substring(0,2));
+            _part2 = Integer.parseInt(deliveryTime.substring(3,5));
+        }
+        else
+        {
+            _part1 = Integer.parseInt(deliveryTime.substring(0,1));
+            _part2 = Integer.parseInt(deliveryTime.substring(2,4));
+        }
+        _res = _part1*100 + _part2;
+        return _res;
+    }
 	
 		
 	@Override

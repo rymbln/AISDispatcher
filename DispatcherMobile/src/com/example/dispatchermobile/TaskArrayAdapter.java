@@ -1,15 +1,11 @@
 package com.example.dispatchermobile;
 
-import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Intent;
-import android.text.Html;
-import android.text.Spanned;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
-import android.os.Bundle;
 
 import java.util.ArrayList;
 
