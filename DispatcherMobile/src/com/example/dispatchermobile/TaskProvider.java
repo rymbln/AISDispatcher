@@ -18,7 +18,7 @@ import java.util.Date;
 
 //TODO предусмотреть загрузку стоковых данных при отсутствии интернета для теста
 
-public class TaskProvider implements ITaskProvider {
+public final class TaskProvider implements ITaskProvider {
 
     // --Начало секции суррогатных методов работы с задачами
 

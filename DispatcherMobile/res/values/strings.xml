@@ -15,4 +15,14 @@
 	<string name="desc">Description</string>
     <string name="labelLoading">Downloading tasks from net</string>
     <string name="labelCompleteTask">Complete Task</string>
+    <string name="taskReaderMenuTitleText">Refresh</string>
+    <string name="taskReaderMenuRefreshText">Refresh</string>
+    <string name="taskReaderMenuExitText">Exit</string>
+    <string name="taskReaderMenuSettingsText">Settings</string>
+    <string name="buttonLogOff">Log Off</string>
+    <string name="buttonExit">Exit App</string>
+    <string name="buttonCloseApp">Close App</string>
+    <string name="taskReaderMenuSetNewText">Mark Task as NEW</string>
+    <string name="taskReaderMenuSetTakedText">Mark Task as TAKED</string>
+    <string name="taskReaderMenuSetCompletedText">Mark Task as COMPLETED</string>
 </resources>

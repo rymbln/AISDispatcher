@@ -5,17 +5,17 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:baselineAligned="true">
-   
-   <Button android:id="@+id/refreshTask"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:src="@drawable/navigation_refresh"
-       android:text="@string/btnRefreshTasks"
-       />
-    <Button android:id="@+id/closeApp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/navigation_refresh"
-            android:text="@string/btnCloseApp"
-            />
+   <!---->
+   <!--<Button android:id="@+id/refreshTask"-->
+       <!--android:layout_width="wrap_content"-->
+       <!--android:layout_height="wrap_content"-->
+       <!--android:src="@drawable/navigation_refresh"-->
+       <!--android:text="@string/btnRefreshTasks"-->
+       <!--/>-->
+    <!--<Button android:id="@+id/closeApp"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:src="@drawable/navigation_refresh"-->
+            <!--android:text="@string/btnCloseApp"-->
+            <!--/>-->
 </LinearLayout>

@@ -2,9 +2,7 @@ package com.example.dispatchermobile;
 
 import android.app.ListActivity;
 import android.content.Intent;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.*;
 import android.widget.*;
 
 import java.util.ArrayList;

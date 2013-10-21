@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/taskReaderMenuSetNew"
+          android:title="@string/taskReaderMenuSetNewText"/>
+    <item android:id="@+id/taskReaderMenuSetTaked"
+            android:title="@string/taskReaderMenuSetTakedText"/>
+    <item android:id="@+id/taskReaderMenuSetCompleted"
+          android:title="@string/taskReaderMenuSetCompletedText" />
+
+</menu>
