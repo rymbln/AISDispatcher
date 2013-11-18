@@ -12,7 +12,7 @@ public class TaskArrayAdapter extends ArrayAdapter<TaskItem> {
     private final ArrayList<TaskItem> tasks;
 
     public TaskArrayAdapter(ListActivity _context, ArrayList<TaskItem> _tasks) {
-        super(_context, R.layout.list_item, _tasks);
+        super(_context, R.layout.TaskList_Item, _tasks);
         this.context = _context;
         this.tasks = _tasks;
     }
@@ -23,7 +23,7 @@ public class TaskArrayAdapter extends ArrayAdapter<TaskItem> {
 
         if (_existingTemplate == null) {
             LayoutInflater _inflater = context.getLayoutInflater();
-            _itemTemplate = _inflater.inflate(R.layout.list_item, null);
+            _itemTemplate = _inflater.inflate(R.layout.TaskList_Item, null);
 
             final ViewHolder _holder = new ViewHolder();
             _holder.Company = (TextView) _itemTemplate.findViewById(R.id.company);

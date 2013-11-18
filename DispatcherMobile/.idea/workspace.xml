@@ -24,41 +24,44 @@
     </option>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ab7ffb40-1f7a-4a19-98d5-44d27fd6e283" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/menu/taskreader_contextmenu.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/menu/taskreader_menu.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/menu/taskreader_offlinemenu.xml" />
+    <list default="true" id="ab7ffb40-1f7a-4a19-98d5-44d27fd6e283" name="Default" comment="Refactoring continue&#10;&#10;- not worked copy">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/dispatchermobile/ContactItem.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/dispatchermobile/MessageItem.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout/TaskSelected_Contacts.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout/TaskSelected_Footer.xml" />
+      <change type="MOVED" beforePath="C:\Users\rymbln\Documents\GitHub\AISDispatcher\DispatcherMobile\res\layout\footer.xml" afterPath="$PROJECT_DIR$/res/layout/TaskList_Footer.xml" />
+      <change type="MOVED" beforePath="C:\Users\rymbln\Documents\GitHub\AISDispatcher\DispatcherMobile\res\layout\header.xml" afterPath="$PROJECT_DIR$/res/layout/TaskList_Header.xml" />
+      <change type="MOVED" beforePath="C:\Users\rymbln\Documents\GitHub\AISDispatcher\DispatcherMobile\res\layout\list_item.xml" afterPath="$PROJECT_DIR$/res/layout/TaskList_Item.xml" />
+      <change type="MOVED" beforePath="C:\Users\rymbln\Documents\GitHub\AISDispatcher\DispatcherMobile\res\layout\task_item_selected.xml" afterPath="$PROJECT_DIR$/res/layout/TaskSelected_Main.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/dispatchermobile/TaskArrayAdapter.java" afterPath="$PROJECT_DIR$/src/com/example/dispatchermobile/TaskArrayAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/dispatchermobile/TaskItem.java" afterPath="$PROJECT_DIR$/src/com/example/dispatchermobile/TaskItem.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/dispatchermobile/TaskItemSelected.java" afterPath="$PROJECT_DIR$/src/com/example/dispatchermobile/TaskItemSelected.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/dispatchermobile/TaskProvider.java" afterPath="$PROJECT_DIR$/src/com/example/dispatchermobile/TaskProvider.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/dispatchermobile/TaskReader.java" afterPath="$PROJECT_DIR$/src/com/example/dispatchermobile/TaskReader.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/header.xml" afterPath="$PROJECT_DIR$/res/layout/header.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/jarlist.cache" afterPath="$PROJECT_DIR$/bin/jarlist.cache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/list_item.xml" afterPath="$PROJECT_DIR$/res/layout/list_item.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/main.xml" afterPath="$PROJECT_DIR$/res/layout/main.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project.properties" afterPath="$PROJECT_DIR$/project.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/strings.xml" afterPath="$PROJECT_DIR$/res/values/strings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/task_item_selected.xml" afterPath="$PROJECT_DIR$/res/layout/task_item_selected.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="DispatcherMobile.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="ab7ffb40-1f7a-4a19-98d5-44d27fd6e283" time="1382376052297" ignored="false" />
+    <file path="/Dummy.txt" changelist="ab7ffb40-1f7a-4a19-98d5-44d27fd6e283" time="1384795077327" ignored="false" />
     <file path="/list_item.xml" changelist="ab7ffb40-1f7a-4a19-98d5-44d27fd6e283" time="1381732489274" ignored="false" />
     <file path="/a.xml" changelist="ab7ffb40-1f7a-4a19-98d5-44d27fd6e283" time="1380741149371" ignored="false" />
     <file path="/FakeTasksProvider.java" changelist="ab7ffb40-1f7a-4a19-98d5-44d27fd6e283" time="1380741873868" ignored="false" />
     <file path="/TaskAdapter.java" changelist="ab7ffb40-1f7a-4a19-98d5-44d27fd6e283" time="1381320879858" ignored="false" />
     <file path="/TaskItemSelected.java" changelist="ab7ffb40-1f7a-4a19-98d5-44d27fd6e283" time="1381488960878" ignored="false" />
-    <file path="/TaskReader.java" changelist="ab7ffb40-1f7a-4a19-98d5-44d27fd6e283" time="1382381836701" ignored="false" />
+    <file path="/TaskReader.java" changelist="ab7ffb40-1f7a-4a19-98d5-44d27fd6e283" time="1384799116746" ignored="false" />
     <file path="/NetTaskOperations.java" changelist="ab7ffb40-1f7a-4a19-98d5-44d27fd6e283" time="1381491127690" ignored="false" />
     <file path="/a.java" changelist="ab7ffb40-1f7a-4a19-98d5-44d27fd6e283" time="1380744578867" ignored="false" />
     <file path="/HttpHelpers.java" changelist="ab7ffb40-1f7a-4a19-98d5-44d27fd6e283" time="1381394650231" ignored="false" />
-    <file path="/main.xml" changelist="ab7ffb40-1f7a-4a19-98d5-44d27fd6e283" time="1380743724162" ignored="false" />
-    <file path="/TaskProvider.java" changelist="ab7ffb40-1f7a-4a19-98d5-44d27fd6e283" time="1382380198657" ignored="false" />
-    <file path="/TaskItem.java" changelist="ab7ffb40-1f7a-4a19-98d5-44d27fd6e283" time="1381666008305" ignored="false" />
+    <file path="/main.xml" changelist="ab7ffb40-1f7a-4a19-98d5-44d27fd6e283" time="1384799073879" ignored="false" />
+    <file path="/TaskProvider.java" changelist="ab7ffb40-1f7a-4a19-98d5-44d27fd6e283" time="1384798232448" ignored="false" />
+    <file path="/TaskItem.java" changelist="ab7ffb40-1f7a-4a19-98d5-44d27fd6e283" time="1384798612346" ignored="false" />
     <file path="/Common.java" changelist="ab7ffb40-1f7a-4a19-98d5-44d27fd6e283" time="1381398789561" ignored="false" />
     <file path="/strings.xml" changelist="ab7ffb40-1f7a-4a19-98d5-44d27fd6e283" time="1381492109087" ignored="false" />
     <file path="/ITaskProvider.java" changelist="ab7ffb40-1f7a-4a19-98d5-44d27fd6e283" time="1381400173305" ignored="false" />
-    <file path="/fragment.java" changelist="ab7ffb40-1f7a-4a19-98d5-44d27fd6e283" time="1381413059316" ignored="false" />
+    <file path="/fragment.java" changelist="ab7ffb40-1f7a-4a19-98d5-44d27fd6e283" time="1384797958355" ignored="false" />
     <file path="/11111.xml" changelist="ab7ffb40-1f7a-4a19-98d5-44d27fd6e283" time="1381321722392" ignored="false" />
     <file path="/TaskArrayAdapter.java" changelist="ab7ffb40-1f7a-4a19-98d5-44d27fd6e283" time="1382382038997" ignored="false" />
     <file path="/task_item_selected.xml" changelist="ab7ffb40-1f7a-4a19-98d5-44d27fd6e283" time="1382382760966" ignored="false" />
@@ -69,6 +72,9 @@
     <file path="/header.xml" changelist="ab7ffb40-1f7a-4a19-98d5-44d27fd6e283" time="1381491982663" ignored="false" />
     <file path="/taskreader_menu.xml" changelist="ab7ffb40-1f7a-4a19-98d5-44d27fd6e283" time="1382380496128" ignored="false" />
     <file path="/taskreader_contextmenu.xml" changelist="ab7ffb40-1f7a-4a19-98d5-44d27fd6e283" time="1382381144877" ignored="false" />
+    <file path="/taskdata.xml" changelist="ab7ffb40-1f7a-4a19-98d5-44d27fd6e283" time="1384795146338" ignored="false" />
+    <file path="/ContactItem.java" changelist="ab7ffb40-1f7a-4a19-98d5-44d27fd6e283" time="1384796594672" ignored="false" />
+    <file path="/MessageItem.java" changelist="ab7ffb40-1f7a-4a19-98d5-44d27fd6e283" time="1384798543585" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,7 +149,7 @@
       <file leaf-file-name="TaskReader.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/example/dispatchermobile/TaskReader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="148" column="2" selection-start="4795" selection-end="4795" vertical-scroll-proportion="0.0">
+            <state line="140" column="33" selection-start="4292" selection-end="4292" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -151,104 +157,107 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="taskreader_offlinemenu.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/menu/taskreader_offlinemenu.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="0" selection-start="106" selection-end="106" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="header.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/layout/header.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="1" selection-start="914" selection-end="914" vertical-scroll-proportion="-12.6">
-              <folding />
-            </state>
-          </provider>
+      <file leaf-file-name="TaskList_Header.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/layout/TaskList_Header.xml">
           <provider editor-type-id="android-designer">
             <state />
           </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TaskArrayAdapter.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/example/dispatchermobile/TaskArrayAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="16" selection-start="918" selection-end="918" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1623#2125#0" expanded="true" />
-                <element signature="e#2110#2111#0" expanded="true" />
-                <element signature="e#2283#4429#0" expanded="true" />
-                <element signature="e#4414#4415#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="task_item_selected.xml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/res/layout/task_item_selected.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="51" selection-start="1002" selection-end="1002" vertical-scroll-proportion="0.39657855">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
               <folding />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TaskSelected_Contacts.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/layout/TaskSelected_Contacts.xml">
           <provider editor-type-id="android-designer">
             <state />
           </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="list_item.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/layout/list_item.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="9" selection-start="630" selection-end="673" vertical-scroll-proportion="-8.4">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
               <folding />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TaskSelected_Main.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/layout/TaskSelected_Main.xml">
           <provider editor-type-id="android-designer">
             <state />
           </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="taskreader_menu.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/menu/taskreader_menu.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="17" selection-start="888" selection-end="888" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="taskreader_contextmenu.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/menu/taskreader_contextmenu.xml">
+      <file leaf-file-name="tmp.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/layout/tmp.xml">
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="7" selection-start="463" selection-end="463" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.xml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="TaskSelected_Footer.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/layout/TaskSelected_Footer.xml">
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TaskList_Item.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/layout/TaskList_Item.xml">
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="43" column="55" selection-start="1987" selection-end="1987" vertical-scroll-proportion="-16.28">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NetTaskOperations.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/example/dispatchermobile/NetTaskOperations.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="19" column="43" selection-start="534" selection-end="534" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="35" selection-start="1203" selection-end="1203" vertical-scroll-proportion="-16.8">
-              <folding />
-            </state>
-          </provider>
           <provider editor-type-id="android-designer">
             <state />
           </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="19" column="41" selection-start="887" selection-end="887" vertical-scroll-proportion="0.32130778">
+              <folding />
+            </state>
+          </provider>
         </entry>
       </file>
-      <file leaf-file-name="TaskProvider.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/example/dispatchermobile/TaskProvider.java">
+      <file leaf-file-name="TaskList_Footer.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/layout/TaskList_Footer.xml">
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state line="136" column="19" selection-start="4317" selection-end="4317" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#5483#5493#0" expanded="true" />
-                <element signature="e#6141#6151#0" expanded="true" />
-              </folding>
+            <state line="7" column="0" selection-start="314" selection-end="534" vertical-scroll-proportion="-4.2">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -271,29 +280,30 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/res/layout/list_item_red.xml" />
-        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/src/com/example/dispatchermobile/TaskItemSelected.java" />
-        <option value="$PROJECT_DIR$/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/src/com/example/dispatchermobile/TaskItem.java" />
-        <option value="$PROJECT_DIR$/src/com/example/dispatchermobile/NetTaskOperations.java" />
-        <option value="$PROJECT_DIR$/res/layout/main.xml" />
-        <option value="$PROJECT_DIR$/res/layout/list_item.xml" />
-        <option value="$PROJECT_DIR$/res/menu/taskreader_offlinemenu.xml" />
-        <option value="$PROJECT_DIR$/src/com/example/dispatchermobile/TaskProvider.java" />
         <option value="$PROJECT_DIR$/res/menu/taskreader_menu.xml" />
         <option value="$PROJECT_DIR$/res/menu/taskreader_contextmenu.xml" />
         <option value="$PROJECT_DIR$/src/com/example/dispatchermobile/TaskArrayAdapter.java" />
-        <option value="$PROJECT_DIR$/src/com/example/dispatchermobile/TaskReader.java" />
         <option value="$PROJECT_DIR$/res/layout/header.xml" />
+        <option value="$PROJECT_DIR$/res/layout/task_item_contact_list.xml" />
+        <option value="$PROJECT_DIR$/res/layout/list_item.xml" />
+        <option value="$PROJECT_DIR$/res/layout/task_item_footer.xml" />
         <option value="$PROJECT_DIR$/res/layout/task_item_selected.xml" />
+        <option value="$PROJECT_DIR$/taskdata.xml" />
+        <option value="$PROJECT_DIR$/src/ContactItem.java" />
+        <option value="$PROJECT_DIR$/src/com/example/dispatchermobile/ContactItem.java" />
+        <option value="$PROJECT_DIR$/src/com/example/dispatchermobile/TaskProvider.java" />
+        <option value="$PROJECT_DIR$/src/com/example/dispatchermobile/MessageItem.java" />
+        <option value="$PROJECT_DIR$/src/com/example/dispatchermobile/TaskItem.java" />
+        <option value="$PROJECT_DIR$/src/com/example/dispatchermobile/TaskReader.java" />
+        <option value="$PROJECT_DIR$/res/layout/main.xml" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="991" />
-    <option name="width" value="929" />
-    <option name="height" value="1080" />
+    <option name="x" value="54" />
+    <option name="y" value="-8" />
+    <option name="width" value="1874" />
+    <option name="height" value="1096" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -326,6 +336,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -451,22 +462,21 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="project.structure.last.edited" value="Modules" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="259" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="277" />
-    <property name="OverrideImplement.combined" value="true" />
     <property name="project.structure.proportion" value="0.15" />
+    <property name="OverrideImplement.combined" value="true" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="277" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="recentsLimit" value="5" />
-    <property name="MemberChooser.sorted" value="false" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="281" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="recentsLimit" value="5" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/res/layout/TaskSelected" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="283" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="955" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="963" />
@@ -480,8 +490,8 @@
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
     <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
@@ -500,9 +510,11 @@
       <recent name="com.example.dispatchermobile" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\rymbln\Documents\GitHub\AISDispatcher\DispatcherMobile\res\layout\" />
+      <recent name="C:\Users\rymbln\Documents\GitHub\AISDispatcher\DispatcherMobile\res\layout\TaskSelected" />
+      <recent name="C:\Users\rymbln\Documents\GitHub\AISDispatcher\DispatcherMobile\res\layout\TaskList" />
       <recent name="C:\Users\rymbln\Documents\GitHub\AISDispatcher\DispatcherMobile\res\drawable-xhdpi" />
       <recent name="C:\Users\rymbln\Documents\GitHub\AISDispatcher\DispatcherMobile\res\drawable-mdpi" />
-      <recent name="C:\Users\rymbln\Documents\GitHub\AISDispatcher\DispatcherMobile\res\drawable-hdpi" />
     </key>
   </component>
   <component name="RunManager" selected="Android Application.DispatcherMobile">
@@ -538,6 +550,19 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -564,19 +589,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -704,9 +716,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="991" y="0" width="929" height="1080" extended-state="0" />
+    <frame x="54" y="-8" width="1874" height="1096" extended-state="6" />
     <editor active="false" />
     <layout>
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32505518" sideWeight="0.811804" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32395142" sideWeight="0.811804" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32905984" sideWeight="0.8084633" order="3" side_tool="false" content_ui="tabs" />
@@ -719,7 +733,7 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32942432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3253796" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18976545" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32942432" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -727,12 +741,10 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3236994" sideWeight="0.8123644" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18763557" sideWeight="0.4967983" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32550693" sideWeight="0.811804" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15469614" sideWeight="0.81023455" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18763326" sideWeight="0.4967983" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2497332" sideWeight="0.8106904" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3244397" sideWeight="0.811804" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3207127" sideWeight="0.49786553" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -804,139 +816,144 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+    <entry file="file://$PROJECT_DIR$/src/com/example/dispatchermobile/ITaskProvider.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="90" selection-start="576" selection-end="576" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/dispatchermobile/TaskItemSelected.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="92" selection-start="2156" selection-end="2156" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/dispatchermobile/Common.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="79" selection-start="215" selection-end="215" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/dispatchermobile/NetTaskOperations.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="30" selection-start="1184" selection-end="1184" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="29" selection-start="513" selection-end="524" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/dispatchermobile/TaskItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="120" column="127" selection-start="2783" selection-end="2783" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/dispatchermobile/TaskProvider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="136" column="19" selection-start="4317" selection-end="4317" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#5483#5493#0" expanded="true" />
-            <element signature="e#6141#6151#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/menu/taskreader_menu.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="17" selection-start="888" selection-end="888" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/menu/taskreader_offlinemenu.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="0" selection-start="106" selection-end="106" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/menu/taskreader_contextmenu.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="7" selection-start="463" selection-end="463" vertical-scroll-proportion="0.0">
+        <state line="7" column="34" selection-start="169" selection-end="169" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/dispatchermobile/TaskArrayAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="16" selection-start="918" selection-end="918" vertical-scroll-proportion="0.0">
+        <state line="59" column="44" selection-start="2893" selection-end="2893" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/dispatchermobile/TaskProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="57" selection-start="532" selection-end="532" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/dispatchermobile/TaskItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="77" column="35" selection-start="2215" selection-end="2215" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1623#2125#0" expanded="true" />
-            <element signature="e#2110#2111#0" expanded="true" />
-            <element signature="e#2283#4429#0" expanded="true" />
-            <element signature="e#4414#4415#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/dispatchermobile/ContactItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="64" selection-start="263" selection-end="263" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/taskdata.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="46" column="25" selection-start="1766" selection-end="1766" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/dispatchermobile/NetTaskOperations.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="43" selection-start="534" selection-end="534" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/TaskList_Footer.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="0" selection-start="314" selection-end="534" vertical-scroll-proportion="-4.2">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/TaskList_Header.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/TaskList_Item.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="55" selection-start="1987" selection-end="1987" vertical-scroll-proportion="-16.28">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/TaskSelected_Contacts.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/TaskSelected_Footer.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/TaskSelected_Main.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/tmp.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/dispatchermobile/TaskReader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="148" column="2" selection-start="4795" selection-end="4795" vertical-scroll-proportion="0.0">
+        <state line="140" column="33" selection-start="4292" selection-end="4292" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/header.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="1" selection-start="914" selection-end="914" vertical-scroll-proportion="-12.6">
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="35" selection-start="1203" selection-end="1203" vertical-scroll-proportion="-16.8">
-          <folding />
-        </state>
-      </provider>
       <provider editor-type-id="android-designer">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/list_item.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="9" selection-start="630" selection-end="673" vertical-scroll-proportion="-8.4">
+        <state line="19" column="41" selection-start="887" selection-end="887" vertical-scroll-proportion="0.32130778">
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/task_item_selected.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="51" selection-start="1002" selection-end="1002" vertical-scroll-proportion="0.39657855">
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
   </component>

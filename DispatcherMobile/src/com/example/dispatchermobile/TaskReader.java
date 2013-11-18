@@ -4,10 +4,10 @@ import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.*;
-import android.view.View.OnClickListener;
 import android.widget.*;
 import android.widget.Toast;
 import android.widget.ListView;
+
 
 
 public class TaskReader extends ListActivity {

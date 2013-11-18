@@ -3,6 +3,8 @@ package com.example.dispatchermobile;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 public class TaskItem
 {
     private String taskID;
@@ -14,6 +16,10 @@ public class TaskItem
 	public String lastStatusDate;
 	private String driverName;
 
+    public ArrayList<ContactItem> Contacts;
+    public ArrayList<MessageItem> Messages;
+
+
     public TaskItem()
     {
         this.taskID = "";
@@ -24,6 +30,7 @@ public class TaskItem
         this.lastStatus = "";
         this.lastStatusDate = "";
         this.driverName = "";
+        this.Contacts = new ArrayList<ContactItem>();
     }
 
     public TaskItem(String _str)
@@ -59,6 +66,16 @@ public class TaskItem
     public String getTaskID()
     {
         return taskID;
+    }
+
+    public void addToContacts(ContactItem contact)
+    {
+        this.Contacts.add(contact);
+    }
+
+    public void addToMessages(MessageItem message)
+    {
+        this.Messages.add(message);
     }
 
 
@@ -171,5 +188,5 @@ public class TaskItem
 
         return _jo;
     }
-	
+
 }
