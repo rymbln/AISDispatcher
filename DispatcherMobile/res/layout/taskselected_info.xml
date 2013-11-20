@@ -1,8 +1,8 @@
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:padding="10dp">
     <TextView
             android:id="@+id/companyNameTextView"
@@ -134,29 +134,7 @@
             android:layout_toRightOf="@+id/iconComment"
             android:autoLink="all"/>
               </RelativeLayout>
-    <TextView
-            android:id="@+id/lastStatusTextView"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:textSize="15dp"
-            android:layout_centerVertical="true"
-            android:autoLink="all"/>
 
-    <TextView
-            android:id="@+id/lastStatusDateTextView"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:textSize="15dp"
-            android:layout_centerVertical="true"
-            android:autoLink="all"/>
-
-    <TextView
-            android:id="@+id/driverNameTextView"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:textSize="15dp"
-            android:layout_centerVertical="true"
-            android:autoLink="all"/>
 
 
 </LinearLayout>

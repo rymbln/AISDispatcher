@@ -40,7 +40,7 @@ public final class TaskProvider implements ITaskProvider {
         _ld = "12:00";
         _dn = "Василий";
         taskItem = new TaskItem(_id, _cn, _dt, _ad, _cm, _ls, _ld, _dn);
-        contact = new ContactItem("Василий", "Менеджер");
+        contact = new ContactItem("Василий", "Менеджер","Обычный комментарий");
         contact.addPhone("89511234567");
         taskItem.addToContacts(contact);
         tasks.add(taskItem);
@@ -53,12 +53,12 @@ public final class TaskProvider implements ITaskProvider {
         _ls = "Принято";
         _ld = "12:00";
         _dn = "Василий";
-        contact = new ContactItem("Василий", "Менеджер");
+        contact = new ContactItem("Василий", "Менеджер","");
         contact.addPhone("89511234567");
         contact.addPhone("89511567890");
-        taskItem.addToContacts(contact);
 
         taskItem = new TaskItem(_id, _cn, _dt, _ad, _cm, _ls, _ld, _dn);
+        taskItem.addToContacts(contact);
         tasks.add(taskItem);
 
         _id = "3";
@@ -69,14 +69,15 @@ public final class TaskProvider implements ITaskProvider {
         _ls = "Выполнено";
         _ld = "15:00";
         _dn = "Василий";
-        contact = new ContactItem("Василий", "Менеджер");
+        taskItem = new TaskItem(_id, _cn, _dt, _ad, _cm, _ls, _ld, _dn);
+        contact = new ContactItem("Василий", "Менеджер","Мудак конченый");
         contact.addPhone("89511234567");
         contact.addPhone("89511567890");
         taskItem.addToContacts(contact);
-        contact = new ContactItem("Марина","Секретарь");
+        contact = new ContactItem("Марина","Секретарь","Обычный комментарий");
         contact.addPhone("89101204569");
         taskItem.addToContacts(contact);
-        taskItem = new TaskItem(_id, _cn, _dt, _ad, _cm, _ls, _ld, _dn);
+
         tasks.add(taskItem);
 
         _id = "4";

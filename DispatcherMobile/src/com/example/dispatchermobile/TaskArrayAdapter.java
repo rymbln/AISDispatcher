@@ -12,7 +12,7 @@ public class TaskArrayAdapter extends ArrayAdapter<TaskItem> {
     private final ArrayList<TaskItem> tasks;
 
     public TaskArrayAdapter(ListActivity _context, ArrayList<TaskItem> _tasks) {
-        super(_context, R.layout.TaskList_Item, _tasks);
+        super(_context, R.layout.tasklist_item, _tasks);
         this.context = _context;
         this.tasks = _tasks;
     }
@@ -23,7 +23,7 @@ public class TaskArrayAdapter extends ArrayAdapter<TaskItem> {
 
         if (_existingTemplate == null) {
             LayoutInflater _inflater = context.getLayoutInflater();
-            _itemTemplate = _inflater.inflate(R.layout.TaskList_Item, null);
+            _itemTemplate = _inflater.inflate(R.layout.tasklist_item, null);
 
             final ViewHolder _holder = new ViewHolder();
             _holder.Company = (TextView) _itemTemplate.findViewById(R.id.company);
@@ -39,10 +39,10 @@ public class TaskArrayAdapter extends ArrayAdapter<TaskItem> {
                 @Override
                 public void onClick(View v) {
                     TaskItem _task = tasks.get((Integer) _holder.IconShowTask.getTag());
-                    String _str = _task.toJSON().toString();
-
+                   // String _str = _task.toJSON().toString();
+                    SharedTask.SelectedTask = _task;
                     Intent _intent = new Intent("com.example.DispatcherMobile.selectedTaskItem");
-                    _intent.putExtra("taskItem", _str);
+                   // _intent.putExtra("task", _task.toJSON().toString());
                     context.startActivityForResult(_intent, 10);
                 }
             });

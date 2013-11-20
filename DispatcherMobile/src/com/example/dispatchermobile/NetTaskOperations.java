@@ -23,6 +23,7 @@ public class NetTaskOperations extends AsyncTask<String, Void , String>
     @Override
     protected String doInBackground(String... params)
     {
+
         tasks = loadTasks();
         return null;
     }

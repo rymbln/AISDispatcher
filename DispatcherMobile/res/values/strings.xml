@@ -10,6 +10,7 @@
     <!--BUTTONS-->
     <string name="btnRefreshTasks">Refresh Tasks</string>
     <string name="btnCloseApp">Exit</string>
+    <string name="btnSendMessage">Send</string>
 
 	<string name="chk_TaskComplete">Check Task as Completed</string>
 	<string name="desc">Description</string>
@@ -25,4 +26,6 @@
     <string name="taskReaderMenuSetNewText">Mark Task as NEW</string>
     <string name="taskReaderMenuSetTakedText">Mark Task as TAKED</string>
     <string name="taskReaderMenuSetCompletedText">Mark Task as COMPLETED</string>
+    <string name="NewMessage_EditText">New EditText</string>
+    <string name="ContactsText">Contacts</string>
 </resources>

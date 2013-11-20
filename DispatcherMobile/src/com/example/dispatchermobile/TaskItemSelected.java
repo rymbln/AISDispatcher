@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -16,10 +17,10 @@ public class TaskItemSelected extends Activity {
     private TextView deliveryTimeTV;
     private TextView addressTV;
     private TextView commentTV;
-    private TextView lastStatusTV;
-    private TextView lastStatusDateTV;
-    private TextView driverNameTV;
     private ToggleButton toggleComplete;
+    private ListView contactsListView         ;
+
+    private ContactListAdapter contactsAdapter;
 
     private TaskItem task;
 
@@ -29,7 +30,9 @@ public class TaskItemSelected extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.TaskSelected_Main);
+        setContentView(R.layout.taskselected_main);
+
+
 
         currentIntent = getIntent();
         context = this;
@@ -38,10 +41,13 @@ public class TaskItemSelected extends Activity {
         Bundle extras = currentIntent.getExtras();
         if (extras != null) {
             task = new TaskItem(extras.getString("taskItem"));
-            initializeView();
-            updateView(task);
+//            initializeView();
+//            updateView(task);
         }
 
+        task = SharedTask.SelectedTask;
+        initializeView();
+        updateView(task);
 
     }
 
@@ -50,10 +56,9 @@ public class TaskItemSelected extends Activity {
         deliveryTimeTV = (TextView) findViewById(R.id.deliveryTimeTextView);
         addressTV = (TextView) findViewById(R.id.addressTextView);
         commentTV = (TextView) findViewById(R.id.commentTextView);
-        lastStatusTV = (TextView) findViewById(R.id.lastStatusTextView);
-        lastStatusDateTV = (TextView) findViewById(R.id.lastStatusDateTextView);
-        driverNameTV = (TextView) findViewById(R.id.driverNameTextView);
         toggleComplete = (ToggleButton) findViewById(R.id.toggleCompleteTask);
+
+        contactsListView = (ListView) findViewById(R.id.lstContacts);
     }
 
     public void updateView(TaskItem task) {
@@ -63,16 +68,23 @@ public class TaskItemSelected extends Activity {
         deliveryTimeTV.setText(task.getDeliveryTime());
         addressTV.setText(task.getAddress());
         commentTV.setText(task.getComment());
-        lastStatusTV.setText(task.getLastStatus());
-        lastStatusDateTV.setText(task.getLastStatusDate());
-        driverNameTV.setText(task.getDriverName());
-
 
         if (task.getLastStatus().startsWith("Выполнено")) {
             toggleComplete.setChecked(true);
         } else {
             toggleComplete.setChecked(false);
         }
+
+        contactsAdapter = new ContactListAdapter(this, task.Contacts);
+        contactsListView.setAdapter(contactsAdapter);
+
+//        contactsListView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //To change body of implemented methods use File | Settings | File Templates.
+//            }
+//        });
+
     }
 
     public void onToggleClicked(View view) {

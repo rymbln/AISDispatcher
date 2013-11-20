@@ -1,5 +1,6 @@
 package com.example.dispatchermobile;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -31,6 +32,7 @@ public class TaskItem
         this.lastStatusDate = "";
         this.driverName = "";
         this.Contacts = new ArrayList<ContactItem>();
+        this.Messages = new ArrayList<MessageItem>();
     }
 
     public TaskItem(String _str)
@@ -39,12 +41,14 @@ public class TaskItem
             JSONObject _jo = new JSONObject(_str);
             this.taskID = _jo.optString("taskID");
             this.companyName = _jo.optString("companyName");
-            this.deliveryTime = _jo.optString("deliveryTime");;
-            this.address = _jo.optString("address");;
-            this.comment = _jo.optString("comment");;
+            this.deliveryTime = _jo.optString("deliveryTime");
+            this.address = _jo.optString("address");
+            this.comment = _jo.optString("comment");
             this.lastStatus = _jo.optString("lastStatus");
-            this.lastStatusDate = _jo.optString("lastStatusDate");;
-            this.driverName = _jo.optString("driverName");;
+            this.lastStatusDate = _jo.optString("lastStatusDate");
+            this.driverName = _jo.optString("driverName");
+            this.Contacts = new ArrayList<ContactItem>();
+            this.Messages = new ArrayList<MessageItem>();
         } catch (JSONException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
@@ -61,6 +65,8 @@ public class TaskItem
 		this.lastStatus = lastStatus;
 		this.lastStatusDate = lastStatusDate;
 		this.driverName = driverName;
+        this.Contacts = new ArrayList<ContactItem>();
+        this.Messages = new ArrayList<MessageItem>();
 	}
 
     public String getTaskID()
@@ -189,4 +195,10 @@ public class TaskItem
         return _jo;
     }
 
+
+    public JSONArray contactsToJSONArray()
+    {
+        JSONArray arr = new JSONArray(Contacts);
+        return  arr;
+    }
 }

@@ -13,11 +13,13 @@ public class ContactItem {
 
         public String Name;
         public String Rank;
+        public String Comment;
         public ArrayList<String> Phones;
 
-        public ContactItem(String name, String rank) {
+        public ContactItem(String name, String rank, String comment) {
             this.Name = name;
             this.Rank = rank;
+            this.Comment = comment;
             this.Phones = new ArrayList<String>();
         }
 

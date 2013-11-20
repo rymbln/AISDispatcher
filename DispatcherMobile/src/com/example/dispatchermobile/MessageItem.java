@@ -12,13 +12,15 @@ public class MessageItem {
     public String MessageText;
     public String Author;
     public String Datetime;
+    public String TypeMessage; // Driver - Dispetcher
 
-    public MessageItem(String id, String messageText, String author, String datetime)
+    public MessageItem(String id, String messageText, String author, String datetime, String typeMessage)
     {
         this.Id = id;
         this.MessageText = messageText;
         this.Author = author;
         this.Datetime = datetime;
+        this.TypeMessage = typeMessage;
 
     }
 }

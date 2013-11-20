@@ -32,6 +32,13 @@
 				<category android:name="android.intent.category.DEFAULT"/>
 			</intent-filter>
 		</activity>
+        <activity android:name=".TaskSelected_ContactListLoader"
+                  android:label="">
+            <intent-filter>
+                <action android:name="com.example.DispatcherMobile.TaskSelected_ContactListIntent" />
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
 		
     </application>
 </manifest>
