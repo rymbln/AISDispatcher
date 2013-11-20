@@ -12,9 +12,9 @@ public class MessageItem {
     public String MessageText;
     public String Author;
     public String Datetime;
-    public String TypeMessage; // Driver - Dispetcher
+    public int TypeMessage; // Driver - Dispetcher
 
-    public MessageItem(String id, String messageText, String author, String datetime, String typeMessage)
+    public MessageItem(String id, String messageText, String author, String datetime, int typeMessage)
     {
         this.Id = id;
         this.MessageText = messageText;

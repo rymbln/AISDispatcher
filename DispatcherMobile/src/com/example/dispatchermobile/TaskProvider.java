@@ -24,6 +24,7 @@ public final class TaskProvider implements ITaskProvider {
 
     private static ArrayList<TaskItem> tasks;
     private static ContactItem contact;
+    private static MessageItem message;
 
 
     public static void initializeTasks() {
@@ -43,6 +44,8 @@ public final class TaskProvider implements ITaskProvider {
         contact = new ContactItem("Василий", "Менеджер","Обычный комментарий");
         contact.addPhone("89511234567");
         taskItem.addToContacts(contact);
+        message = new MessageItem("1", "Первое сообщение от диспетчера","Диспетчер","2013-11-20 12:55",0);
+        taskItem.addToMessages(message);
         tasks.add(taskItem);
 
         _id = "2";
@@ -59,6 +62,11 @@ public final class TaskProvider implements ITaskProvider {
 
         taskItem = new TaskItem(_id, _cn, _dt, _ad, _cm, _ls, _ld, _dn);
         taskItem.addToContacts(contact);
+
+        message = new MessageItem("1", "Первое сообщение от диспетчера","Диспетчер","2013-11-20 12:55",0);
+        taskItem.addToMessages(message);
+        message = new MessageItem("2", "Второе сообщение от водителя","Водитель","2013-11-20 13:00",1);
+        taskItem.addToMessages(message);
         tasks.add(taskItem);
 
         _id = "3";
@@ -78,6 +86,12 @@ public final class TaskProvider implements ITaskProvider {
         contact.addPhone("89101204569");
         taskItem.addToContacts(contact);
 
+        message = new MessageItem("1", "Первое сообщение от диспетчера","Диспетчер","2013-11-20 12:55",0);
+        taskItem.addToMessages(message);
+        message = new MessageItem("2", "Второе сообщение от водителя","Водитель","2013-11-20 13:00",1);
+        taskItem.addToMessages(message);
+        message = new MessageItem("3", "Третье сообщение от диспетчера","Диспетчер","2013-11-20 13:05",0);
+        taskItem.addToMessages(message);
         tasks.add(taskItem);
 
         _id = "4";
@@ -104,6 +118,16 @@ public final class TaskProvider implements ITaskProvider {
 
         _id = "6";
         _cn = "Смоленский Банк333";
+        _dt = "17:35";
+        _ad = "ул.Кирова д.19 оф.7";
+        _cm = "обычный комментарий";
+        _ls = "Выполнено";
+        _ld = "15:00";
+        _dn = "Василий";
+        taskItem = new TaskItem(_id, _cn, _dt, _ad, _cm, _ls, _ld, _dn);
+        tasks.add(taskItem);
+        _id = "7";
+        _cn = "Смоленский Банк3337777";
         _dt = "17:35";
         _ad = "ул.Кирова д.19 оф.7";
         _cm = "обычный комментарий";

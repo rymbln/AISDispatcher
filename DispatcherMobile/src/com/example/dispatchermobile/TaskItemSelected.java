@@ -19,8 +19,10 @@ public class TaskItemSelected extends Activity {
     private TextView commentTV;
     private ToggleButton toggleComplete;
     private ListView contactsListView         ;
+    private ListView messagesListView;
 
     private ContactListAdapter contactsAdapter;
+    private MessageListAdapter messagesAdapter;
 
     private TaskItem task;
 
@@ -59,6 +61,7 @@ public class TaskItemSelected extends Activity {
         toggleComplete = (ToggleButton) findViewById(R.id.toggleCompleteTask);
 
         contactsListView = (ListView) findViewById(R.id.lstContacts);
+        messagesListView = (ListView) findViewById(R.id.lstMessages);
     }
 
     public void updateView(TaskItem task) {
@@ -77,6 +80,9 @@ public class TaskItemSelected extends Activity {
 
         contactsAdapter = new ContactListAdapter(this, task.Contacts);
         contactsListView.setAdapter(contactsAdapter);
+
+        messagesAdapter = new MessageListAdapter(this, task.Messages);
+        messagesListView.setAdapter(messagesAdapter);
 
 //        contactsListView.setOnClickListener(new View.OnClickListener() {
 //            @Override

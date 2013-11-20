@@ -25,7 +25,7 @@ public class ContactListAdapter extends BaseAdapter {
     public ContactListAdapter(Context context, ArrayList<ContactItem> listData) {
         this.listData = listData;
         this.context = context;
-        layoutInflater = LayoutInflater.from(context);
+        this.layoutInflater = LayoutInflater.from(context);
       }
 
     @Override

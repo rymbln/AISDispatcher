@@ -28,4 +28,5 @@
     <string name="taskReaderMenuSetCompletedText">Mark Task as COMPLETED</string>
     <string name="NewMessage_EditText">New EditText</string>
     <string name="ContactsText">Contacts</string>
+    <string name="MessagesText">Messages</string>
 </resources>
