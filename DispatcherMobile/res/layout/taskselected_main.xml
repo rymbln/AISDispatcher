@@ -1,44 +1,173 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:padding="10dp">
+    <TextView
+            android:id="@+id/companyNameTextView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="24dp"
+            android:autoLink="all"
+            android:layout_alignParentStart="true"
+            android:textColor="#DF3600"/>
+    <RelativeLayout
+            android:orientation="vertical"
+            android:id="@+id/rlSwitcher"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:background="#D0D0FF"
+            >
+        <TextView
+                android:id="@+id/toggleButtonText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_centerVertical="true"
+                android:textSize="16dp"
+                android:autoLink="all"
+                android:textColor="#DF3600"
+                android:text="@string/labelCompleteTask"/>
 
-    <LinearLayout android:id="@+id/TaskSelected_Info_Container"
-                  android:layout_width="fill_parent"
-                  android:layout_height="wrap_content"
-                  android:layout_alignParentStart="true"
-                  android:layout_alignParentTop="true"
+        <ToggleButton
+                android:id="@+id/toggleCompleteTask"
+                android:layout_width="96dp"
+                android:layout_height="wrap_content"
+                android:textOn="Completed"
+                android:textOff="Active"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:onClick="onToggleClicked"/>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout android:id="@+id/rlDeliveryTime"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content"
+                    android:layout_width="fill_parent"
+                    android:background="#D0D0FF"
             >
-        <include layout="@layout/taskselected_info"/>
-    </LinearLayout>
+        <ImageView
+                android:id="@+id/iconCompanyName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="4dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="4dp"
 
-    <LinearLayout android:id="@+id/TaskSelected_Contacts_Container"
-                  android:layout_width="fill_parent"
-                  android:layout_height="wrap_content"
-                  android:layout_below="@id/TaskSelected_Info_Container"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_alignParentTop="true"
+                android:src="@drawable/time"
+                android:contentDescription="@string/desc"
+                />
+        <TextView
+                android:id="@+id/deliveryTimeTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/iconCompanyName"
+                android:layout_centerVertical="true"
+                android:autoLink="all"/>
+    </RelativeLayout>
+
+    <RelativeLayout android:id="@+id/rlAddress"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content"
+                    android:layout_width="fill_parent"
+                    android:background="#D0D0FF"
             >
-        <include layout="@layout/taskselected_contacts"/>
-    </LinearLayout>
+        <ImageView
+                android:id="@+id/iconAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="4dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="4dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:src="@drawable/place"
+                android:contentDescription="@string/desc"
+                android:layout_centerVertical="true"
+                />
+        <TextView
+                android:id="@+id/addressTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/iconAddress"
+                android:layout_centerVertical="true"
+                android:autoLink="all"/>
+    </RelativeLayout>
 
-    <LinearLayout android:id="@+id/TaskSelected_Messages_Container"
-                      android:layout_width="fill_parent"
-                      android:layout_height="wrap_content"
-                      android:layout_below="@id/TaskSelected_Contacts_Container"
+    <RelativeLayout android:id="@+id/rlComment"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content"
+                    android:layout_width="fill_parent"
+                    android:background="#D0D0FF"
             >
-            <include layout="@layout/taskselected_messages"/>
-        </LinearLayout>
+        <ImageView
+                android:id="@+id/iconComment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="4dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="4dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true" android:layout_centerVertical="true"
+                android:src="@drawable/comment"
+                android:contentDescription="@string/desc"
+                />
+        <TextView
+                android:id="@+id/commentTextView"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/iconComment"
+                android:autoLink="all"/>
+    </RelativeLayout>
 
 
+    <ExpandableListView
+            android:id="@+id/exListViewContacts"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:indicatorLeft="250dp"
+            android:indicatorRight="300dp"
+            />
 
+    <ExpandableListView
+            android:id="@+id/exListViewMessages"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:indicatorLeft="250dp"
+            android:indicatorRight="300dp"
+            />
     <LinearLayout android:id="@+id/TaskSelected_Footer_Container"
                   android:layout_width="fill_parent"
                   android:layout_height="wrap_content"
-                  android:layout_alignParentBottom="true"
+
                   android:layout_alignParentEnd="true"
             >
         <include layout="@layout/taskselected_footer"/>
     </LinearLayout>
+</LinearLayout>
 
-</RelativeLayout>
+
+        <!--<LinearLayout android:id="@+id/TaskSelected_Footer_Container"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!-->-->
+        <!--<include layout="@layout/taskselected_footer"/>-->
+        <!--</LinearLayout>-->

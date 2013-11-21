@@ -1,26 +1,24 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:id="@+id/layoutMessage"
-        android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
               android:orientation="vertical"
-        android:padding="3dp" android:paddingLeft="20dp" android:paddingTop="3dp" android:paddingRight="20dp"
-        android:paddingBottom="3dp">
-
+>
     <TextView
             android:id="@+id/tvMessageAuthor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18dp"
-            android:textStyle="italic" android:singleLine="false" android:text="erwywreyweyrewy w  "/>
+            android:textStyle="italic" android:singleLine="false" />
     <TextView
             android:id="@+id/tvMessageText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:typeface="normal" android:text="erywywrywe "/>
+            android:typeface="normal" />
     <TextView
             android:id="@+id/tvMessageDatetime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="italic" android:text="eryweyewyreyeyewy"/>
+            android:textStyle="italic"/>
     </LinearLayout>

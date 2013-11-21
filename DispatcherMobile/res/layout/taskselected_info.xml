@@ -135,6 +135,20 @@
             android:autoLink="all"/>
               </RelativeLayout>
 
+    <ExpandableListView
+            android:id="@+id/exListViewContacts"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:indicatorLeft="250dp"
+            android:indicatorRight="300dp"
+            />
 
+    <ExpandableListView
+            android:id="@+id/exListViewMessages"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:indicatorLeft="250dp"
+            android:indicatorRight="300dp"
+            />
 
 </LinearLayout>
