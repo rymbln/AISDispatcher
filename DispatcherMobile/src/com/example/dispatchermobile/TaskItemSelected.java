@@ -6,10 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.ToggleButton;
+import android.widget.*;
 
 public class TaskItemSelected extends Activity {
     private Intent currentIntent;
@@ -18,11 +15,11 @@ public class TaskItemSelected extends Activity {
     private TextView addressTV;
     private TextView commentTV;
     private ToggleButton toggleComplete;
-    private ListView contactsListView         ;
-    private ListView messagesListView;
+//    private ListView contactsListView         ;
+//    private ListView messagesListView;
 
-    private ContactListAdapter contactsAdapter;
-    private MessageListAdapter messagesAdapter;
+//    private ContactListAdapter contactsAdapter;
+//    private MessageListAdapter messagesAdapter;
 
     private TaskItem task;
 
@@ -60,8 +57,8 @@ public class TaskItemSelected extends Activity {
         commentTV = (TextView) findViewById(R.id.commentTextView);
         toggleComplete = (ToggleButton) findViewById(R.id.toggleCompleteTask);
 
-        contactsListView = (ListView) findViewById(R.id.lstContacts);
-        messagesListView = (ListView) findViewById(R.id.lstMessages);
+//        contactsListView = (ListView) findViewById(R.id.lstContacts);
+//        messagesListView = (ListView) findViewById(R.id.lstMessages);
     }
 
     public void updateView(TaskItem task) {
@@ -78,11 +75,19 @@ public class TaskItemSelected extends Activity {
             toggleComplete.setChecked(false);
         }
 
-        contactsAdapter = new ContactListAdapter(this, task.Contacts);
-        contactsListView.setAdapter(contactsAdapter);
+        ExpandableListView expListViewContacts = (ExpandableListView) findViewById(R.id.exListViewContacts);
+        ExpListContactsAdapter adapterContacts = new ExpListContactsAdapter(context, task.Contacts);
+        expListViewContacts.setAdapter(adapterContacts);
 
-        messagesAdapter = new MessageListAdapter(this, task.Messages);
-        messagesListView.setAdapter(messagesAdapter);
+        ExpandableListView expListViewMessages = (ExpandableListView) findViewById(R.id.exListViewMessages);
+        ExpListMessagesAdapter adapterMessages = new ExpListMessagesAdapter(context, task.Messages);
+        expListViewMessages.setAdapter(adapterMessages);
+
+//        contactsAdapter = new ContactListAdapter(this, task.Contacts);
+//        contactsListView.setAdapter(contactsAdapter);
+//
+//        messagesAdapter = new MessageListAdapter(this, task.Messages);
+//        messagesListView.setAdapter(messagesAdapter);
 
 //        contactsListView.setOnClickListener(new View.OnClickListener() {
 //            @Override
