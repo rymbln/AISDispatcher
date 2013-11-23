@@ -4,9 +4,14 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.*;
+
+import java.util.ArrayList;
+
 
 public class TaskItemSelected extends Activity {
     private Intent currentIntent;
@@ -15,12 +20,8 @@ public class TaskItemSelected extends Activity {
     private TextView addressTV;
     private TextView commentTV;
     private ToggleButton toggleComplete;
-//    private ListView contactsListView         ;
-//    private ListView messagesListView;
-
-//    private ContactListAdapter contactsAdapter;
-//    private MessageListAdapter messagesAdapter;
-
+    private LinearLayout llContacts;
+    private LinearLayout llMessages;
     private TaskItem task;
 
     private Context context;
@@ -30,7 +31,6 @@ public class TaskItemSelected extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.taskselected_main);
-
 
 
         currentIntent = getIntent();
@@ -56,9 +56,8 @@ public class TaskItemSelected extends Activity {
         addressTV = (TextView) findViewById(R.id.addressTextView);
         commentTV = (TextView) findViewById(R.id.commentTextView);
         toggleComplete = (ToggleButton) findViewById(R.id.toggleCompleteTask);
-
-//        contactsListView = (ListView) findViewById(R.id.lstContacts);
-//        messagesListView = (ListView) findViewById(R.id.lstMessages);
+        llContacts = (LinearLayout) findViewById(R.id.llContacts);
+   llMessages = (LinearLayout) findViewById(R.id.llMessages);
     }
 
     public void updateView(TaskItem task) {
@@ -74,28 +73,36 @@ public class TaskItemSelected extends Activity {
         } else {
             toggleComplete.setChecked(false);
         }
+                        llContacts.removeAllViews();
+        if (task.Contacts.size() > 0) {
+            TextView tvContacts = (TextView) findViewById(R.id.tvContacts);
+            tvContacts.setText("Contacts ( " + task.Contacts.size() + " )");
 
-        ExpandableListView expListViewContacts = (ExpandableListView) findViewById(R.id.exListViewContacts);
-        ExpListContactsAdapter adapterContacts = new ExpListContactsAdapter(context, task.Contacts);
-        expListViewContacts.setAdapter(adapterContacts);
+            for (ContactItem ci : task.Contacts)
+            {
+                llContacts.addView(ci.getView(context));
+            }
+        } else
+        {
+            TextView tvContacts = (TextView) findViewById(R.id.tvContacts);
+            tvContacts.setText("No Contacts ");
+        }
 
-        ExpandableListView expListViewMessages = (ExpandableListView) findViewById(R.id.exListViewMessages);
-        ExpListMessagesAdapter adapterMessages = new ExpListMessagesAdapter(context, task.Messages);
-        expListViewMessages.setAdapter(adapterMessages);
+        if (task.Messages.size()>0)
+        {
+            TextView tvMessages = (TextView) findViewById(R.id.tvMessages);
+            tvMessages.setText("Messages (" + task.Messages.size() + " )");
 
-//        contactsAdapter = new ContactListAdapter(this, task.Contacts);
-//        contactsListView.setAdapter(contactsAdapter);
-//
-//        messagesAdapter = new MessageListAdapter(this, task.Messages);
-//        messagesListView.setAdapter(messagesAdapter);
+            for (MessageItem mi:task.Messages)
+            {
+                llMessages.addView(mi.getView(context));
+            }
+        }   else
+        {
+            TextView tvMessages = (TextView) findViewById(R.id.tvMessages);
+            tvMessages.setText("No Messages");
 
-//        contactsListView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                //To change body of implemented methods use File | Settings | File Templates.
-//            }
-//        });
-
+        }
     }
 
     public void onToggleClicked(View view) {

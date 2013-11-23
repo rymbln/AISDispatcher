@@ -7,151 +7,172 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:padding="10dp">
-    <TextView
-            android:id="@+id/companyNameTextView"
+
+    <ScrollView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textSize="24dp"
-            android:autoLink="all"
-            android:layout_alignParentStart="true"
-            android:textColor="#DF3600"/>
-    <RelativeLayout
-            android:orientation="vertical"
-            android:id="@+id/rlSwitcher"
-            android:layout_height="wrap_content"
-            android:layout_width="fill_parent"
-            android:background="#D0D0FF"
-            >
-        <TextView
-                android:id="@+id/toggleButtonText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_centerVertical="true"
-                android:textSize="16dp"
-                android:autoLink="all"
-                android:textColor="#DF3600"
-                android:text="@string/labelCompleteTask"/>
+            android:fillViewport="false">
 
-        <ToggleButton
-                android:id="@+id/toggleCompleteTask"
-                android:layout_width="96dp"
-                android:layout_height="wrap_content"
-                android:textOn="Completed"
-                android:textOff="Active"
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true"
-                android:onClick="onToggleClicked"/>
-
-
-    </RelativeLayout>
-
-    <RelativeLayout android:id="@+id/rlDeliveryTime"
-                    android:orientation="vertical"
-                    android:layout_height="wrap_content"
-                    android:layout_width="fill_parent"
-                    android:background="#D0D0FF"
-            >
-        <ImageView
-                android:id="@+id/iconCompanyName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="4dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="4dp"
-                android:layout_marginLeft="4dp"
-
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:layout_alignParentTop="true"
-                android:src="@drawable/time"
-                android:contentDescription="@string/desc"
-                />
-        <TextView
-                android:id="@+id/deliveryTimeTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/iconCompanyName"
-                android:layout_centerVertical="true"
-                android:autoLink="all"/>
-    </RelativeLayout>
-
-    <RelativeLayout android:id="@+id/rlAddress"
-                    android:orientation="vertical"
-                    android:layout_height="wrap_content"
-                    android:layout_width="fill_parent"
-                    android:background="#D0D0FF"
-            >
-        <ImageView
-                android:id="@+id/iconAddress"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="4dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="4dp"
-                android:layout_marginLeft="4dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:src="@drawable/place"
-                android:contentDescription="@string/desc"
-                android:layout_centerVertical="true"
-                />
-        <TextView
-                android:id="@+id/addressTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/iconAddress"
-                android:layout_centerVertical="true"
-                android:autoLink="all"/>
-    </RelativeLayout>
-
-    <RelativeLayout android:id="@+id/rlComment"
-                    android:orientation="vertical"
-                    android:layout_height="wrap_content"
-                    android:layout_width="fill_parent"
-                    android:background="#D0D0FF"
-            >
-        <ImageView
-                android:id="@+id/iconComment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="4dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="4dp"
-                android:layout_marginLeft="4dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true" android:layout_centerVertical="true"
-                android:src="@drawable/comment"
-                android:contentDescription="@string/desc"
-                />
-        <TextView
-                android:id="@+id/commentTextView"
+        <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/iconComment"
-                android:autoLink="all"/>
-    </RelativeLayout>
+                android:layout_height="fill_parent"
+                >
+            <TextView
+                    android:id="@+id/companyNameTextView"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="24dp"
+                    android:autoLink="all"
+                    android:layout_alignParentStart="true"
+                    android:textColor="#DF3600"/>
+            <RelativeLayout
+                    android:orientation="vertical"
+                    android:id="@+id/rlSwitcher"
+                    android:layout_height="wrap_content"
+                    android:layout_width="fill_parent"
+                    android:background="#D0D0FF"
+                    >
+                <TextView
+                        android:id="@+id/toggleButtonText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerVertical="true"
+                        android:textSize="16dp"
+                        android:autoLink="all"
+                        android:textColor="#DF3600"
+                        android:text="@string/labelCompleteTask"/>
+
+                <ToggleButton
+                        android:id="@+id/toggleCompleteTask"
+                        android:layout_width="96dp"
+                        android:layout_height="wrap_content"
+                        android:textOn="Completed"
+                        android:textOff="Active"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:onClick="onToggleClicked"/>
 
 
-    <ExpandableListView
-            android:id="@+id/exListViewContacts"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:indicatorLeft="250dp"
-            android:indicatorRight="300dp"
-            />
+            </RelativeLayout>
 
-    <ExpandableListView
-            android:id="@+id/exListViewMessages"
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:indicatorLeft="250dp"
-            android:indicatorRight="300dp"
-            />
+            <RelativeLayout android:id="@+id/rlDeliveryTime"
+                            android:orientation="vertical"
+                            android:layout_height="wrap_content"
+                            android:layout_width="fill_parent"
+                            android:background="#D0D0FF"
+                    >
+                <ImageView
+                        android:id="@+id/iconCompanyName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="4dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:layout_marginLeft="4dp"
+
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentTop="true"
+                        android:src="@drawable/time"
+                        android:contentDescription="@string/desc"
+                        />
+                <TextView
+                        android:id="@+id/deliveryTimeTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/iconCompanyName"
+                        android:layout_centerVertical="true"
+                        android:autoLink="all"/>
+            </RelativeLayout>
+
+            <RelativeLayout android:id="@+id/rlAddress"
+                            android:orientation="vertical"
+                            android:layout_height="wrap_content"
+                            android:layout_width="fill_parent"
+                            android:background="#D0D0FF"
+                    >
+                <ImageView
+                        android:id="@+id/iconAddress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="4dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:layout_marginLeft="4dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:src="@drawable/place"
+                        android:contentDescription="@string/desc"
+                        android:layout_centerVertical="true"
+                        />
+                <TextView
+                        android:id="@+id/addressTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/iconAddress"
+                        android:layout_centerVertical="true"
+                        android:autoLink="all"/>
+            </RelativeLayout>
+
+            <RelativeLayout android:id="@+id/rlComment"
+                            android:orientation="vertical"
+                            android:layout_height="wrap_content"
+                            android:layout_width="fill_parent"
+                            android:background="#D0D0FF"
+                    >
+                <ImageView
+                        android:id="@+id/iconComment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="4dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:layout_marginLeft="4dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true" android:layout_centerVertical="true"
+                        android:src="@drawable/comment"
+                        android:contentDescription="@string/desc"
+                        />
+                <TextView
+                        android:id="@+id/commentTextView"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/iconComment"
+                        android:autoLink="all"/>
+            </RelativeLayout>
+            <TextView
+                    android:id="@+id/tvContacts"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    />
+
+            <LinearLayout
+                    android:id="@+id/llContacts"
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    />
+            <TextView
+                    android:id="@+id/tvMessages"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    />
+            <LinearLayout
+                    android:id="@+id/llMessages"
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    />
+
+
+        </LinearLayout>
+    </ScrollView>
+
     <LinearLayout android:id="@+id/TaskSelected_Footer_Container"
                   android:layout_width="fill_parent"
                   android:layout_height="wrap_content"
@@ -160,14 +181,5 @@
             >
         <include layout="@layout/taskselected_footer"/>
     </LinearLayout>
+
 </LinearLayout>
-
-
-        <!--<LinearLayout android:id="@+id/TaskSelected_Footer_Container"-->
-        <!--android:layout_width="fill_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignParentBottom="true"-->
-        <!--android:layout_alignParentEnd="true"-->
-        <!-->-->
-        <!--<include layout="@layout/taskselected_footer"/>-->
-        <!--</LinearLayout>-->

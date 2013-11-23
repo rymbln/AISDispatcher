@@ -126,16 +126,7 @@ public final class TaskProvider implements ITaskProvider {
         _dn = "Василий";
         taskItem = new TaskItem(_id, _cn, _dt, _ad, _cm, _ls, _ld, _dn);
         tasks.add(taskItem);
-        _id = "7";
-        _cn = "Смоленский Банк3337777";
-        _dt = "17:35";
-        _ad = "ул.Кирова д.19 оф.7";
-        _cm = "обычный комментарий";
-        _ls = "Выполнено";
-        _ld = "15:00";
-        _dn = "Василий";
-        taskItem = new TaskItem(_id, _cn, _dt, _ad, _cm, _ls, _ld, _dn);
-        tasks.add(taskItem);
+
 
     }
 
