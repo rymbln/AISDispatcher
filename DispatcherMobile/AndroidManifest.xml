@@ -6,7 +6,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="10"
+        android:minSdkVersion="11"
         android:targetSdkVersion="18" 
         android:maxSdkVersion="18"/>
 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -26,19 +26,14 @@
         </activity>
         
         <activity android:name=".TaskItemSelected" 
-		    android:label="Task Item">
+		    android:label="Task Item"
+            android:parentActivityName="TaskReader">
 			<intent-filter>
 				<action android:name="com.example.DispatcherMobile.selectedTaskItem" />
 				<category android:name="android.intent.category.DEFAULT"/>
 			</intent-filter>
 		</activity>
-        <activity android:name=".TaskSelected_ContactListLoader"
-                  android:label="">
-            <intent-filter>
-                <action android:name="com.example.DispatcherMobile.TaskSelected_ContactListIntent" />
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-        </activity>
+
 		
     </application>
 </manifest>

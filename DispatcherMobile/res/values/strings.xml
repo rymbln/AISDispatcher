@@ -29,4 +29,18 @@
     <string name="NewMessage_EditText">New EditText</string>
     <string name="ContactsText">Contacts</string>
     <string name="MessagesText">Messages</string>
+
+
+    <!--Start items for drawer-->
+
+    <string name="action_update">Update</string>
+    <string name="drawer_open">Open Drawer</string>
+    <string name="drawer_close">Close Drawer</string>
+
+    <string-array name="operating_systems">
+        <item >Android</item>
+        <item >iPhone</item>
+        <item >Windows Mobile</item>
+    </string-array>
+    <!--End items for drawer-->
 </resources>

@@ -1,10 +1,12 @@
 package com.example.dispatchermobile;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -15,7 +17,6 @@ import java.util.ArrayList;
 
 public class TaskItemSelected extends Activity {
     private Intent currentIntent;
-    private TextView companyNameTV;
     private TextView deliveryTimeTV;
     private TextView addressTV;
     private TextView commentTV;
@@ -23,19 +24,18 @@ public class TaskItemSelected extends Activity {
     private LinearLayout llContacts;
     private LinearLayout llMessages;
     private TaskItem task;
+    private ActionBar actionBar;
 
     private Context context;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.taskselected_main);
 
 
         currentIntent = getIntent();
         context = this;
-
 
         Bundle extras = currentIntent.getExtras();
         if (extras != null) {
@@ -51,19 +51,21 @@ public class TaskItemSelected extends Activity {
     }
 
     public void initializeView() {
-        companyNameTV = (TextView) findViewById(R.id.companyNameTextView);
         deliveryTimeTV = (TextView) findViewById(R.id.deliveryTimeTextView);
         addressTV = (TextView) findViewById(R.id.addressTextView);
         commentTV = (TextView) findViewById(R.id.commentTextView);
         toggleComplete = (ToggleButton) findViewById(R.id.toggleCompleteTask);
         llContacts = (LinearLayout) findViewById(R.id.llContacts);
-   llMessages = (LinearLayout) findViewById(R.id.llMessages);
+        llMessages = (LinearLayout) findViewById(R.id.llMessages);
+        actionBar = getActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
     }
 
     public void updateView(TaskItem task) {
 
 
-        companyNameTV.setText(task.getCompanyName());
+        actionBar.setTitle(task.getCompanyName());
         deliveryTimeTV.setText(task.getDeliveryTime());
         addressTV.setText(task.getAddress());
         commentTV.setText(task.getComment());
@@ -73,32 +75,27 @@ public class TaskItemSelected extends Activity {
         } else {
             toggleComplete.setChecked(false);
         }
-                        llContacts.removeAllViews();
+        llContacts.removeAllViews();
         if (task.Contacts.size() > 0) {
             TextView tvContacts = (TextView) findViewById(R.id.tvContacts);
             tvContacts.setText("Contacts ( " + task.Contacts.size() + " )");
 
-            for (ContactItem ci : task.Contacts)
-            {
+            for (ContactItem ci : task.Contacts) {
                 llContacts.addView(ci.getView(context));
             }
-        } else
-        {
+        } else {
             TextView tvContacts = (TextView) findViewById(R.id.tvContacts);
             tvContacts.setText("No Contacts ");
         }
 
-        if (task.Messages.size()>0)
-        {
+        if (task.Messages.size() > 0) {
             TextView tvMessages = (TextView) findViewById(R.id.tvMessages);
             tvMessages.setText("Messages (" + task.Messages.size() + " )");
 
-            for (MessageItem mi:task.Messages)
-            {
+            for (MessageItem mi : task.Messages) {
                 llMessages.addView(mi.getView(context));
             }
-        }   else
-        {
+        } else {
             TextView tvMessages = (TextView) findViewById(R.id.tvMessages);
             tvMessages.setText("No Messages");
 
@@ -133,5 +130,14 @@ public class TaskItemSelected extends Activity {
 
     }
 
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem _item) {
+        switch (_item.getItemId()) {
+            case android.R.id.home:
+                Intent homeIntent = new Intent(this, TaskReader.class);
+                homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(homeIntent);
+        }
+        return (super.onOptionsItemSelected(_item));
+    }
 }
