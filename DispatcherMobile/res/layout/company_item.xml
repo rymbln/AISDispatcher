@@ -1,0 +1,32 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/llCompanyItem"
+        >
+           <TextView
+                   android:id="@+id/tvCompanyName"
+                   android:text="@string/desc"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:textSize="18dp"
+                   android:textStyle="bold"/>
+           <TextView
+                   android:id="@+id/tvAddress"
+                   android:text="@string/desc"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="-4dp"
+                   android:textSize="22dp"
+                   android:textStyle="bold"
+                   android:typeface="normal"/>
+           <TextView
+                   android:id="@+id/tvComment"
+                   android:text="@string/desc"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="-4dp"
+                   android:textSize="12dp"
+                   android:textStyle="bold"/>
+
+</LinearLayout>

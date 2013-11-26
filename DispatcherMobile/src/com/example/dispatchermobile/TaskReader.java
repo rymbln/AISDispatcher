@@ -2,23 +2,27 @@ package com.example.dispatchermobile;
 
 import android.app.ActionBar;
 import android.app.ListActivity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.*;
 import android.widget.*;
 import android.widget.Toast;
-import android.widget.ListView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import java.util.ArrayList;
+
 public class TaskReader extends ListActivity {
+    // action bar
+    private ActionBar actionBar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.main);
+        setContentView(R.layout.tasklist_main);
 
         if (savedInstanceState != null) {
             int requireUpdate = savedInstanceState.getInt("requireUpdate");
@@ -35,19 +39,6 @@ public class TaskReader extends ListActivity {
     }
 
 
-    @Override
-    public boolean onPrepareOptionsMenu(Menu _menu) {
-        //TODO : Make real online checking
-        Boolean isOnline = true;
-        int menuId = isOnline ? R.menu.taskreader_menu : R.menu.taskreader_offlinemenu;
-
-        _menu.clear();
-        MenuInflater _inf = getMenuInflater();
-        _inf.inflate(menuId, _menu);
-
-
-        return true;
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu _menu) {
@@ -76,6 +67,7 @@ public class TaskReader extends ListActivity {
             case R.id.taskReaderMenuSetCompleted:
                 Toast.makeText(this, "THis are not correct worked yet", Toast.LENGTH_SHORT).show();
                 return true;
+
             default:
                 return super.onContextItemSelected(item);
         }
@@ -101,6 +93,10 @@ public class TaskReader extends ListActivity {
             case R.id.groupMenuLogOff:
                 Toast.makeText(this, "LogOff are nit correct worked yet", Toast.LENGTH_SHORT).show();
                 return true;
+            case R.id.taskReaderMenuCompany:
+                Intent i = new Intent(this,CompanyReader.class);
+                startActivity(i);
+                return true;
             default:
                 return super.onOptionsItemSelected(_item);
 
@@ -115,7 +111,7 @@ public class TaskReader extends ListActivity {
     private void initializeApp() {
         HttpHelpers.initialize(this);
         // TODO - Для загрузки локальных Tasks - потом удалить или переработать
-        TaskProvider.initializeTasks();
+        DataProvider.initialize();
 
 
     }
@@ -128,8 +124,9 @@ public class TaskReader extends ListActivity {
 
 
     private void refreshTaskList() {
-        NetTaskOperations _op = new NetTaskOperations(this);
-        _op.execute("");
+        DataProvider dataProvider = new DataProvider();
+        TaskArrayAdapter _adp = new TaskArrayAdapter(this, dataProvider.getTasksLocal());
+        this.setListAdapter(_adp);
     }
 
     @Override

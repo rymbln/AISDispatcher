@@ -4,15 +4,12 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.*;
-
-import java.util.ArrayList;
 
 
 public class TaskItemSelected extends Activity {
@@ -23,8 +20,10 @@ public class TaskItemSelected extends Activity {
     private ToggleButton toggleComplete;
     private LinearLayout llContacts;
     private LinearLayout llMessages;
-    private TaskItem task;
+    private TaskItem task = new TaskItem();
     private ActionBar actionBar;
+
+    private DataProvider dataProvider = new DataProvider();
 
     private Context context;
 
@@ -39,15 +38,11 @@ public class TaskItemSelected extends Activity {
 
         Bundle extras = currentIntent.getExtras();
         if (extras != null) {
-            task = new TaskItem(extras.getString("taskItem"));
-//            initializeView();
-//            updateView(task);
+            String str = extras.getString("data")  ;
+            task = dataProvider.getTasklocal(extras.getString("data"));
+            initializeView();
+            updateView(task);
         }
-
-        task = SharedTask.SelectedTask;
-        initializeView();
-        updateView(task);
-
     }
 
     public void initializeView() {
@@ -59,6 +54,7 @@ public class TaskItemSelected extends Activity {
         llMessages = (LinearLayout) findViewById(R.id.llMessages);
         actionBar = getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+
 
     }
 
@@ -72,7 +68,13 @@ public class TaskItemSelected extends Activity {
 
         if (task.getLastStatus().startsWith("Выполнено")) {
             toggleComplete.setChecked(true);
-        } else {
+            actionBar.setBackgroundDrawable(new ColorDrawable(0xFFff957a));
+        } else if (task.getLastStatus().startsWith("Принято")) {
+            toggleComplete.setChecked(false);
+            actionBar.setBackgroundDrawable(new ColorDrawable(0xFFB1FF90));
+        }
+        else
+        {
             toggleComplete.setChecked(false);
         }
         llContacts.removeAllViews();
@@ -103,7 +105,7 @@ public class TaskItemSelected extends Activity {
     }
 
     public void onToggleClicked(View view) {
-        ITaskProvider _pr = new TaskProvider();
+        ITaskProvider _pr = new DataProvider();
         boolean on = toggleComplete.isChecked();
         if (on) {
 

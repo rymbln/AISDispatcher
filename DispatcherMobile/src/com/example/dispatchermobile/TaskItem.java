@@ -74,12 +74,12 @@ public class TaskItem
         return taskID;
     }
 
-    public void addToContacts(ContactItem contact)
+    public void addContact(ContactItem contact)
     {
         this.Contacts.add(contact);
     }
 
-    public void addToMessages(MessageItem message)
+    public void addMessage(MessageItem message)
     {
         this.Messages.add(message);
     }

@@ -4,7 +4,6 @@ package com.example.dispatchermobile;
 import android.app.ListActivity;
 //import android.content.Intent;
 import android.os.AsyncTask;
-import android.widget.ArrayAdapter;
 
 import java.util.ArrayList;
 
@@ -45,7 +44,7 @@ public class NetTaskOperations extends AsyncTask<String, Void , String>
 
     private ArrayList<TaskItem> loadTasks()
     {
-        ITaskProvider _pr = new TaskProvider();
+        ITaskProvider _pr = new DataProvider();
 
         // TODO - Для загрузки локальных Tasks - потом удалить или переработать
         return _pr.getTasksLocal();

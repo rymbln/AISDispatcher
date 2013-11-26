@@ -27,34 +27,27 @@ public class TaskArrayAdapter extends ArrayAdapter<TaskItem> {
 
             final ViewHolder _holder = new ViewHolder();
             _holder.Company = (TextView) _itemTemplate.findViewById(R.id.company);
+            _holder.Company.setTag(tasks.get(_pos).getTaskID());
             _holder.DeliveryTime = (TextView) _itemTemplate.findViewById(R.id.deliveryTime);
             _holder.Address = (TextView) _itemTemplate.findViewById(R.id.address);
             _holder.LastStatus = (TextView) _itemTemplate.findViewById(R.id.lastStatus);
             _holder.Layout = (RelativeLayout) _itemTemplate.findViewById(R.id.layoutListItem);
+            _holder.Layout.setTag(tasks.get(_pos).getTaskID());
+
 
             _holder.IconShowTask = (ImageView) _itemTemplate.findViewById(R.id.iconShowTask);
             _holder.IconShowTask.setImageResource(R.drawable.navigation_next_item);
-            _holder.IconShowTask.setTag(_pos);
-            _holder.IconShowTask.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    TaskItem _task = tasks.get((Integer) _holder.IconShowTask.getTag());
-                   // String _str = _task.toJSON().toString();
-                    SharedTask.SelectedTask = _task;
-                    Intent _intent = new Intent("com.example.DispatcherMobile.selectedTaskItem");
-                   // _intent.putExtra("task", _task.toJSON().toString());
-                    context.startActivityForResult(_intent, 10);
-                }
-            });
+
 
             _holder.CheckLastStatus = (CheckBox) _itemTemplate.findViewById(R.id.checkLastStatus);
+            _holder.CheckLastStatus.setTag(tasks.get(_pos).getTaskID());
             _holder.CheckLastStatus.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    TaskItem _task = tasks.get((Integer) _holder.CheckLastStatus.getTag());
+                    DataProvider dataProvider = new DataProvider();
+                    TaskItem _task = dataProvider.getTasklocal(_holder.Company.getTag().toString());
                     if (_task.getLastStatus().startsWith("Создано")) {
-                        ITaskProvider _pr = new TaskProvider();
-                        _pr.setTaskTaked(_task.getTaskID());
+                        dataProvider.setTaskTaked(_task.getTaskID());
                         // TODO Здесь надо реализовать вызов какого-нибудь события для обновления ListActivity
                         _holder.CheckLastStatus.setChecked(true);
                         // обновление списка задач
@@ -62,8 +55,7 @@ public class TaskArrayAdapter extends ArrayAdapter<TaskItem> {
                         _op.execute("");
 
                     } else if (_task.getLastStatus().startsWith("Принято")) {
-                        ITaskProvider _pr = new TaskProvider();
-                        _pr.setTaskCreated(_task.getTaskID());
+                        dataProvider.setTaskCreated(_task.getTaskID());
                         // TODO Здесь надо реализовать вызов какого-нибудь события для обновления ListActivity
                         _holder.CheckLastStatus.setChecked(false);
                         // Обновление списка задач
@@ -72,22 +64,22 @@ public class TaskArrayAdapter extends ArrayAdapter<TaskItem> {
 
                     } else if (_task.getLastStatus().startsWith("Выполнено")) {
                         _holder.CheckLastStatus.setChecked(true);
-                        Toast.makeText(context, "Sorry, but you can't do this because task is completed. " +
-                                _task.getCompanyName() + " - " +
-                                _task.getLastStatus() + " - " +
-                                _task.getLastStatusDate(), Toast.LENGTH_SHORT).show();
                         return;
                     }
 
-                    Toast.makeText(context, "This function is not correct worked yet. " +
-                            _task.getCompanyName() + " - " +
-                            _task.getLastStatus() + " - " +
-                            _task.getLastStatusDate(), Toast.LENGTH_SHORT).show();
+
                 }
             });
 
             _itemTemplate.setTag(_holder);
-            _holder.CheckLastStatus.setTag(_pos);
+            _itemTemplate.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent _intent = new Intent("com.example.DispatcherMobile.selectedTaskItem");
+                    _intent.putExtra("data", _holder.Company.getTag().toString());
+                    context.startActivityForResult(_intent, 10);
+                }
+            });
         } else {
             _itemTemplate = _existingTemplate;
             ((ViewHolder) _itemTemplate.getTag()).CheckLastStatus.setTag(_pos);

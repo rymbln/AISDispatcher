@@ -6,6 +6,11 @@
             android:title="@string/taskReaderMenuRefreshText"
         android:showAsAction="always"
             android:icon="@drawable/navigation_refresh"/>
+    <item android:id="@+id/taskReaderMenuCompany"
+          android:orderInCategory="200"
+          android:title="Company"
+          android:showAsAction="always"
+          />
     <item android:id="@+id/taskReaderMenuSettings"
           android:title="@string/taskReaderMenuSettingsText" />
     <item android:id="@+id/taskReaderMenuExit"
