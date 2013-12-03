@@ -11,6 +11,7 @@ import android.widget.Toast;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import com.example.dispatchermobile.adapters.TaskArrayAdapter;
 
 import java.util.ArrayList;
 
@@ -111,7 +112,7 @@ public class TaskReader extends ListActivity {
     private void initializeApp() {
         HttpHelpers.initialize(this);
         // TODO - Для загрузки локальных Tasks - потом удалить или переработать
-        DataProvider.initialize();
+     //   DataProvider.initialize();
 
 
     }

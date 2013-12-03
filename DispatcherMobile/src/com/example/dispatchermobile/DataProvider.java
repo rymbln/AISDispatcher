@@ -1,5 +1,9 @@
 package com.example.dispatchermobile;
 
+import com.example.dispatchermobile.models.CompanyItem;
+import com.example.dispatchermobile.models.ContactItem;
+import com.example.dispatchermobile.models.MessageItem;
+import com.example.dispatchermobile.models.TaskItem;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -17,7 +21,7 @@ import java.util.ArrayList;
 
 //TODO предусмотреть загрузку стоковых данных при отсутствии интернета для теста
 
-public final class DataProvider implements ITaskProvider {
+public class DataProvider implements ITaskProvider {
 
     // --Начало секции суррогатных методов работы с задачами
 
@@ -29,7 +33,7 @@ public final class DataProvider implements ITaskProvider {
     private static CompanyItem company;
 
 
-    public static void initialize() {
+    public void initialize() {
         initializeCompanies();
         initializeTasks();
     }
@@ -70,7 +74,7 @@ public final class DataProvider implements ITaskProvider {
         _cn = "АЛЬФАТранс";
         _dt = "16:00";
         _ad = "ул.Петра Алексеева д.19 оф.78";
-        _cm = "обычный комментарий";
+        _cm = "Один контакт с одним телефоном, одно сообщение чата";
         _ls = "Создано";
         _ld = "12:00";
         _dn = "Василий";
@@ -86,7 +90,7 @@ public final class DataProvider implements ITaskProvider {
         _cn = "ВТБ24";
         _dt = "14:00";
         _ad = "пр.Строителей д.19 оф.78";
-        _cm = "обычный комментарий";
+        _cm = "Один контакт с двумя телефонами, Два сообщения чата";
         _ls = "Принято";
         _ld = "12:00";
         _dn = "Василий";
@@ -107,7 +111,7 @@ public final class DataProvider implements ITaskProvider {
         _cn = "Смоленский Банк";
         _dt = "17:00";
         _ad = "ул.Кирова д.19 оф.7";
-        _cm = "обычный комментарий";
+        _cm = "Один контакт с двумя телефонами, Второй контакт с одним телефоном, Три сообщения чата";
         _ls = "Выполнено";
         _ld = "15:00";
         _dn = "Василий";
@@ -152,6 +156,17 @@ public final class DataProvider implements ITaskProvider {
 
         _id = "6";
         _cn = "Смоленский Банк333";
+        _dt = "17:35";
+        _ad = "ул.Кирова д.19 оф.7";
+        _cm = "обычный комментарий";
+        _ls = "Выполнено";
+        _ld = "15:00";
+        _dn = "Василий";
+        task = new TaskItem(_id, _cn, _dt, _ad, _cm, _ls, _ld, _dn);
+        tasks.add(task);
+
+        _id = "7";
+        _cn = "Смоленский Банк333777";
         _dt = "17:35";
         _ad = "ул.Кирова д.19 оф.7";
         _cm = "обычный комментарий";

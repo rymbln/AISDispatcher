@@ -4,12 +4,14 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
+import com.example.dispatchermobile.models.ContactItem;
+import com.example.dispatchermobile.models.MessageItem;
+import com.example.dispatchermobile.models.TaskItem;
 
 
 public class TaskItemSelected extends Activity {
@@ -32,7 +34,6 @@ public class TaskItemSelected extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.taskselected_main);
 
-
         currentIntent = getIntent();
         context = this;
 
@@ -45,6 +46,8 @@ public class TaskItemSelected extends Activity {
         }
     }
 
+
+
     public void initializeView() {
         deliveryTimeTV = (TextView) findViewById(R.id.deliveryTimeTextView);
         addressTV = (TextView) findViewById(R.id.addressTextView);
@@ -56,7 +59,10 @@ public class TaskItemSelected extends Activity {
         actionBar.setDisplayHomeAsUpEnabled(true);
 
 
+
     }
+
+
 
     public void updateView(TaskItem task) {
 
@@ -127,18 +133,29 @@ public class TaskItemSelected extends Activity {
 
         }
         currentIntent.putExtra("update", true);
+        currentIntent.putExtra("view", "tasks");
         setResult(RESULT_OK, currentIntent);
         super.finish();
 
     }
 
     @Override
+    public void finish()
+    {
+        currentIntent.putExtra("update", true);
+        currentIntent.putExtra("view", "tasks");
+        setResult(RESULT_CANCELED, currentIntent);
+        super.finish();
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem _item) {
         switch (_item.getItemId()) {
             case android.R.id.home:
-                Intent homeIntent = new Intent(this, TaskReader.class);
-                homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(homeIntent);
+                currentIntent.putExtra("update", true);
+                currentIntent.putExtra("view", "tasks");
+                setResult(RESULT_OK, currentIntent);
+                super.finish();
         }
         return (super.onOptionsItemSelected(_item));
     }

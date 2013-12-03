@@ -1,5 +1,7 @@
 package com.example.dispatchermobile;
 
+import com.example.dispatchermobile.models.TaskItem;
+
 import java.util.ArrayList;
 
 public  interface ITaskProvider

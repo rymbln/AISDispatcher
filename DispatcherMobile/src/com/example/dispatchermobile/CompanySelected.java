@@ -4,14 +4,12 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.ToggleButton;
+import com.example.dispatchermobile.models.CompanyItem;
+import com.example.dispatchermobile.models.ContactItem;
 
 
 public class CompanySelected extends Activity {
@@ -75,12 +73,23 @@ public class CompanySelected extends Activity {
     }
 
     @Override
+    public void finish()
+    {
+        currentIntent.putExtra("update", true);
+        currentIntent.putExtra("view", "companies");
+        setResult(RESULT_CANCELED, currentIntent);
+        super.finish();
+    }
+
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem _item) {
         switch (_item.getItemId()) {
             case android.R.id.home:
-                Intent homeIntent = new Intent(this, CompanyReader.class);
-                homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(homeIntent);
+                currentIntent.putExtra("update", true);
+                currentIntent.putExtra("view", "companies");
+                setResult(RESULT_OK, currentIntent);
+                super.finish();
         }
         return (super.onOptionsItemSelected(_item));
     }

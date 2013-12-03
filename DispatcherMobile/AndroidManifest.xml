@@ -17,7 +17,7 @@
         android:label="@string/app_name"
         android:theme="@android:style/Theme.Holo.Light" >
         
-        <activity  android:name=".TaskReader"
+        <activity  android:name=".MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -34,7 +34,7 @@
         
         <activity android:name=".TaskItemSelected" 
 		    android:label="Task Item"
-            android:parentActivityName="TaskReader">
+            >
 			<intent-filter>
 				<action android:name="com.example.DispatcherMobile.selectedTaskItem" />
 				<category android:name="android.intent.category.DEFAULT"/>
@@ -42,7 +42,7 @@
 		</activity>
         <activity android:name=".CompanySelected"
                   android:label="Company"
-                  android:parentActivityName="CompanyReader">
+               >
             <intent-filter>
                 <action android:name="com.example.DispatcherMobile.selectedCompany" />
                 <category android:name="android.intent.category.DEFAULT"/>

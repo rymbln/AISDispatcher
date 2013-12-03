@@ -4,6 +4,8 @@ package com.example.dispatchermobile;
 import android.app.ListActivity;
 //import android.content.Intent;
 import android.os.AsyncTask;
+import com.example.dispatchermobile.adapters.TaskArrayAdapter;
+import com.example.dispatchermobile.models.TaskItem;
 
 import java.util.ArrayList;
 

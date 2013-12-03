@@ -2,13 +2,8 @@ package com.example.dispatchermobile;
 
 import android.app.ActionBar;
 import android.app.ListActivity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.*;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.ArrayList;
+import com.example.dispatchermobile.adapters.CompanyArrayAdapter;
 
 public class CompanyReader extends ListActivity {
     // action bar
@@ -92,7 +87,7 @@ public class CompanyReader extends ListActivity {
     private void initializeApp() {
         //HttpHelpers.initialize(this);
         // TODO - Для загрузки локальных Tasks - потом удалить или переработать
-        DataProvider.initialize();
+      //  DataProvider.initialize();
 
 
     }
