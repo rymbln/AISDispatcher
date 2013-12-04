@@ -3,6 +3,8 @@ package com.example.dispatchermobile;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
+import android.content.Intent;
+import android.support.v4.content.LocalBroadcastManager;
 
 /**
  * Created with IntelliJ IDEA.
@@ -45,5 +47,12 @@ public final class MyApplication extends Application {
 
     public static Activity getCurrentActivity() {
         return activity;
+    }
+
+    public static void sendMessage() {
+        Intent intent = new Intent("my-event");
+        // add data
+        intent.putExtra("message", "update");
+        LocalBroadcastManager.getInstance(MyApplication.getAppContext()).sendBroadcast(intent);
     }
 }

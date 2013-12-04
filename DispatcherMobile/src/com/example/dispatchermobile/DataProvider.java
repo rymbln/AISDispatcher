@@ -1,5 +1,7 @@
 package com.example.dispatchermobile;
 
+import android.content.Intent;
+import android.support.v4.content.LocalBroadcastManager;
 import com.example.dispatchermobile.models.CompanyItem;
 import com.example.dispatchermobile.models.ContactItem;
 import com.example.dispatchermobile.models.MessageItem;
@@ -262,6 +264,7 @@ public class DataProvider implements ITaskProvider {
             if (tasks.get(i).getTaskID().equals(_taskID)) {
                 tasks.get(i).setLastStatus("Создано");
                 tasks.get(i).setLastStatusDate(Common.getCurrentTime());
+                MyApplication.sendMessage();
             }
         }
     }
@@ -271,6 +274,7 @@ public class DataProvider implements ITaskProvider {
             if (tasks.get(i).getTaskID().equals(_taskID)) {
                 tasks.get(i).setLastStatus("Принято");
                 tasks.get(i).setLastStatusDate(Common.getCurrentTime());
+                MyApplication.sendMessage();
             }
         }
     }
@@ -280,10 +284,28 @@ public class DataProvider implements ITaskProvider {
             if (tasks.get(i).getTaskID().equals(_taskID)) {
                 tasks.get(i).setLastStatus("Выполнено");
                 tasks.get(i).setLastStatusDate(Common.getCurrentTime());
+                MyApplication.sendMessage();
             }
         }
     }
 
+    public void setMessageToTask(String taskID, String messageText) {
+        for (int i = 0; i < tasks.size(); i++) {
+            if (tasks.get(i).getTaskID().equals(taskID)) {
+                Integer cnt = tasks.get(i).Messages.size() + 1;
+
+                MessageItem message = new MessageItem(
+                        cnt.toString(),
+                        messageText,
+                        "Водитель",
+                        Common.getCurrentTime(),
+                        1
+                );
+                tasks.get(i).addMessage(message);
+                MyApplication.sendMessage();
+            }
+        }
+    }
     // -- Конец секции суррогатных методов работы с задачами
 
 

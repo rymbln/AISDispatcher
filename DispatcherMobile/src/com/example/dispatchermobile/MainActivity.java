@@ -4,11 +4,15 @@ package com.example.dispatchermobile;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.*;
@@ -23,7 +27,7 @@ public class MainActivity extends Activity {
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
-
+    private Integer lastPosition;
     // nav drawer title
     private CharSequence mDrawerTitle;
 
@@ -122,8 +126,9 @@ public class MainActivity extends Activity {
     /**
      * Diplaying fragment view for selected nav drawer list item
      */
-    private void displayView(int position) {
+    private void displayView(Integer position) {
         // update the main content by replacing fragments
+        lastPosition = position;
         Fragment fragment = null;
         switch (position) {
             case 0:
@@ -173,9 +178,41 @@ public class MainActivity extends Activity {
         switch (item.getItemId()) {
             case R.id.action_settings:
                 return true;
+            case R.id.taskReaderMenuRefresh:
+                                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        // Register mMessageReceiver to receive messages.
+        LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver,
+                new IntentFilter("my-event"));
+    }
+
+    // handler for received Intents for the "my-event" event
+    private BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            // Extract data included in the Intent
+            String message = intent.getStringExtra("message");
+            if (message.equals("update"))
+            {
+                displayView(lastPosition);
+            }
+            // Log.d("receiver", "Got message: " + message);
+        }
+    };
+
+    @Override
+    protected void onPause() {
+        // Unregister since the activity is not visible
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(mMessageReceiver);
+        super.onPause();
     }
 
     /**

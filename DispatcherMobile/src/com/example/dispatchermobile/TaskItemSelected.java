@@ -2,10 +2,14 @@ package com.example.dispatchermobile;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v4.content.LocalBroadcastManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,8 +27,7 @@ public class TaskItemSelected extends Activity {
     private LinearLayout llMain;
     private TaskItem task = new TaskItem();
     private ActionBar actionBar;
-
-    private DataProvider dataProvider = new DataProvider();
+    private EditText edtMessageText;
 
     private Context context;
 
@@ -38,8 +41,7 @@ public class TaskItemSelected extends Activity {
 
         Bundle extras = currentIntent.getExtras();
         if (extras != null) {
-            String str = extras.getString("data");
-            task = dataProvider.getTasklocal(extras.getString("data"));
+            task = MyApplication.getDataProvider().getTasklocal(extras.getString("data"));
             initializeView();
             updateView(task);
         }
@@ -57,6 +59,18 @@ public class TaskItemSelected extends Activity {
         llMain = (LinearLayout) findViewById(R.id.llTaskSelectedInfoMain);
         llContacts = (LinearLayout) findViewById(R.id.llContacts);
         llMessages = (LinearLayout) findViewById(R.id.llMessages);
+
+        edtMessageText = (EditText) findViewById(R.id.edtNewMessage);
+        Button btnSendMessage = (Button) findViewById(R.id.btnSendMessage);
+
+        btnSendMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MyApplication.getDataProvider().setMessageToTask(task.getTaskID(), edtMessageText.getText().toString());
+                edtMessageText.setText("");
+            }
+        });
+
         actionBar = getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
@@ -98,6 +112,7 @@ public class TaskItemSelected extends Activity {
         }
 
         // Showing Messages
+        llMessages.removeAllViews();
         if (task.Messages.size() > 0) {
             TextView tvMessages = (TextView) findViewById(R.id.tvMessages);
             tvMessages.setText("Messages (" + task.Messages.size() + " )");
@@ -110,6 +125,36 @@ public class TaskItemSelected extends Activity {
             tvMessages.setText("No Messages");
 
         }
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        // Register mMessageReceiver to receive messages.
+        LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver,
+                new IntentFilter("my-event"));
+    }
+
+    // handler for received Intents for the "my-event" event
+    private BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            // Extract data included in the Intent
+            String message = intent.getStringExtra("message");
+            if (message.equals("update")) {
+                updateView(MyApplication.getDataProvider().getTasklocal(task.getTaskID()));
+            }
+            // Log.d("receiver", "Got message: " + message);
+        }
+    };
+
+    @Override
+    protected void onPause() {
+        // Unregister since the activity is not visible
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(mMessageReceiver);
+        super.onPause();
     }
 
     @Override
@@ -138,30 +183,24 @@ public class TaskItemSelected extends Activity {
 
 
     private void onToggleTask() {
-        ITaskProvider _pr = new DataProvider();
-        if (task.isTaskClosed()) {
-            _pr.setTaskCompleted(task.getTaskID());
+        if (!task.isTaskClosed()) {
+            MyApplication.getDataProvider().setTaskCompleted(task.getTaskID());
         } else {
-            _pr.setTaskTaked(task.getTaskID());
+            MyApplication.getDataProvider().setTaskTaked(task.getTaskID());
         }
-        currentIntent.putExtra("update", true);
-        currentIntent.putExtra("view", "tasks");
-        setResult(RESULT_OK, currentIntent);
-        super.finish();
+        finish();
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem _item) {
         switch (_item.getItemId()) {
             case android.R.id.home:
-                currentIntent.putExtra("update", true);
-                currentIntent.putExtra("view", "tasks");
-                setResult(RESULT_OK, currentIntent);
-                super.finish();
+                finish();
+                break;
             case R.id.taskSelectedMenuItem:
                 onToggleTask();
-            default:
-                return (super.onOptionsItemSelected(_item));
+                break;
         }
+        return (super.onOptionsItemSelected(_item));
     }
 }
