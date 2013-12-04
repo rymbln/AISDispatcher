@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+        android:id="@+id/rlTaskSelectedInfoItem"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#D0D0FF"
+        >
+
+        <ImageView
+                android:id="@+id/imgTaskSelectedInfoItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="4sp"
+                android:layout_marginTop="4sp"
+                android:layout_marginBottom="4sp"
+                android:layout_marginLeft="4sp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:contentDescription="@string/desc"
+                />
+        <TextView
+                android:id="@+id/tvTaskSelectedInfoItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/imgTaskSelectedInfoItem"
+                android:layout_centerVertical="true"
+                android:autoLink="all"/>
+
+</RelativeLayout>

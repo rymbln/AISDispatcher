@@ -20,13 +20,11 @@ import java.util.ArrayList;
  * Time: 12:46
  * To change this template use File | Settings | File Templates.
  */
-public class TaskArrayAdapterFragment extends ArrayAdapter<TaskItem>
-{
+public class TaskArrayAdapterFragment extends ArrayAdapter<TaskItem> {
     private final Context context;
     private final ArrayList<TaskItem> tasks;
 
-    public TaskArrayAdapterFragment(Context context, ArrayList<TaskItem> tasks)
-    {
+    public TaskArrayAdapterFragment(Context context, ArrayList<TaskItem> tasks) {
         super(context, R.layout.tasklist_item, tasks);
         this.context = context;
         this.tasks = tasks;
@@ -49,10 +47,8 @@ public class TaskArrayAdapterFragment extends ArrayAdapter<TaskItem>
             _holder.Layout = (RelativeLayout) _itemTemplate.findViewById(R.id.layoutListItem);
             _holder.Layout.setTag(tasks.get(_pos).getTaskID());
 
-
             _holder.IconShowTask = (ImageView) _itemTemplate.findViewById(R.id.iconShowTask);
             _holder.IconShowTask.setImageResource(R.drawable.navigation_next_item);
-
 
             _holder.CheckLastStatus = (CheckBox) _itemTemplate.findViewById(R.id.checkLastStatus);
             _holder.CheckLastStatus.setTag(tasks.get(_pos).getTaskID());
@@ -89,7 +85,7 @@ public class TaskArrayAdapterFragment extends ArrayAdapter<TaskItem>
                     //    http://developer.android.com/training/location/activity-recognition.html
                     //
 
-                   MyApplication.getCurrentActivity().startActivityForResult(_intent,10); //.startActivity(_intent);
+                    MyApplication.getCurrentActivity().startActivityForResult(_intent, 10); //.startActivity(_intent);
                 }
             });
         } else {
@@ -104,7 +100,11 @@ public class TaskArrayAdapterFragment extends ArrayAdapter<TaskItem>
         _holder.Address.setText(_task.getAddress());
         _holder.Comment.setText(_task.getCommentSmall());
         _holder.IconShowTask = (ImageView) _itemTemplate.findViewById(R.id.iconShowTask);
-        _holder.IconShowTask.setImageResource(R.drawable.navigation_next_item);
+        if (_task.isTaskClosed())
+            _holder.IconShowTask.setImageResource(R.drawable.ic_close);
+        else {
+            _holder.IconShowTask.setImageResource(R.drawable.ic_open);
+        }
 
         _holder.CheckLastStatus = (CheckBox) _itemTemplate.findViewById(R.id.checkLastStatus);
 

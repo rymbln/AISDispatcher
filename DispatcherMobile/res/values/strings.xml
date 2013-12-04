@@ -43,8 +43,8 @@
             </string-array>
 
     <array name="nav_drawer_icons">
-        <item>@drawable/ic_home</item>
-        <item>@drawable/ic_people</item>
+        <item>@drawable/ic_task</item>
+        <item>@drawable/ic_company</item>
         <item>@drawable/ic_photos</item>
     </array>
 
@@ -52,6 +52,7 @@
     <string name="desc_list_item_icon">Item Icon</string>
 
     <string name="action_update">Update</string>
+    <string name="taskSelectedMenuItem">Close Task</string>
 
     <!--End items for drawer-->
 </resources>

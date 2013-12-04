@@ -1,5 +1,12 @@
 package com.example.dispatchermobile.models;
 
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.example.dispatchermobile.R;
 import com.example.dispatchermobile.models.ContactItem;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -114,6 +121,36 @@ public class CompanyItem {
     {
         JSONArray arr = new JSONArray(contacts);
         return  arr;
+    }
+
+    public LinearLayout getView(Context context) {
+        View itemTemplate;
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        LinearLayout layout = new LinearLayout(context);
+        layout.setOrientation(LinearLayout.VERTICAL);
+
+        if (!this.getAddress().equals("")) {
+            itemTemplate = inflater.inflate(R.layout.company_selected_info_item, null);
+            ImageView img = (ImageView) itemTemplate.findViewById(R.id.imgCompanySelectedInfoItem);
+            img.setImageResource(R.drawable.place);
+            TextView textView = (TextView) itemTemplate.findViewById(R.id.tvCompanySelectedInfoItem);
+            textView.setText(this.getAddress());
+            layout.addView(itemTemplate);
+        }
+
+        if (!this.getComment().equals("")) {
+            itemTemplate = inflater.inflate(R.layout.company_selected_info_item, null);
+            ImageView img = (ImageView) itemTemplate.findViewById(R.id.imgCompanySelectedInfoItem);
+            img.setImageResource(R.drawable.comment);
+            TextView textView = (TextView) itemTemplate.findViewById(R.id.tvCompanySelectedInfoItem);
+            textView.setText(this.getComment());
+            layout.addView(itemTemplate);
+        }
+
+
+        return layout;
+
     }
 }
 

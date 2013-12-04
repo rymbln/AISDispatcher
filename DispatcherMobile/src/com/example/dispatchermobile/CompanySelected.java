@@ -14,9 +14,8 @@ import com.example.dispatchermobile.models.ContactItem;
 
 public class CompanySelected extends Activity {
     private Intent currentIntent;
-    private TextView tvAddress;
-    private TextView tvComment;
     private LinearLayout llContacts;
+    private LinearLayout llMain;
     private CompanyItem company = new CompanyItem();
     private ActionBar actionBar;
     private DataProvider dataProvider = new DataProvider();
@@ -42,19 +41,18 @@ public class CompanySelected extends Activity {
     }
 
     public void initializeView() {
-        tvAddress = (TextView) findViewById(R.id.addressTextView);
-        tvComment = (TextView) findViewById(R.id.commentTextView);
         llContacts = (LinearLayout) findViewById(R.id.llContacts);
+        llMain = (LinearLayout) findViewById(R.id.llCompanySelectedInfoMain);
         actionBar = getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-
-
     }
 
     public void updateView(CompanyItem company) {
         actionBar.setTitle(company.getCompanyName());
-        tvAddress.setText(company.getAddress());
-        tvComment.setText(company.getComment());
+        actionBar.setIcon(R.drawable.ic_company);
+
+        llMain.removeAllViews();
+        llMain.addView(company.getView(context));
 
         llContacts.removeAllViews();
         if (company.getContacts().size() > 0) {
@@ -68,8 +66,6 @@ public class CompanySelected extends Activity {
             TextView tvContacts = (TextView) findViewById(R.id.tvContacts);
             tvContacts.setText("No Contacts ");
         }
-
-
     }
 
     @Override
