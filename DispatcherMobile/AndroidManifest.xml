@@ -11,6 +11,7 @@
         android:maxSdkVersion="18"/>
 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -24,15 +25,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity  android:name=".CompanyReader"
-                   android:label="Companies" >
-            <intent-filter>
-                <action android:name="com.example.DispatcherMobile.companiesList"/>
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        
-        <activity android:name=".TaskItemSelected" 
+
+        <activity android:name=".TaskItemSelected"
 		    android:label="Task Item"
             >
 			<intent-filter>

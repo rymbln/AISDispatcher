@@ -32,17 +32,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tvContactItem_Name"
-                android:textSize="18sp"/>
+                android:textSize="20sp"
+                android:textStyle="bold"/>
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tvContactItem_Rank"
-                android:textSize="10sp"/>
+                android:textSize="14sp"/>
         <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/tvContactItem_Comment"
-                android:textSize="10sp"/>
+                android:textSize="14sp"
+                android:textStyle="italic"/>
         </LinearLayout>
 
 </RelativeLayout>

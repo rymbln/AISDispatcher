@@ -101,7 +101,7 @@ public class TaskItemSelected extends Activity {
         llContacts.removeAllViews();
         if (task.Contacts.size() > 0) {
             TextView tvContacts = (TextView) findViewById(R.id.tvContacts);
-            tvContacts.setText("Contacts ( " + task.Contacts.size() + " )");
+            tvContacts.setText("Contacts (" + task.Contacts.size() + ")");
 
             for (ContactItem ci : task.Contacts) {
                 llContacts.addView(ci.getView(context));
@@ -115,7 +115,7 @@ public class TaskItemSelected extends Activity {
         llMessages.removeAllViews();
         if (task.Messages.size() > 0) {
             TextView tvMessages = (TextView) findViewById(R.id.tvMessages);
-            tvMessages.setText("Messages (" + task.Messages.size() + " )");
+            tvMessages.setText("Messages (" + task.Messages.size() + ")");
 
             for (MessageItem mi : task.Messages) {
                 llMessages.addView(mi.getView(context));
@@ -161,7 +161,7 @@ public class TaskItemSelected extends Activity {
     public void finish() {
         currentIntent.putExtra("update", true);
         currentIntent.putExtra("view", "tasks");
-        setResult(RESULT_CANCELED, currentIntent);
+        setResult(RESULT_OK, currentIntent);
         super.finish();
     }
 

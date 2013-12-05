@@ -17,6 +17,7 @@ public class UserSettingsActivity extends PreferenceActivity {
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setIcon(R.drawable.ic_settings);
+        getActionBar().setTitle("Settings");
     }
     @Override
     public void finish() {

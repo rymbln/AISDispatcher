@@ -40,12 +40,14 @@
         <item >Tasks</item>
         <item >Companies</item>
         <item >Settings</item>
+        <item>Close App</item>
             </string-array>
 
     <array name="nav_drawer_icons">
         <item>@drawable/ic_task</item>
         <item>@drawable/ic_company</item>
         <item>@drawable/ic_settings</item>
+        <item>@drawable/ic_exit</item>
     </array>
 
     <!-- Content Description -->
@@ -57,6 +59,19 @@
     <!--End items for drawer-->
 
     <!--Settings-->
+    <string-array name="syncFrequency">
+        <item>Instantly</item>
+        <item>Every 30 min</item>
+        <item>Every Hour</item>
+        <item>Never (Update maually)</item>
+    </string-array>
+    <string-array name="syncFrequencyValues">
+        <item>1</item>
+        <item>30</item>
+        <item>60</item>
+        <item>0</item>
+    </string-array>
+
     <string name="pref_enable_notifications">Enable notifications</string>
     <string name="pref_enable_notifications_summary">Sound and text notifications about incoming events</string>
     <string name="pref_sync_frequency">Sync frequency</string>
@@ -68,5 +83,8 @@
 
     <string name="pref_user_profile">User Profile</string>
     <string name="pref_update_setting">Update Settings</string>
+    <string name="select_phone_dialog_text">Select phone to call</string>
+    <string name="cancel_button">Cancel</string>
+    <string name="call_button">Call</string>
     <!--end of settings-->
 </resources>

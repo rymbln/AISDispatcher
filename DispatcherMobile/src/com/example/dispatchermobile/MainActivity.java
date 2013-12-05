@@ -24,6 +24,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends Activity {
     private static final int RESULT_SETTINGS = 1;
+    private Context context;
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
@@ -45,7 +46,7 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        context = this;
         mTitle = mDrawerTitle = getTitle();
 
         // load slide menu items
@@ -66,6 +67,8 @@ public class MainActivity extends Activity {
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1), true, MyApplication.getDataProvider().getCompaniesLocal().size()));
         // Settings
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
+        // Close
+        navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1)));
 
         // Recycle the typed array
         navMenuIcons.recycle();
@@ -90,6 +93,7 @@ public class MainActivity extends Activity {
                 getActionBar().setTitle(mTitle);
                 // calling onPrepareOptionsMenu() to show action bar icons
                 invalidateOptionsMenu();
+
             }
 
             public void onDrawerOpened(View drawerView) {
@@ -143,7 +147,9 @@ public class MainActivity extends Activity {
                 Intent i = new Intent(this, UserSettingsActivity.class);
                 startActivityForResult(i, RESULT_SETTINGS);
                 break;
-
+            case 3:
+                this.finish();
+                break;
 
             default:
                 break;
@@ -185,8 +191,12 @@ public class MainActivity extends Activity {
                 return true;
             case R.id.taskReaderMenuRefresh:
                 MyApplication.getDataProvider().getTasksLocal();
-                return true;
 
+               Toast.makeText(context,  "Task updated at " + Common.getCurrentTime(), Toast.LENGTH_LONG).show();
+                return true;
+            case R.id.taskReaderMenuSearch:
+                Toast.makeText(context, "Sorry, search is not working now(((" , Toast.LENGTH_LONG).show();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

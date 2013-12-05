@@ -57,7 +57,7 @@ public class CompanySelected extends Activity {
         llContacts.removeAllViews();
         if (company.getContacts().size() > 0) {
             TextView tvContacts = (TextView) findViewById(R.id.tvContacts);
-            tvContacts.setText("Contacts ( " + company.getContacts().size() + " )");
+            tvContacts.setText("Contacts (" + company.getContacts().size() + ")");
 
             for (ContactItem ci : company.getContacts()) {
                 llContacts.addView(ci.getView(context));

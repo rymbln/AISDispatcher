@@ -215,6 +215,7 @@ public class TaskItem {
             img.setImageResource(R.drawable.time);
             TextView textView = (TextView) itemTemplate.findViewById(R.id.tvTaskSelectedInfoItem);
             textView.setText(this.getDeliveryTime());
+            textView.setTextSize(24);
             layout.addView(itemTemplate);
         }
 
@@ -224,6 +225,7 @@ public class TaskItem {
             img.setImageResource(R.drawable.place);
             TextView textView = (TextView) itemTemplate.findViewById(R.id.tvTaskSelectedInfoItem);
             textView.setText(this.getAddress());
+            textView.setTextSize(24);
             layout.addView(itemTemplate);
         }
 

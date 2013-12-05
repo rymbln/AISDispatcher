@@ -136,6 +136,7 @@ public class CompanyItem {
             img.setImageResource(R.drawable.place);
             TextView textView = (TextView) itemTemplate.findViewById(R.id.tvCompanySelectedInfoItem);
             textView.setText(this.getAddress());
+            textView.setTextSize(24);
             layout.addView(itemTemplate);
         }
 
