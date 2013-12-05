@@ -1,12 +1,11 @@
 package com.example.dispatchermobile;
 
 
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
+import android.app.*;
 import android.content.*;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -16,6 +15,7 @@ import android.util.Log;
 import android.view.*;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.Toast;
 import com.example.dispatchermobile.adapters.NavDrawerListAdapter;
 import com.example.dispatchermobile.models.NavDrawerItem;
@@ -29,9 +29,11 @@ public class MainActivity extends Activity {
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
     private Integer lastPosition;
+    private ActionBar actionBar;
     // nav drawer title
     private CharSequence mDrawerTitle;
-
+    // Refresh menu item
+    private MenuItem refreshMenuItem;
     // used to store app title
     private CharSequence mTitle;
 
@@ -48,6 +50,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         context = this;
         mTitle = mDrawerTitle = getTitle();
+        actionBar = getActionBar();
 
         // load slide menu items
         navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
@@ -174,6 +177,13 @@ public class MainActivity extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
+
+        // Associate searchable configuration with the SearchView
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView = (SearchView) menu.findItem(R.id.taskReaderMenuSearch)
+                .getActionView();
+        searchView.setSearchableInfo(searchManager
+                .getSearchableInfo(getComponentName()));
         return true;
     }
 
@@ -190,15 +200,47 @@ public class MainActivity extends Activity {
                 startActivityForResult(i, RESULT_SETTINGS);
                 return true;
             case R.id.taskReaderMenuRefresh:
-                MyApplication.getDataProvider().getTasksLocal();
-
-               Toast.makeText(context,  "Task updated at " + Common.getCurrentTime(), Toast.LENGTH_LONG).show();
+                refreshMenuItem = item;
+                new SyncData().execute();
                 return true;
             case R.id.taskReaderMenuSearch:
-                Toast.makeText(context, "Sorry, search is not working now(((" , Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "Sorry, search is not working now(((", Toast.LENGTH_LONG).show();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
+        }
+    }
+
+    /**
+     * Async task to load the data from server
+     * *
+     */
+    private class SyncData extends AsyncTask<String, Void, String> {
+        @Override
+        protected void onPreExecute() {
+            // set the progress bar view
+            refreshMenuItem.setActionView(R.layout.action_progressbar);
+            refreshMenuItem.expandActionView();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            // for now we use a timer to wait for sometime
+            try {
+                Thread.sleep(3000);
+                MyApplication.getDataProvider().getTasksLocal();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            refreshMenuItem.collapseActionView();
+            // remove the progress bar view
+            refreshMenuItem.setActionView(null);
+            Toast.makeText(context, "Task updated at " + Common.getCurrentTime(), Toast.LENGTH_LONG).show();
         }
     }
 
@@ -292,11 +334,15 @@ public class MainActivity extends Activity {
         builder.append("\n Username: "
                 + sharedPrefs.getString("prefUsername", "NULL"));
 
-        builder.append("\n Send report:"
-                + sharedPrefs.getBoolean("prefSendReport", false));
+        builder.append("\n PAssword: "
+                + sharedPrefs.getString("prefUserpass", "NULL"));
+
+        builder.append("\n Enable Notifications:"
+                + sharedPrefs.getBoolean("prefEnableNotifications", false));
 
         builder.append("\n Sync Frequency: "
                 + sharedPrefs.getString("prefSyncFrequency", "NULL"));
-        Toast.makeText(getApplicationContext(), builder, Toast.LENGTH_LONG);
+
+        Toast.makeText(getApplicationContext(), builder, Toast.LENGTH_LONG).show();
     }
 }

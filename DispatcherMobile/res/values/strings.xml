@@ -86,5 +86,6 @@
     <string name="select_phone_dialog_text">Select phone to call</string>
     <string name="cancel_button">Cancel</string>
     <string name="call_button">Call</string>
+    <string name="search_hint">Enter text here</string>
     <!--end of settings-->
 </resources>

@@ -7,9 +7,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.drawable.ColorDrawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,6 +28,7 @@ public class TaskItemSelected extends Activity {
     private TaskItem task = new TaskItem();
     private ActionBar actionBar;
     private EditText edtMessageText;
+    private ScrollView scrollView;
 
     private Context context;
 
@@ -59,6 +60,7 @@ public class TaskItemSelected extends Activity {
         llMain = (LinearLayout) findViewById(R.id.llTaskSelectedInfoMain);
         llContacts = (LinearLayout) findViewById(R.id.llContacts);
         llMessages = (LinearLayout) findViewById(R.id.llMessages);
+        scrollView = (ScrollView) findViewById(R.id.scrlTaskSelected);
 
         edtMessageText = (EditText) findViewById(R.id.edtNewMessage);
         Button btnSendMessage = (Button) findViewById(R.id.btnSendMessage);
@@ -66,8 +68,7 @@ public class TaskItemSelected extends Activity {
         btnSendMessage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MyApplication.getDataProvider().setMessageToTask(task.getTaskID(), edtMessageText.getText().toString());
-                edtMessageText.setText("");
+                new SendChatMessage().execute();
             }
         });
 
@@ -78,10 +79,39 @@ public class TaskItemSelected extends Activity {
     }
 
 
+    /**
+     * Async task to send chat message to server
+     * *
+     */
+    private class SendChatMessage extends AsyncTask<String, Void, String> {
+        @Override
+        protected void onPreExecute() {
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            MyApplication.getDataProvider().setMessageToTask(task.getTaskID(), edtMessageText.getText().toString());
+          //  updateView(task);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            scrollView.post(new Runnable() {
+
+                @Override
+                public void run() {
+                    scrollView.fullScroll(ScrollView.FOCUS_DOWN);
+                }
+            });
+        }
+    }
+
     public void updateView(TaskItem task) {
+
         actionBar.setTitle(task.getCompanyName());
         actionBar.setIcon(R.drawable.ic_task);
-
+        edtMessageText.setText("");
         // Set toggle
         if (task.getLastStatus().startsWith("Выполнено")) {
             toggleComplete.setChecked(true);
@@ -204,3 +234,4 @@ public class TaskItemSelected extends Activity {
         return (super.onOptionsItemSelected(_item));
     }
 }
+

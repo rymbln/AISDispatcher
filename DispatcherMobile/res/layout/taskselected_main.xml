@@ -13,7 +13,6 @@
             android:id="@+id/edtNewMessage"
             android:layout_alignParentLeft="true"
             android:layout_alignParentBottom="true"
-            android:autoText="true"
             android:hint="@string/NewMessage_EditText"
             android:layout_alignParentRight="false"
             android:layout_toLeftOf="@+id/btnSendMessage"
@@ -27,6 +26,7 @@
             android:layout_alignParentBottom="true"/>
 
     <ScrollView
+            android:id="@+id/scrlTaskSelected"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_alignParentLeft="false"
