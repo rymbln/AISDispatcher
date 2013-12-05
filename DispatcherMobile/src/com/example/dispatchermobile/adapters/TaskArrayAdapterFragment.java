@@ -68,6 +68,7 @@ public class TaskArrayAdapterFragment extends ArrayAdapter<TaskItem> {
                         _holder.CheckLastStatus.setChecked(false);
 
                     } else if (_task.getLastStatus().startsWith("Выполнено")) {
+                        Toast.makeText(context, "Sorry, but task is allready completed", Toast.LENGTH_LONG).show();
                         _holder.CheckLastStatus.setChecked(true);
                     }
 

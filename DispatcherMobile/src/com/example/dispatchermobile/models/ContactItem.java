@@ -80,15 +80,16 @@ public class ContactItem {
                     phonesChar = Phones.toArray( new CharSequence[Phones.size()]);
                     alertDialog.setItems(phonesChar, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int position) {
+
                             Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + Phones.get(position)));
-                            MyApplication.getAppContext().startActivity(intent);
+                            context.startActivity(intent);
                         }
                     });
                     alertDialog.show();
                 }   else
                 {
                 Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + Phones.get(0)));
-                MyApplication.getAppContext().startActivity(intent);
+               context.startActivity(intent);
                 }
             }
         });
