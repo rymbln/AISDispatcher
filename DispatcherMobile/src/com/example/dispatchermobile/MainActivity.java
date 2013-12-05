@@ -4,13 +4,11 @@ package com.example.dispatchermobile;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
+import android.content.*;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.widget.DrawerLayout;
@@ -18,12 +16,14 @@ import android.util.Log;
 import android.view.*;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 import com.example.dispatchermobile.adapters.NavDrawerListAdapter;
 import com.example.dispatchermobile.models.NavDrawerItem;
 
 import java.util.ArrayList;
 
 public class MainActivity extends Activity {
+    private static final int RESULT_SETTINGS = 1;
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
@@ -128,7 +128,9 @@ public class MainActivity extends Activity {
      */
     private void displayView(Integer position) {
         // update the main content by replacing fragments
-        lastPosition = position;
+        if (position != 2) {
+            lastPosition = position;
+        }
         Fragment fragment = null;
         switch (position) {
             case 0:
@@ -137,9 +139,10 @@ public class MainActivity extends Activity {
             case 1:
                 fragment = new CompanyListFragment();
                 break;
-//            case 2:
-//                fragment = new PhotosFragment();
-//                break;
+            case 2:
+                Intent i = new Intent(this, UserSettingsActivity.class);
+                startActivityForResult(i, RESULT_SETTINGS);
+                break;
 
 
             default:
@@ -177,9 +180,13 @@ public class MainActivity extends Activity {
         // Handle action bar actions click
         switch (item.getItemId()) {
             case R.id.action_settings:
+                Intent i = new Intent(this, UserSettingsActivity.class);
+                startActivityForResult(i, RESULT_SETTINGS);
                 return true;
             case R.id.taskReaderMenuRefresh:
-                                return true;
+                MyApplication.getDataProvider().getTasksLocal();
+                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -200,8 +207,7 @@ public class MainActivity extends Activity {
         public void onReceive(Context context, Intent intent) {
             // Extract data included in the Intent
             String message = intent.getStringExtra("message");
-            if (message.equals("update"))
-            {
+            if (message.equals("update")) {
                 displayView(lastPosition);
             }
             // Log.d("receiver", "Got message: " + message);
@@ -253,25 +259,34 @@ public class MainActivity extends Activity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode == RESULT_OK) {
-            if (data.hasExtra("update")) {
-                Boolean result = data.getExtras().getBoolean("update");
-                String targetResult = data.getExtras().getString("view");
-                if (result) {
-                    if (targetResult.equals("tasks")) {
-                        this.displayView(0);
-                    } else {
-                        this.displayView(1);
-                    }
-                }
-            }
-        } else {
-            String targetResult = data.getExtras().getString("view");
-            if (targetResult.equals("tasks")) {
-                this.displayView(0);
-            } else {
-                this.displayView(1);
-            }
+        //TODO: Переделать на нормальную обработку всех приходящих результатов через requestCode
+        switch (resultCode) {
+            case RESULT_OK:
+                this.displayView(lastPosition);
+                break;
+            case RESULT_SETTINGS:
+                this.displayView(lastPosition);
+                executeSettings();
+                break;
+
         }
+    }
+
+
+    private void executeSettings() {
+        SharedPreferences sharedPrefs = PreferenceManager
+                .getDefaultSharedPreferences(this);
+
+        StringBuilder builder = new StringBuilder();
+
+        builder.append("\n Username: "
+                + sharedPrefs.getString("prefUsername", "NULL"));
+
+        builder.append("\n Send report:"
+                + sharedPrefs.getBoolean("prefSendReport", false));
+
+        builder.append("\n Sync Frequency: "
+                + sharedPrefs.getString("prefSyncFrequency", "NULL"));
+        Toast.makeText(getApplicationContext(), builder, Toast.LENGTH_LONG);
     }
 }

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory android:title="@string/pref_user_profile" >
+        <EditTextPreference
+                android:title="@string/pref_user_name"
+                android:summary="@string/pref_user_name_summary"
+                android:key="prefUsername"/>
+        <EditTextPreference
+                android:title="@string/pref_user_pass"
+                android:summary="@string/pref_user_pass_summary"
+                android:key="prefUserpass"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/pref_update_setting" >
+        <CheckBoxPreference
+                android:defaultValue="false"
+                android:key="prefEnableNotifications"
+                android:summary="@string/pref_enable_notifications_summary"
+                android:title="@string/pref_enable_notifications" >
+        </CheckBoxPreference>
+
+        <ListPreference
+                android:key="prefSyncFrequency"
+                android:entries="@array/syncFrequency"
+                android:summary="@string/pref_sync_frequency_summary"
+                android:entryValues="@array/syncFrequencyValues"
+                android:title="@string/pref_sync_frequency" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

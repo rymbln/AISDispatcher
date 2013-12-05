@@ -1,4 +1,4 @@
-package com.example.dispatchermobile;
+package com.example.dispatchermobile.models;
 
 /**
  * Created with IntelliJ IDEA.

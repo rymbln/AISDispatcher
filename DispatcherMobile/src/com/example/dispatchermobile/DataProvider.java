@@ -221,6 +221,7 @@ public class DataProvider implements ITaskProvider {
 
     public ArrayList<TaskItem> getTasksLocal() {
         tasks = sortTasks(tasks);
+     //   MyApplication.sendMessage();
         return tasks;
     }
 
