@@ -13,6 +13,7 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.*;
 import com.example.dispatchermobile.models.ContactItem;
 import com.example.dispatchermobile.models.MessageItem;
@@ -46,6 +47,7 @@ public class TaskItemSelected extends Activity {
             initializeView();
             updateView(task);
         }
+//        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     }
 
 
@@ -219,6 +221,7 @@ public class TaskItemSelected extends Activity {
             MyApplication.getDataProvider().setTaskTaked(task.getTaskID());
         }
         finish();
+        MyApplication.sendNotificationUpdatedTask(task);
     }
 
     @Override

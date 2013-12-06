@@ -222,6 +222,8 @@ public class DataProvider implements ITaskProvider {
     public ArrayList<TaskItem> getTasksLocal() {
         tasks = sortTasks(tasks);
      //   MyApplication.sendMessage();
+
+
         return tasks;
     }
 
@@ -326,7 +328,6 @@ public class DataProvider implements ITaskProvider {
         }
         Document _doc = HttpHelpers.downloadTasksFromNet("http://dispatcher-app.appspot.com/app/");
         ArrayList<TaskItem> _tasks = ParseToTasks(_doc);
-
         return _tasks;
     }
 

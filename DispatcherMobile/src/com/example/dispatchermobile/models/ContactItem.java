@@ -63,7 +63,7 @@ public class ContactItem {
 
         for (int j = 1; j <= this.Phones.size(); j++) {
             TextView _tv = new TextView(context);
-            _tv.setAutoLinkMask(Linkify.PHONE_NUMBERS);
+//            _tv.setAutoLinkMask(Linkify.PHONE_NUMBERS);
             _tv.setTextSize(24);
             _tv.setText(this.Phones.get(j - 1));
             llPhones.addView(_tv);

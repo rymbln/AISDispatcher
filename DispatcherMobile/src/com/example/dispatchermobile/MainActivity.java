@@ -59,6 +59,7 @@ public class MainActivity extends Activity {
         navMenuIcons = getResources().obtainTypedArray(R.array.nav_drawer_icons);
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+
         mDrawerList = (ListView) findViewById(R.id.list_slidermenu);
 
         navDrawerItems = new ArrayList<NavDrawerItem>();
@@ -241,6 +242,7 @@ public class MainActivity extends Activity {
             // remove the progress bar view
             refreshMenuItem.setActionView(null);
             Toast.makeText(context, "Task updated at " + Common.getCurrentTime(), Toast.LENGTH_LONG).show();
+            MyApplication.sendNotificationUpdatedData();
         }
     }
 

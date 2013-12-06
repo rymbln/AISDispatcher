@@ -37,4 +37,11 @@ public class Common {
         return String.format("%02d:%02d:%02d", hour, minute, second); // ЧЧ:ММ:СС - формат времени
     }
 
+    public static <T> T isNull(T objectToCheck, T defaultValue) {
+        return objectToCheck==null ? defaultValue : objectToCheck;
+    }
+
+    public static final String ACTION_TAKED = "com.example.dispatchermobile.ACTION_SET_TASK_TAKED";
+    public static final String ACTION_COMPLETED = "com.example.dispatchermobile.ACTION_SET_TASK_COMPLETED";
+    public static final String ACTION_NEW = "com.example.dispatchermobile.ACTION_SET_TASK_NEW";
 }
