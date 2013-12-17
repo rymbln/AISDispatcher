@@ -143,9 +143,11 @@ public class MainActivity extends Activity {
         switch (position) {
             case 0:
                 fragment = new TaskListFragment();
+                Common.ACTIVE_SCREEN = 1;
                 break;
             case 1:
                 fragment = new CompanyListFragment();
+                Common.ACTIVE_SCREEN = 2;
                 break;
             case 2:
                 Intent i = new Intent(this, UserSettingsActivity.class);
@@ -181,10 +183,8 @@ public class MainActivity extends Activity {
 
         // Associate searchable configuration with the SearchView
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-        SearchView searchView = (SearchView) menu.findItem(R.id.taskReaderMenuSearch)
-                .getActionView();
-        searchView.setSearchableInfo(searchManager
-                .getSearchableInfo(getComponentName()));
+        SearchView searchView = (SearchView) menu.findItem(R.id.taskReaderMenuSearch).getActionView();
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
         return true;
     }
 

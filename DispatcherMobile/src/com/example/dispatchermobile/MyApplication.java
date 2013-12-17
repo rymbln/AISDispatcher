@@ -21,6 +21,7 @@ import com.example.dispatchermobile.models.TaskItem;
 public class MyApplication extends Application {
     private static DataProvider dataProvider;
     private static Context context;
+
     private static Activity activity;
     private static Integer notificationCounter = 1;
     private static Intent mDataProviderService;

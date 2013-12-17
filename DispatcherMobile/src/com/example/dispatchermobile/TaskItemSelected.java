@@ -10,10 +10,9 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.WindowManager;
+import android.support.v4.view.MotionEventCompat;
+import android.util.Log;
+import android.view.*;
 import android.widget.*;
 import com.example.dispatchermobile.models.ContactItem;
 import com.example.dispatchermobile.models.MessageItem;
@@ -30,8 +29,8 @@ public class TaskItemSelected extends Activity {
     private ActionBar actionBar;
     private EditText edtMessageText;
     private ScrollView scrollView;
-
     private Context context;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,8 +46,55 @@ public class TaskItemSelected extends Activity {
             initializeView();
             updateView(task);
         }
-//        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
     }
+
+//    private class GestureListener extends GestureDetector.SimpleOnGestureListener {
+//
+//        private static final int SWIPE_MIN_DISTANCE = 120;
+//        private static final int SWIPE_THRESHOLD_VELOCITY = 200;
+//
+//        @Override
+//        public boolean onFling(MotionEvent e1, MotionEvent e2,
+//                               float velocityX, float velocityY) {
+//
+//            if(e1.getX() - e2.getX() > SWIPE_MIN_DISTANCE &&
+//                    Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
+//                //From Right to Left
+//                return true;
+//            }  else if (e2.getX() - e1.getX() > SWIPE_MIN_DISTANCE &&
+//                    Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
+//                //From Left to Right
+//                return true;
+//            }
+//
+//            if(e1.getY() - e2.getY() > SWIPE_MIN_DISTANCE &&
+//                    Math.abs(velocityY) > SWIPE_THRESHOLD_VELOCITY) {
+//                //From Bottom to Top
+//                return true;
+//            }  else if (e2.getY() - e1.getY() > SWIPE_MIN_DISTANCE &&
+//                    Math.abs(velocityY) > SWIPE_THRESHOLD_VELOCITY) {
+//                //From Top to Bottom
+//                return true;
+//            }
+//            return false;
+//        }
+//        @Override
+//        public boolean onDown(MotionEvent e) {
+//            //always return true since all gestures always begin with onDown and<br>
+//            //if this returns false, the framework won't try to pick up onFling for example.
+//            return true;
+//        }
+//    }
+//@Override
+//    public boolean onTouchEvent(MotionEvent event) {
+//
+//        if (gestureDetector.onTouchEvent(event)) {
+//          Toast.makeText(this,"111",Toast.LENGTH_SHORT).show();
+//            return true;
+//        }
+//        return false;
+//    }
 
 
     public void initializeView() {
@@ -63,7 +109,6 @@ public class TaskItemSelected extends Activity {
         llContacts = (LinearLayout) findViewById(R.id.llContacts);
         llMessages = (LinearLayout) findViewById(R.id.llMessages);
         scrollView = (ScrollView) findViewById(R.id.scrlTaskSelected);
-
         edtMessageText = (EditText) findViewById(R.id.edtNewMessage);
         Button btnSendMessage = (Button) findViewById(R.id.btnSendMessage);
 
@@ -93,7 +138,7 @@ public class TaskItemSelected extends Activity {
         @Override
         protected String doInBackground(String... params) {
             MyApplication.getDataProvider().setMessageToTask(task.getTaskID(), edtMessageText.getText().toString());
-          //  updateView(task);
+            //  updateView(task);
             return null;
         }
 

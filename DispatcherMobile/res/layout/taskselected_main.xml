@@ -8,6 +8,7 @@
         android:layout_height="fill_parent"
         android:descendantFocusability="beforeDescendants"
         android:focusableInTouchMode="true"
+        android:id="@+id/rlTaskSelectedMain"
         >
     <EditText
             android:layout_width="wrap_content"
