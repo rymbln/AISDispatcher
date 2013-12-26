@@ -1,7 +1,10 @@
 package com.example.dispatchermobile;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.support.v4.content.LocalBroadcastManager;
+import com.example.dispatchermobile.adapters.SearchArrayAdapterCompany;
+import com.example.dispatchermobile.adapters.SearchArrayAdapterTask;
 import com.example.dispatchermobile.models.CompanyItem;
 import com.example.dispatchermobile.models.ContactItem;
 import com.example.dispatchermobile.models.MessageItem;
@@ -65,6 +68,31 @@ public class DataProvider implements ITaskProvider {
         contact.addPhone("89101204569");
         company.addContact(contact);
         companies.add(company);
+    }
+
+
+    public ArrayList<TaskItem> getSearchForTasks(String queryStr) {
+        ArrayList<TaskItem> tasksAll = MyApplication.getDataProvider().getTasksLocal();
+        ArrayList<TaskItem> tasksSearched = new ArrayList<TaskItem>();
+        for (TaskItem item : tasksAll) {
+            if (item.toString().toLowerCase().contains(queryStr)) {
+                tasksSearched.add(item);
+            }
+
+        }
+        return tasksSearched;
+    }
+
+    public ArrayList<CompanyItem> getSearchForCompanies(String queryStr) {
+        ArrayList<CompanyItem> companyAll = MyApplication.getDataProvider().getCompaniesLocal();
+        ArrayList<CompanyItem> companySearched = new ArrayList<CompanyItem>();
+        for (CompanyItem item : companyAll) {
+            if (item.toString().toLowerCase().contains(queryStr)) {
+                companySearched.add(item);
+            }
+
+        }
+        return companySearched;
     }
 
     private static void initializeTasks() {
@@ -221,7 +249,7 @@ public class DataProvider implements ITaskProvider {
 
     public ArrayList<TaskItem> getTasksLocal() {
         tasks = sortTasks(tasks);
-     //   MyApplication.sendMessage();
+        //   MyApplication.sendMessage();
 
 
         return tasks;
@@ -357,4 +385,5 @@ public class DataProvider implements ITaskProvider {
         }
         return _tasks;
     }
+
 }

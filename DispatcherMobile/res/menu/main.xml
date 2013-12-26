@@ -5,14 +5,22 @@
           android:showAsAction="always"
           android:icon="@drawable/navigation_refresh"/>
 
+    <!--<item android:id="@+id/taskReaderMenuSearch"-->
+          <!--android:orderInCategory="100"-->
+          <!--android:title="@string/taskReaderMenuRefreshText"-->
+          <!--android:showAsAction="always"-->
+          <!--android:icon="@drawable/ic_search"-->
+          <!--android:actionViewClass="android.widget.SearchView"-->
+          <!--android:voiceSearchMode="showVoiceSearchButton|launchRecognizer"-->
+    <!--/>-->
+
     <item android:id="@+id/taskReaderMenuSearch"
           android:orderInCategory="100"
           android:title="@string/taskReaderMenuRefreshText"
           android:showAsAction="always"
           android:icon="@drawable/ic_search"
-          android:actionViewClass="android.widget.SearchView"
-          android:voiceSearchMode="showVoiceSearchButton|launchRecognizer"
-    />
+            />
+
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="300"

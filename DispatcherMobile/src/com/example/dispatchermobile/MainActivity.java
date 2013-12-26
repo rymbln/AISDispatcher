@@ -5,6 +5,8 @@ import android.app.*;
 import android.content.*;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -13,14 +15,12 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.*;
-import android.widget.AdapterView;
-import android.widget.ListView;
-import android.widget.SearchView;
-import android.widget.Toast;
+import android.widget.*;
 import com.example.dispatchermobile.adapters.NavDrawerListAdapter;
 import com.example.dispatchermobile.models.NavDrawerItem;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends Activity {
     private static final int RESULT_SETTINGS = 1;
@@ -30,6 +30,7 @@ public class MainActivity extends Activity {
     private ActionBarDrawerToggle mDrawerToggle;
     private Integer lastPosition;
     private ActionBar actionBar;
+    private Intent searchIntent;
     // nav drawer title
     private CharSequence mDrawerTitle;
     // Refresh menu item
@@ -44,6 +45,8 @@ public class MainActivity extends Activity {
     private ArrayList<NavDrawerItem> navDrawerItems;
     private NavDrawerListAdapter adapter;
 
+    // private SearchView mSearchView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +55,38 @@ public class MainActivity extends Activity {
         mTitle = mDrawerTitle = getTitle();
         actionBar = getActionBar();
 
+        loadNavigationDrawer();
+
+        // enabling action bar app icon and behaving it as toggle button
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setHomeButtonEnabled(true);
+
+        // TODO: Переделать на нормальный broadcastReceiver
+        //    http://developer.android.com/training/location/activity-recognition.html
+        //
+        MyApplication.setCurrentActivity(this);
+        Intent intent = getIntent();
+
+
+        if (savedInstanceState == null) {
+            displayView(Common.ACTIVE_SCREEN - 1);
+        }
+
+        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+            String query = intent.getStringExtra(SearchManager.QUERY);
+        } else if (Intent.ACTION_VIEW.equals(intent.getAction())) {
+            if (Common.ACTIVE_SCREEN == 1) {
+                searchIntent = new Intent("com.example.DispatcherMobile.selectedTaskItem");
+            } else {
+                searchIntent = new Intent("com.example.DispatcherMobile.selectedCompany");
+            }
+            searchIntent.putExtra("data", intent.getData().toString());
+            startActivity(searchIntent);
+            //    this.finish();
+        }
+    }
+
+    private void loadNavigationDrawer() {
         // load slide menu items
         navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
 
@@ -83,11 +118,6 @@ public class MainActivity extends Activity {
         adapter = new NavDrawerListAdapter(getApplicationContext(),
                 navDrawerItems);
         mDrawerList.setAdapter(adapter);
-
-        // enabling action bar app icon and behaving it as toggle button
-        getActionBar().setDisplayHomeAsUpEnabled(true);
-        getActionBar().setHomeButtonEnabled(true);
-
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
                 R.drawable.ic_drawer, //nav menu toggle icon
                 R.string.app_name, // nav drawer open - description for accessibility
@@ -107,16 +137,8 @@ public class MainActivity extends Activity {
             }
         };
         mDrawerLayout.setDrawerListener(mDrawerToggle);
-        // TODO: Переделать на нормальный broadcastReceiver
-        //    http://developer.android.com/training/location/activity-recognition.html
-        //
-        MyApplication.setCurrentActivity(this);
-
-        if (savedInstanceState == null) {
-            // on first time display view for first nav item
-            displayView(0);
-        }
     }
+
 
     /**
      * Slide menu item click listener
@@ -138,17 +160,18 @@ public class MainActivity extends Activity {
         // update the main content by replacing fragments
         if (position != 2) {
             lastPosition = position;
+
         }
         Fragment fragment = null;
         switch (position) {
             case 0:
                 fragment = new TaskListFragment();
                 Common.ACTIVE_SCREEN = 1;
-                break;
+                      break;
             case 1:
                 fragment = new CompanyListFragment();
                 Common.ACTIVE_SCREEN = 2;
-                break;
+                      break;
             case 2:
                 Intent i = new Intent(this, UserSettingsActivity.class);
                 startActivityForResult(i, RESULT_SETTINGS);
@@ -179,12 +202,16 @@ public class MainActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
-
-        // Associate searchable configuration with the SearchView
-        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-        SearchView searchView = (SearchView) menu.findItem(R.id.taskReaderMenuSearch).getActionView();
-        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        super.onCreateOptionsMenu(menu);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main, menu);
+//        MenuItem searchItem = menu.findItem(R.id.taskReaderMenuSearch)   ;
+//        mSearchView = (SearchView) searchItem.getActionView();
+//
+//          mSearchView.setIconifiedByDefault(false);
+//           SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+//          SearchView searchView = (SearchView) menu.findItem(R.id.taskReaderMenuSearch).getActionView();
+//          searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
         return true;
     }
 
@@ -205,7 +232,7 @@ public class MainActivity extends Activity {
                 new SyncData().execute();
                 return true;
             case R.id.taskReaderMenuSearch:
-                Toast.makeText(context, "Sorry, search is not working now(((", Toast.LENGTH_LONG).show();
+                onSearchRequested();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

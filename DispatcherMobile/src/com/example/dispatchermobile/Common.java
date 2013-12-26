@@ -2,7 +2,12 @@ package com.example.dispatchermobile;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import com.example.dispatchermobile.adapters.SearchArrayAdapterCompany;
+import com.example.dispatchermobile.adapters.SearchArrayAdapterTask;
+import com.example.dispatchermobile.models.CompanyItem;
+import com.example.dispatchermobile.models.TaskItem;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
@@ -41,12 +46,14 @@ public class Common {
         return objectToCheck==null ? defaultValue : objectToCheck;
     }
 
-    // Save the active screen: TASKS = 1 ; COMPANIES = 2
-    public static int ACTIVE_SCREEN = 0;
 
-    public static final String ACTION_TAKED = "com.example.dispatchermobile.ACTION_SET_TASK_TAKED";
-    public static final String ACTION_COMPLETED = "com.example.dispatchermobile.ACTION_SET_TASK_COMPLETED";
-    public static final String ACTION_NEW = "com.example.dispatchermobile.ACTION_SET_TASK_NEW";
+
+    // Save the active screen: TASKS = 1 ; COMPANIES = 2
+    public static int ACTIVE_SCREEN = 1;
+
+    public static final String ACTION_TAKED = "com.example.DispatcherMobile.ACTION_SET_TASK_TAKED";
+    public static final String ACTION_COMPLETED = "com.example.DispatcherMobile.ACTION_SET_TASK_COMPLETED";
+    public static final String ACTION_NEW = "com.example.DispatcherMobile.ACTION_SET_TASK_NEW";
 
     private static final int SWIPE_MIN_DISTANCE = 120;
     private static final int SWIPE_THRESHOLD_VELOCITY = 200;
