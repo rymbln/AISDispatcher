@@ -81,6 +81,8 @@ public class MainActivity extends Activity {
                 searchIntent = new Intent("com.example.DispatcherMobile.selectedCompany");
             }
             searchIntent.putExtra("data", intent.getData().toString());
+            searchIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            searchIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
             startActivity(searchIntent);
             //    this.finish();
         }
@@ -174,7 +176,9 @@ public class MainActivity extends Activity {
                       break;
             case 2:
                 Intent i = new Intent(this, UserSettingsActivity.class);
-                startActivityForResult(i, RESULT_SETTINGS);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                i.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(i);
                 break;
             case 3:
                 this.finish();
@@ -225,7 +229,9 @@ public class MainActivity extends Activity {
         switch (item.getItemId()) {
             case R.id.action_settings:
                 Intent i = new Intent(this, UserSettingsActivity.class);
-                startActivityForResult(i, RESULT_SETTINGS);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                i.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(i);
                 return true;
             case R.id.taskReaderMenuRefresh:
                 refreshMenuItem = item;

@@ -59,7 +59,9 @@ public class CompanyArrayAdapterFragment extends ArrayAdapter<CompanyItem> {
                     // TODO: Переделать на нормальный broadcastReceiver
                     //    http://developer.android.com/training/location/activity-recognition.html
                     //
-                    MyApplication.getCurrentActivity().startActivityForResult(_intent,10);;
+                    _intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    _intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    MyApplication.getCurrentActivity().startActivity(_intent);
                 }
             });
         } else {

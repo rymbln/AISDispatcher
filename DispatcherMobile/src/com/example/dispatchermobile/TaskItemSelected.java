@@ -236,9 +236,9 @@ public class TaskItemSelected extends Activity {
 
     @Override
     public void finish() {
-        currentIntent.putExtra("update", true);
-        currentIntent.putExtra("view", "tasks");
-        setResult(RESULT_OK, currentIntent);
+//        currentIntent.putExtra("update", true);
+//        currentIntent.putExtra("view", "tasks");
+//        setResult(RESULT_OK, currentIntent);
         super.finish();
     }
 

@@ -49,6 +49,20 @@ public class TaskArrayAdapterFragment extends ArrayAdapter<TaskItem> {
 
             _holder.IconShowTask = (ImageView) _itemTemplate.findViewById(R.id.iconShowTask);
             _holder.IconShowTask.setImageResource(R.drawable.navigation_next_item);
+            _holder.IconShowTask.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    DataProvider dataProvider = new DataProvider();
+                    TaskItem _task = dataProvider.getTasklocal(_holder.Company.getTag().toString());
+                    if (_task.getLastStatus().startsWith("Создано")) {
+                        dataProvider.setTaskCompleted(_task.getTaskID());
+                    } else if (_task.getLastStatus().startsWith("Принято")) {
+                        dataProvider.setTaskCompleted(_task.getTaskID());
+                    } else if (_task.getLastStatus().startsWith("Выполнено")) {
+                        dataProvider.setTaskTaked(_task.getTaskID());
+                    }
+                }
+            });
 
             _holder.CheckLastStatus = (CheckBox) _itemTemplate.findViewById(R.id.checkLastStatus);
             _holder.CheckLastStatus.setTag(tasks.get(_pos).getTaskID());
@@ -71,8 +85,6 @@ public class TaskArrayAdapterFragment extends ArrayAdapter<TaskItem> {
                         Toast.makeText(context, "Sorry, but task is allready completed", Toast.LENGTH_LONG).show();
                         _holder.CheckLastStatus.setChecked(true);
                     }
-
-
                 }
             });
 
@@ -85,8 +97,9 @@ public class TaskArrayAdapterFragment extends ArrayAdapter<TaskItem> {
                     // TODO: Переделать на нормальный broadcastReceiver
                     //    http://developer.android.com/training/location/activity-recognition.html
                     //
-
-                    MyApplication.getCurrentActivity().startActivityForResult(_intent, 10); //.startActivity(_intent);
+                    _intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    _intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    MyApplication.getCurrentActivity().startActivity(_intent); //.startActivity(_intent);
                 }
             });
         } else {

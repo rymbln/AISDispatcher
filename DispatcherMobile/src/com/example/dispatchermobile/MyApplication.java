@@ -80,6 +80,8 @@ public class MyApplication extends Application {
                         .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION));
 
         Intent resultIntent = new Intent(getCurrentActivity(), MainActivity.class);
+            resultIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            resultIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(getCurrentActivity());
         stackBuilder.addParentStack(TaskItemSelected.class);
         stackBuilder.addNextIntent(resultIntent);

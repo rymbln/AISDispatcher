@@ -71,9 +71,9 @@ public class CompanySelected extends Activity {
     @Override
     public void finish()
     {
-        currentIntent.putExtra("update", true);
-        currentIntent.putExtra("view", "companies");
-        setResult(RESULT_CANCELED, currentIntent);
+//        currentIntent.putExtra("update", true);
+//        currentIntent.putExtra("view", "companies");
+//        setResult(RESULT_CANCELED, currentIntent);
         super.finish();
     }
 
@@ -82,9 +82,10 @@ public class CompanySelected extends Activity {
     public boolean onOptionsItemSelected(MenuItem _item) {
         switch (_item.getItemId()) {
             case android.R.id.home:
-                currentIntent.putExtra("update", true);
-                currentIntent.putExtra("view", "companies");
-                setResult(RESULT_OK, currentIntent);
+//                currentIntent.putExtra("update", true);
+//                currentIntent.putExtra("view", "companies");
+//                setResult(RESULT_OK, currentIntent);
+
                 super.finish();
         }
         return (super.onOptionsItemSelected(_item));
