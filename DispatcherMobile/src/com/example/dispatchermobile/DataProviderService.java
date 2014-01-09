@@ -1,9 +1,8 @@
-package com.example.dispatchermobile;
+package com.example.DispatcherMobile;
 
 import android.app.IntentService;
 import android.app.NotificationManager;
 import android.content.Intent;
-import android.util.Log;
 
 /**
  * Created with IntelliJ IDEA.

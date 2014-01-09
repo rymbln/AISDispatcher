@@ -1,13 +1,13 @@
-package com.example.dispatchermobile;
+package com.example.DispatcherMobile;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import com.example.dispatchermobile.adapters.SearchArrayAdapterCompany;
-import com.example.dispatchermobile.adapters.SearchArrayAdapterTask;
-import com.example.dispatchermobile.models.CompanyItem;
-import com.example.dispatchermobile.models.TaskItem;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.preference.PreferenceManager;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
@@ -46,7 +46,40 @@ public class Common {
         return objectToCheck==null ? defaultValue : objectToCheck;
     }
 
+    public static boolean isConnectingToInternet(){
+        ConnectivityManager connectivity = (ConnectivityManager) MyApplication.getCurrentActivity().getBaseContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivity != null)
+        {
+            NetworkInfo[] info = connectivity.getAllNetworkInfo();
+            if (info != null)
+                for (NetworkInfo anInfo : info) {
+                    if (anInfo.getState() == NetworkInfo.State.CONNECTED) {
+                        return true;
+                    }
+                }
 
+        }
+        return false;
+    }
+
+    public static boolean isLoginPassCorrected(){
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(MyApplication.getCurrentActivity());
+        String strLogin = sharedPrefs.getString("prefUsername", "NULL");
+        String strPass =  sharedPrefs.getString("prefUserpass", "NULL");
+        if (strLogin.equals("NULL") || strPass.equals("NULL") || strLogin.equals("") || strPass.equals(""))
+        {
+            return false;
+        }
+        else
+        {
+        return true;
+        }
+    }
+
+    public static boolean isCorrectEnteredLoginPassword(String login, String pass)
+    {
+        return true;
+    }
 
     // Save the active screen: TASKS = 1 ; COMPANIES = 2
     public static int ACTIVE_SCREEN = 1;

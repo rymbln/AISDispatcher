@@ -1,4 +1,4 @@
-package com.example.dispatchermobile.adapters;
+package com.example.DispatcherMobile.adapters;
 
 import android.app.ListActivity;
 import android.content.Intent;
@@ -6,8 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
-import com.example.dispatchermobile.R;
-import com.example.dispatchermobile.models.TaskItem;
+import com.example.DispatcherMobile.R;
+import com.example.DispatcherMobile.models.TaskItem;
 
 import java.util.ArrayList;
 

@@ -1,14 +1,9 @@
-package com.example.dispatchermobile;
+package com.example.DispatcherMobile;
 
-import android.content.Intent;
-import android.database.Cursor;
-import android.support.v4.content.LocalBroadcastManager;
-import com.example.dispatchermobile.adapters.SearchArrayAdapterCompany;
-import com.example.dispatchermobile.adapters.SearchArrayAdapterTask;
-import com.example.dispatchermobile.models.CompanyItem;
-import com.example.dispatchermobile.models.ContactItem;
-import com.example.dispatchermobile.models.MessageItem;
-import com.example.dispatchermobile.models.TaskItem;
+import com.example.DispatcherMobile.models.CompanyItem;
+import com.example.DispatcherMobile.models.ContactItem;
+import com.example.DispatcherMobile.models.MessageItem;
+import com.example.DispatcherMobile.models.TaskItem;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;

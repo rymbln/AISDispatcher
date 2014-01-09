@@ -1,4 +1,4 @@
-package com.example.dispatchermobile;
+package com.example.DispatcherMobile;
 
 import android.app.*;
 import android.content.Context;
@@ -9,7 +9,7 @@ import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.content.LocalBroadcastManager;
-import com.example.dispatchermobile.models.TaskItem;
+import com.example.DispatcherMobile.models.TaskItem;
 
 /**
  * Created with IntelliJ IDEA.
@@ -25,6 +25,7 @@ public class MyApplication extends Application {
     private static Activity activity;
     private static Integer notificationCounter = 1;
     private static Intent mDataProviderService;
+    public static Boolean isInternetAvailable = false;
 
     public MyApplication() {
         super.onCreate();

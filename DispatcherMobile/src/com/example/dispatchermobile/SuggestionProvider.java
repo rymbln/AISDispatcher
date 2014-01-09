@@ -1,16 +1,14 @@
-package com.example.dispatchermobile;
+package com.example.DispatcherMobile;
 
 import android.app.SearchManager;
 import android.content.ContentProvider;
-import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.MatrixCursor;
 import android.net.Uri;
-import android.provider.BaseColumns;
-import com.example.dispatchermobile.models.CompanyItem;
-import com.example.dispatchermobile.models.TaskItem;
+import com.example.DispatcherMobile.models.CompanyItem;
+import com.example.DispatcherMobile.models.TaskItem;
 
 import java.util.ArrayList;
 

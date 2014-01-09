@@ -1,17 +1,14 @@
-package com.example.dispatchermobile;
+package com.example.DispatcherMobile;
 
 import android.app.Fragment;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
-import com.example.dispatchermobile.adapters.TaskArrayAdapterFragment;
-import com.example.dispatchermobile.models.TaskItem;
+import com.example.DispatcherMobile.adapters.TaskArrayAdapterFragment;
+import com.example.DispatcherMobile.models.TaskItem;
 
 import java.util.ArrayList;
 

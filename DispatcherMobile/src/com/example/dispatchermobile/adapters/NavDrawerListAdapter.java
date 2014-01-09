@@ -1,4 +1,4 @@
-package com.example.dispatchermobile.adapters;
+package com.example.DispatcherMobile.adapters;
 
 import android.app.Activity;
 import android.content.Context;
@@ -8,8 +8,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.example.dispatchermobile.R;
-import com.example.dispatchermobile.models.NavDrawerItem;
+import com.example.DispatcherMobile.R;
+import com.example.DispatcherMobile.models.NavDrawerItem;
 
 import java.util.ArrayList;
 

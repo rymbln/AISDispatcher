@@ -1,4 +1,4 @@
-package com.example.dispatchermobile.models;
+package com.example.DispatcherMobile.models;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,8 +6,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.example.dispatchermobile.R;
-import com.example.dispatchermobile.models.ContactItem;
+import com.example.DispatcherMobile.R;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;

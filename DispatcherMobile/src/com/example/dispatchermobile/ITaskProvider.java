@@ -1,6 +1,6 @@
-package com.example.dispatchermobile;
+package com.example.DispatcherMobile;
 
-import com.example.dispatchermobile.models.TaskItem;
+import com.example.DispatcherMobile.models.TaskItem;
 
 import java.util.ArrayList;
 

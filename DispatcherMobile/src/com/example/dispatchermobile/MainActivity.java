@@ -1,12 +1,10 @@
-package com.example.dispatchermobile;
+package com.example.DispatcherMobile;
 
 
 import android.app.*;
 import android.content.*;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
-import android.database.Cursor;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -16,11 +14,10 @@ import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.*;
 import android.widget.*;
-import com.example.dispatchermobile.adapters.NavDrawerListAdapter;
-import com.example.dispatchermobile.models.NavDrawerItem;
+import com.example.DispatcherMobile.adapters.NavDrawerListAdapter;
+import com.example.DispatcherMobile.models.NavDrawerItem;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends Activity {
     private static final int RESULT_SETTINGS = 1;
@@ -49,6 +46,8 @@ public class MainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         context = this;
@@ -62,31 +61,111 @@ public class MainActivity extends Activity {
         getActionBar().setHomeButtonEnabled(true);
 
         // TODO: Переделать на нормальный broadcastReceiver
-        //    http://developer.android.com/training/location/activity-recognition.html
+        //    http://developer.android.com/training/location/activity-recognition.htmfl
         //
         MyApplication.setCurrentActivity(this);
         Intent intent = getIntent();
 
 
-        if (savedInstanceState == null) {
-            displayView(Common.ACTIVE_SCREEN - 1);
+        if (Common.isConnectingToInternet()) {
+
+            if (Common.isLoginPassCorrected()) {
+
+                MyApplication.isInternetAvailable = true;
+                if (savedInstanceState == null) {
+                    displayView(Common.ACTIVE_SCREEN - 1);
+                }
+
+                if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+                    String query = intent.getStringExtra(SearchManager.QUERY);
+                } else if (Intent.ACTION_VIEW.equals(intent.getAction())) {
+                    if (Common.ACTIVE_SCREEN == 1) {
+                        searchIntent = new Intent("com.example.DispatcherMobile.selectedTaskItem");
+                    } else {
+                        searchIntent = new Intent("com.example.DispatcherMobile.selectedCompany");
+                    }
+                    searchIntent.putExtra("data", intent.getData().toString());
+                    searchIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    searchIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    startActivity(searchIntent);
+                    //    this.finish();
+                }
+            } else {
+                showAlertDialogLogin(MainActivity.this, "Login Password not corrected", "Login is not correct", true);
+
+            }
+        } else {
+            MyApplication.isInternetAvailable = false;
+            showAlertDialog(MainActivity.this, "Internet is not Available", "Internet dont worked", true);
+            // TODO: Добавить вызов окна НЕТ ИНТЕРНЕТА
+           // displayView(Common.ACTIVE_SCREEN - 1);
         }
 
-        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-            String query = intent.getStringExtra(SearchManager.QUERY);
-        } else if (Intent.ACTION_VIEW.equals(intent.getAction())) {
-            if (Common.ACTIVE_SCREEN == 1) {
-                searchIntent = new Intent("com.example.DispatcherMobile.selectedTaskItem");
-            } else {
-                searchIntent = new Intent("com.example.DispatcherMobile.selectedCompany");
-            }
-            searchIntent.putExtra("data", intent.getData().toString());
-            searchIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            searchIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-            startActivity(searchIntent);
-            //    this.finish();
-        }
+
     }
+
+    public void showAlertDialogLogin(Context context, String title, String message, Boolean status) {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+
+        // Setting Dialog Title
+        alertDialog.setTitle(title);
+
+        // Setting Dialog Message
+        alertDialog.setMessage(message);
+
+        // Setting alert dialog icon
+        alertDialog.setIcon((status) ? R.drawable.alert_error : R.drawable.alert_info);
+        alertDialog.setCancelable(false);
+
+        // Setting OK Button
+        alertDialog.setPositiveButton("Log in", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+
+                Intent i = new Intent(MyApplication.getCurrentActivity(), LoginActivity.class);
+                startActivity(i);
+                MyApplication.getCurrentActivity().finish();
+
+            }
+        });
+
+        alertDialog.setNegativeButton("Close App", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                MyApplication.getCurrentActivity().finish();
+            }
+        });
+
+        // Showing Alert Message
+        alertDialog.show();
+    }
+
+    public void showAlertDialog(Context context, String title, String message, Boolean status) {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+
+        // Setting Dialog Title
+        alertDialog.setTitle(title);
+
+        // Setting Dialog Message
+        alertDialog.setMessage(message);
+
+        // Setting alert dialog icon
+        alertDialog.setIcon((status) ? R.drawable.alert_error : R.drawable.alert_info);
+
+        // Setting OK Button
+        alertDialog.setPositiveButton("Continue", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+
+        alertDialog.setNegativeButton("Close App", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                MyApplication.getCurrentActivity().finish();
+            }
+        });
+
+        // Showing Alert Message
+        alertDialog.show();
+    }
+
 
     private void loadNavigationDrawer() {
         // load slide menu items
@@ -169,11 +248,11 @@ public class MainActivity extends Activity {
             case 0:
                 fragment = new TaskListFragment();
                 Common.ACTIVE_SCREEN = 1;
-                      break;
+                break;
             case 1:
                 fragment = new CompanyListFragment();
                 Common.ACTIVE_SCREEN = 2;
-                      break;
+                break;
             case 2:
                 Intent i = new Intent(this, UserSettingsActivity.class);
                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

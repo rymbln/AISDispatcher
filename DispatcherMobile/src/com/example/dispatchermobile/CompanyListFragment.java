@@ -1,4 +1,4 @@
-package com.example.dispatchermobile;
+package com.example.DispatcherMobile;
 
 import android.app.Fragment;
 import android.content.Context;
@@ -7,8 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import com.example.dispatchermobile.adapters.CompanyArrayAdapterFragment;
-import com.example.dispatchermobile.models.CompanyItem;
+import com.example.DispatcherMobile.adapters.CompanyArrayAdapterFragment;
+import com.example.DispatcherMobile.models.CompanyItem;
 
 import java.util.ArrayList;
 

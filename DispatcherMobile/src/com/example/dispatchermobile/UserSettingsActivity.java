@@ -1,4 +1,4 @@
-package com.example.dispatchermobile;
+package com.example.DispatcherMobile;
 
 import android.content.Intent;
 import android.os.Bundle;

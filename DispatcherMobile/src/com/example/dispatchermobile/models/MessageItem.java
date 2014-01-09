@@ -1,13 +1,12 @@
-package com.example.dispatchermobile.models;
+package com.example.DispatcherMobile.models;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.example.dispatchermobile.R;
+import com.example.DispatcherMobile.R;
 
 /**
  * Created with IntelliJ IDEA.

@@ -1,4 +1,4 @@
-package com.example.dispatchermobile;
+package com.example.DispatcherMobile;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -8,8 +8,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.example.dispatchermobile.models.CompanyItem;
-import com.example.dispatchermobile.models.ContactItem;
+import com.example.DispatcherMobile.models.CompanyItem;
+import com.example.DispatcherMobile.models.ContactItem;
 
 
 public class CompanySelected extends Activity {

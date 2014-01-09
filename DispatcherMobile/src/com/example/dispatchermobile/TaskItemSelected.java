@@ -1,4 +1,4 @@
-package com.example.dispatchermobile;
+package com.example.DispatcherMobile;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -10,13 +10,11 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
-import android.support.v4.view.MotionEventCompat;
-import android.util.Log;
 import android.view.*;
 import android.widget.*;
-import com.example.dispatchermobile.models.ContactItem;
-import com.example.dispatchermobile.models.MessageItem;
-import com.example.dispatchermobile.models.TaskItem;
+import com.example.DispatcherMobile.models.ContactItem;
+import com.example.DispatcherMobile.models.MessageItem;
+import com.example.DispatcherMobile.models.TaskItem;
 
 
 public class TaskItemSelected extends Activity {
@@ -36,7 +34,9 @@ public class TaskItemSelected extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.taskselected_main);
-
+        OnSwipeTouchListener swipeDetector = new OnSwipeTouchListener();
+        RelativeLayout rlMain = (RelativeLayout) this.findViewById(R.id.rlTaskSelectedMain);
+        rlMain.setOnTouchListener(swipeDetector);
         currentIntent = getIntent();
         context = this;
 

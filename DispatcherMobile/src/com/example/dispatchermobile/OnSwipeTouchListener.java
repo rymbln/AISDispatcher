@@ -1,4 +1,4 @@
-package com.example.dispatchermobile;
+package com.example.DispatcherMobile;
 
 import android.view.GestureDetector;
 import android.view.MotionEvent;

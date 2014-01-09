@@ -1,24 +1,15 @@
-package com.example.dispatchermobile.models;
+package com.example.DispatcherMobile.models;
 
-import android.*;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
-import android.text.method.ScrollingMovementMethod;
-import android.text.util.Linkify;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
-import com.example.dispatchermobile.MyApplication;
-import com.example.dispatchermobile.R;
-import com.example.dispatchermobile.SelectPhoneDialog;
+import com.example.DispatcherMobile.R;
 
 import java.util.ArrayList;
 
